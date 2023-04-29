@@ -29,17 +29,13 @@ export class AuthenticationService {
   }
 
   public getSubject() {
-    return JSON.parse(localStorage.getItem('subject')!);
+    return JSON.parse(localStorage.getItem('currentUser') ?? '{}');
   }
-
-  private hasRole(role: string): boolean {
-    return this.getSubject().roleName == role;
-  }
-  private getRoleBoolean(role: string) {
+  public getRoleBoolean() {
     return {
-      admin: this.hasRole('Admin'),
-      staff: this.hasRole('Staff'),
-      customer: this.hasRole('Customer'),
+      admin: this.getSubject().roleName == 'Admin',
+      staff: this.getSubject().roleName == 'Staff',
+      customer: this.getSubject().roleName == 'Customer',
       loggedIn: this.isAuthenticated()
     }
   }

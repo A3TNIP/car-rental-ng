@@ -1,8 +1,28 @@
-<p>topnav works!</p>
-<nav>
-    <img alt="Logo"/>
-  <ul>
-    <li><a routerLink="login">Login</a></li>
-    <li><a routerLink="register">Register</a></li>
-  </ul>
-</nav>
+  <nav class="top-nav">
+    <img alt="Logo" />
+    <ul class="nav-items">
+      <li><a routerLink="login">View cars</a></li>
+      <ng-container *ngIf="!is.loggedIn; else tLoggedIn">
+        <li><a routerLink="login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+      </ng-container>
+
+      <ng-template #tLoggedIn>
+        <ng-container *ngIf="is.customer; else tNotCustomer">
+          <li><a routerLink="/register">Damage Report</a></li>
+          <li><a routerLink="/register">History</a></li>
+          <li><a routerLink="/register">Billing</a></li>
+          <li><a routerLink="/register">Special Offers</a></li>
+          <li><a routerLink="/register">Profile</a></li>
+          <li><a routerLink="/register">Logout</a></li>
+        </ng-container>
+
+      <ng-template #tNotCustomer>
+        <li><a routerLink="/register">Setting</a></li>
+      </ng-template>
+
+
+      </ng-template>
+
+    </ul>
+  </nav>

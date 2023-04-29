@@ -24,14 +24,17 @@ export class RedirectComponent implements OnInit{
     let role = this.role
     switch (role) {
       case "Admin":
-        this.router.navigateByUrl('/admin').then();
-        // this.redirectAndReload('/admin')
+        this.router.navigateByUrl('/dashboard').then(
+          () => LoaderService.hide()
+        );
         break;
       case "Staff":
-        this.router.navigateByUrl('/staff').then();
+        this.router.navigateByUrl('/dashboard').then(
+          () => LoaderService.hide()
+        );
         break;
       case "Customer":
-        this.router.navigateByUrl('/customer').then(
+        this.router.navigateByUrl('/customer/home').then(
           () => LoaderService.hide()
         );
         break;

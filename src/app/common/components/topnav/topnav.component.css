@@ -1,0 +1,15 @@
+
+.top-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 200px;
+    border: 1px solid black;
+}
+
+.top-nav .nav-items {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    list-style: none;
+}

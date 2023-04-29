@@ -7,7 +7,7 @@ import {AuthGuard} from "../common/guards/auth.guard";
 const routes: Routes = [
   {
     path: 'customer', component: CustomerComponent, children: [
-      {path: 'profile', component: CustomerLandingComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}}
+      {path: 'home', component: CustomerLandingComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}}
     ]
   },
 ];
