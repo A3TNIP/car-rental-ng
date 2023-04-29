@@ -1,13 +1,15 @@
-.main {
+.web-container {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    font-family: 'Poppins', sans-serif
 }
 
-.main .sidenav{
-    width: 10%;
-}
-
-.main .content{
-    width: 90%;
+.content-container {
+    display: flex;
+    flex-direction: column;
+    background: #F8F9FA;
+    width: 85%;
+    height: 100vh;
 }
