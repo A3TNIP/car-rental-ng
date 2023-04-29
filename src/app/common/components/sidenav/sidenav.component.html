@@ -7,5 +7,14 @@
         <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
       </li>
     </ul>
+    <ng-container *ngIf="is.admin">
+      <ul>
+        <li>
+          <a routerLink="/admin" routerLinkActive="active">Admin</a>
+        </li>
+        <li>
+            <a routerLink="/admin/users" routerLinkActive="active">Staffs</a>
+        </li>
+      </ul>
+    </ng-container>
   </nav>
-
