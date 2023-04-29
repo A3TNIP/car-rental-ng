@@ -3,16 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {CustomCommonModule} from "./common/custom-common.module";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ConfirmationService, MessageService} from "primeng/api";
+import {RequestInterceptor} from "./common/interceptor/request.interceptor";
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    CustomCommonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    MessageService,
+    ConfirmationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

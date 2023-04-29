@@ -1,0 +1,22 @@
+<div class="main-container">
+
+  <div class="imgbody">
+    <img class="viewimg" src="assets/Images/needcar2.png" />
+  </div>
+
+  <div class="main-form">
+    <h1>Hajur ko Car Rental</h1>
+    <h4>Login</h4>
+
+    <form (submit)="eLogin()" [formGroup]="loginForm">
+
+      <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
+      <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Password" required />
+
+      <button class="form-button" (click)="eLogin()" type="submit">Login</button>
+
+      <p>Don't have an account? <a routerLink="/register">Register</a> here.</p>
+    </form>
+  </div>
+
+</div>

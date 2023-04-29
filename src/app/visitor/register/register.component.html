@@ -1,0 +1,23 @@
+<div class="main-container">
+  <div class="main-form">
+    <h1>Hajur ko Car Rental</h1>
+    <h4>Register Customer</h4>
+
+    <form [formGroup]="registerForm" (submit)="eRegister()">
+      <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required/>
+      <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone" required/>
+      <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required/>
+      <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required/>
+      <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required/>
+      <input class="input-field " type="password" id="confirmpassword" [(ngModel)]="confirmPassword" placeholder="Repeat Password" required/>
+
+      <button class="form-button" type="submit">Register Now</button>
+
+      <p>Already have an account? <a routerLink="/login">Login</a> here.</p>
+    </form>
+  </div>
+
+  <div class="imgbody">
+    <img class="viewimg" src="Images/needcar.png"/>
+  </div>
+</div>
