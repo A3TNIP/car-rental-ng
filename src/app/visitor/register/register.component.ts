@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit{
     this.registerForm = this.fb.group({
       Email: ['', Validators.required],
       Password: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required],
       PhoneNumber: ['', Validators.required],
       Address: ['', Validators.required],
       Name: ['', Validators.required],
@@ -27,6 +28,9 @@ export class RegisterComponent implements OnInit{
 
   eRegister() {
     if (this.registerForm.invalid) return;
+    if (this.registerForm.get('Password')?.value !== this.registerForm.get('ConfirmPassword')?.value) return;
+    // remove ConfirmPassword from the request body
+    delete this.registerForm.value.ConfirmPassword;
     this.authService.register(this.registerForm.getRawValue())
       .subscribe({
         next: (response: any) => {
