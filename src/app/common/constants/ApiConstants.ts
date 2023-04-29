@@ -15,4 +15,13 @@ export class ApiConstants {
 
 
     // Actions
+    public static readonly STAFF = '/Staff'
+    public static readonly ADMIN = '/Admin'
+    public static readonly CUSTOMER = '/Customer'
+    public static readonly UPLOAD = '/Upload'
+    public static readonly CHANGE_STATUS = '/ChangeStatus'
+    public static readonly REQUEST = '/Request'
+    public static readonly UPLOAD_DOCUMENT = '/UploadDocument'
+    public static readonly AFTER_DISCOUNT = '/AfterDiscount'
+    public static readonly ATTACHMENTS = '/Attachments'
 }
