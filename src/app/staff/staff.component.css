@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.main .sidenav{
+    width: 10%;
+}
+
+.main .content{
+    width: 90%;
+}

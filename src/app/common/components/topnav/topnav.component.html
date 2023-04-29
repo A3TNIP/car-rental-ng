@@ -1,7 +1,7 @@
   <nav class="top-nav">
     <img alt="Logo" />
     <ul class="nav-items">
-      <li><a routerLink="login">View cars</a></li>
+      <li *ngIf="!(is.admin || is.staff)"><a routerLink="login">View cars</a></li>
       <ng-container *ngIf="!is.loggedIn; else tLoggedIn">
         <li><a routerLink="login">Login</a></li>
         <li><a routerLink="/register">Register</a></li>

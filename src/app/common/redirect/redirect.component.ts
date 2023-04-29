@@ -15,12 +15,11 @@ export class RedirectComponent implements OnInit{
   constructor(private authService: AuthenticationService, private router: Router, private userService: UserService) {
   }
 
-  async ngOnInit(): Promise<void> {
-    await this.getPrincipal();
+   ngOnInit(): void {
+    this.getPrincipal();
   }
 
   private redirect() {
-    LoaderService.show();
     let role = this.role
     switch (role) {
       case "Admin":
@@ -45,8 +44,9 @@ export class RedirectComponent implements OnInit{
   }
 
 
-  private async getPrincipal() {
-    await this.authService.getPrincipal().subscribe({
+  private getPrincipal() {
+    LoaderService.show();
+    this.authService.getPrincipal().subscribe({
       next: (response: any) => {
         this.userService.setCurrentUser(response);
         this.role = response.roleName;
