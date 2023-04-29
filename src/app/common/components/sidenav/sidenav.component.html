@@ -42,7 +42,7 @@
     </div>
   </a>
 
-  <p class="sub-title">Account Pages</p>
+  <p class="sub-title" *ngIf="is.admin">Admin</p>
 
   <a routerLink="/Profile">
     <div class="nav-items" routerLinkActive="active">
@@ -57,7 +57,7 @@
       <div class="navitm-container">
         <img src="/assets/Images/icons/teal/document.svg" />
       </div>
-      Sign Up Admin
+      Admin
     </div>
   </a>
   <a routerLink="/SignUpStaff">
@@ -65,7 +65,15 @@
       <div class="navitm-container">
         <img src="/assets/Images/icons/teal/rocket.svg" />
       </div>
-      Sign Up Staff
+      Staff
+    </div>
+  </a>
+  <a routerLink="/Config">
+    <div class="nav-items" routerLinkActive="active">
+      <div class="navitm-container">
+        <img src="/assets/Images/icons/teal/wrench.svg" />
+      </div>
+      Configuration
     </div>
   </a>
 
