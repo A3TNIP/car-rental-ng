@@ -6,6 +6,7 @@ import {LoaderComponent} from "./components/loader/loader.component";
 import { RedirectComponent } from './redirect/redirect.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {ProgressSpinnerModule} from "primeng/progressspinner";
+import {RouterLink} from "@angular/router";
 
 
 
@@ -24,7 +25,8 @@ import {ProgressSpinnerModule} from "primeng/progressspinner";
   ],
   imports: [
     CommonModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    RouterLink
   ]
 })
 export class CustomCommonModule { }

@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl("/redirect").then(
             () => LoaderService.hide()
           );
+        },
+        error: (error: any) => {
+          console.log(error);
+          LoaderService.hide();
         }
       })
   }

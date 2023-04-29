@@ -39,5 +39,6 @@ export class AppComponent implements OnInit {
       menu: 1000,
       tooltip: 1100,
     }
+    this.router.navigateByUrl("/home").then();
   }
 }

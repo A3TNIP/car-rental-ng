@@ -11,13 +11,13 @@
       <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required/>
       <input class="input-field " type="password" id="confirmpassword" [(ngModel)]="confirmPassword" placeholder="Repeat Password" required/>
 
-      <button class="form-button" type="submit">Register Now</button>
+      <button class="form-button" (click)="eRegister()" type="submit">Register Now</button>
 
       <p>Already have an account? <a routerLink="/login">Login</a> here.</p>
     </form>
   </div>
 
   <div class="imgbody">
-    <img class="viewimg" src="Images/needcar.png"/>
+    <img class="viewimg" src="/assets/Images/needcar.png"/>
   </div>
 </div>
