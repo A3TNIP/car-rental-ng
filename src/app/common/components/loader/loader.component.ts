@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoaderService} from "../../service/loader.service";
 
 @Component({
   selector: 'app-loader',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./loader.component.css']
 })
 export class LoaderComponent {
-
+  public loader: any = LoaderService.get();
 }

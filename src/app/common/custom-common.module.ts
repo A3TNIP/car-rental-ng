@@ -5,6 +5,7 @@ import {SidenavComponent} from "./components/sidenav/sidenav.component";
 import {LoaderComponent} from "./components/loader/loader.component";
 import { RedirectComponent } from './redirect/redirect.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 
 
@@ -22,7 +23,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LoaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProgressSpinnerModule
   ]
 })
 export class CustomCommonModule { }

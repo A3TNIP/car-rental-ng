@@ -1,10 +1,54 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {AuthenticationService} from "../service/authentication.service";
+import {UserService} from "../service/user.service";
+import {LoaderService} from "../service/loader.service";
 
 @Component({
   selector: 'app-redirect',
   templateUrl: './redirect.component.html',
   styleUrls: ['./redirect.component.css']
 })
-export class RedirectComponent {
+export class RedirectComponent implements OnInit{
 
+  private role!: string;
+  constructor(private authService: AuthenticationService, private router: Router, private userService: UserService) {
+  }
+
+  async ngOnInit(): Promise<void> {
+    await this.getPrincipal();
+  }
+
+  private redirect() {
+    LoaderService.show();
+    let role = this.role
+    switch (role) {
+      case "Admin":
+        this.router.navigateByUrl('/admin').then();
+        // this.redirectAndReload('/admin')
+        break;
+      case "Staff":
+        this.router.navigateByUrl('/staff').then();
+        break;
+      case "Customer":
+        this.router.navigateByUrl('/customer').then(
+          () => LoaderService.hide()
+        );
+        break;
+      default:
+        this.router.navigateByUrl('/login').finally();
+        console.log("redirect to login")
+    }
+  }
+
+
+  private async getPrincipal() {
+    await this.authService.getPrincipal().subscribe({
+      next: (response: any) => {
+        this.userService.setCurrentUser(response);
+        this.role = response.roleName;
+        this.redirect();
+      }
+    })
+  }
 }

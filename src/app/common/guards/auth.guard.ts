@@ -39,7 +39,7 @@ export class AuthGuard implements CanActivate {
 
   private hasRole(datum: any) {
     let hasRole = false;
-    let roles: string = UserService.getCurrentUser().role;
+    let roles: string = UserService.getCurrentUser().roleName;
     for (let role of roles) {
       if (datum.includes(role)) {
         hasRole = true;
@@ -48,5 +48,5 @@ export class AuthGuard implements CanActivate {
     }
     return hasRole;
   }
-  
+
 }

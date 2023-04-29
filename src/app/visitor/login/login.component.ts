@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../common/service/authentication.service";
 import {Router} from "@angular/router";
+import {LoaderService} from "../../common/service/loader.service";
 
 @Component({
   selector: 'app-login',
@@ -25,11 +26,14 @@ export class LoginComponent implements OnInit {
   }
 
   eLogin() {
+    LoaderService.show();
     this.authService.login(this.loginForm.getRawValue())
       .subscribe({
         next: (response: any) => {
           localStorage.setItem('token', response.token);
-          this.router.navigateByUrl("/redirect").then();
+          this.router.navigateByUrl("/redirect").then(
+            () => LoaderService.hide()
+          );
         }
       })
   }

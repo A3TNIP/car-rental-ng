@@ -33,7 +33,7 @@ export class AuthenticationService {
   }
 
   private hasRole(role: string): boolean {
-    return this.getSubject().role == role;
+    return this.getSubject().roleName == role;
   }
   private getRoleBoolean(role: string) {
     return {
