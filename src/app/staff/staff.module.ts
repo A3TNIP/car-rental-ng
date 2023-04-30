@@ -10,6 +10,7 @@ import { RentalListComponent } from './rental-list/rental-list.component';
 import { DamagesComponent } from './damages/damages.component';
 import { StaffComponent } from './staff.component';
 import {CustomCommonModule} from "../common/custom-common.module";
+import {TableModule} from "primeng/table";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {CustomCommonModule} from "../common/custom-common.module";
     imports: [
         CommonModule,
         StaffRoutingModule,
-        CustomCommonModule
+        CustomCommonModule,
+        TableModule
     ]
 })
 export class StaffModule { }

@@ -41,40 +41,42 @@
       Damages
     </div>
   </a>
+  <ng-container *ngIf="is.admin">
+    <p class="sub-title">Admin</p>
 
-  <p class="sub-title" *ngIf="is.admin">Admin</p>
+    <a>
+      <div class="nav-items" routerLink="/profile" routerLinkActive="active">
+        <div class="navitm-container" routerLinkActive="active">
+          <img src="/assets/Images/icons/teal/user2.svg" />
+        </div>
+        Profile
+      </div>
+    </a>
+    <a>
+      <div class="nav-items" routerLink="/signupadmin" routerLinkActive="active">
+        <div class="navitm-container" routerLinkActive="active">
+          <img src="/assets/Images/icons/teal/document.svg" />
+        </div>
+        Admin
+      </div>
+    </a>
+    <a>
+      <div class="nav-items" routerLink="/signupstaff" routerLinkActive="active">
+        <div class="navitm-container" routerLinkActive="active">
+          <img src="/assets/Images/icons/teal/rocket.svg" />
+        </div>
+        Staff
+      </div>
+    </a>
+    <a>
+      <div class="nav-items" routerLink="/config" routerLinkActive="active">
+        <div class="navitm-container" routerLinkActive="active">
+          <img src="/assets/Images/icons/teal/wrench.svg" />
+        </div>
+        Configuration
+      </div>
+    </a>
 
-  <a>
-    <div class="nav-items" routerLink="/profile" routerLinkActive="active">
-      <div class="navitm-container" routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/user2.svg" />
-      </div>
-      Profile
-    </div>
-  </a>
-  <a>
-    <div class="nav-items" routerLink="/signupadmin" routerLinkActive="active">
-      <div class="navitm-container" routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/document.svg" />
-      </div>
-      Admin
-    </div>
-  </a>
-  <a>
-    <div class="nav-items" routerLink="/signupstaff" routerLinkActive="active">
-      <div class="navitm-container" routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/rocket.svg" />
-      </div>
-      Staff
-    </div>
-  </a>
-  <a>
-    <div class="nav-items" routerLink="/config" routerLinkActive="active">
-      <div class="navitm-container" routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/wrench.svg" />
-      </div>
-      Configuration
-    </div>
-  </a>
+  </ng-container>
 
 </div>
