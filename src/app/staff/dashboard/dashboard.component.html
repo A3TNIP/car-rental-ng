@@ -146,7 +146,7 @@
   </div>
 
   <div class="add-items">
-    <button onclick="showstaffPopup()" class="add-item-button">
+    <button (click)="showstaffPopup()" class="add-item-button">
       <div class="add-item-container">
         <p class="additm-p">Add Staff</p>
         <div class="additm-icon-cont">
@@ -155,7 +155,7 @@
       </div>
     </button>
 
-    <button onclick="showadminPopup()" class="add-item-button">
+    <button (click)="showadminPopup()" class="add-item-button">
       <div class="add-item-container">
         <p class="additm-p">Add Admin</p>
         <div class="additm-icon-cont">
@@ -166,50 +166,48 @@
   </div>
 </div>
 
-<div class="popup-container" id="popupadmin">
+<p-dialog [(visible)]="adminVisible" [style]="{'width': '400px'}">
+  <div class="popup-container" id="popupadmin">
     <div class="popup-child">
-        <button onclick="hideadminPopup()" class="popup-close">
-            <span class="oi oi-x" />
-        </button>
-        <text class="popup-title">Hajur ko Car Rental</text>
-        <text class="popup-subhead">Sign Up Admin</text>
+      <button (click)="hideadminPopup()" class="popup-close">
+        <span class="oi oi-x"></span>
+      </button>
+      <p class="popup-title">Hajur ko Car Rental</p>
+      <p class="popup-subhead">Sign Up Admin</p>
 
-        <EditForm Model="@_registerModel">
-            <InputText class="input-field " type="text" id="name" @bind-Value="@_registerModel.Name" placeholder="Name" required />
-            <InputText class="input-field " type="text" id="phone" @bind-Value="@_registerModel.Phone" placeholder="Phone" required />
-            <InputText class="input-field " type="text" id="address" @bind-Value="@_registerModel.Address" placeholder="Address" required />
-            <InputText class="input-field " type="text" id="email" @bind-Value="@_registerModel.Email" placeholder="Email" required />
-            <InputText class="input-field " type="password" id="password" @bind-Value="@_registerModel.Password" placeholder="Enter Password" required />
-            <InputText class="input-field " type="password" id="confirmpassword" @bind-Value="@_confirmPassword" placeholder="Repeat Password" required />
+      <form [formGroup]="adminForm">
+        <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
+        <input class="input-field " type="text" id="phone" formControlName="Phone" placeholder="Phone" required />
+        <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
+        <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
+        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
+        <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
 
-            <button class="popup-button" type="submit">Register Now</button>
-        </EditForm>
+        <button class="popup-button" type="submit">Register Now</button>
+      </form>
     </div>
-</div>
+  </div>
+</p-dialog>
 
-<div class="popup-container" id="popupstaff">
+<p-dialog [(visible)]="staffVisible" [style]="{'width': '400px'}">
+  <div class="popup-container" id="popupstaff">
     <div class="popup-child">
-        <button onclick="hidestaffPopup()" class="popup-close">
-            <span class="oi oi-x" />
-        </button>
-        <text class="popup-title">Hajur ko Car Rental</text>
-        <text class="popup-subhead">Sign Up Staff</text>
+      <button (click)="hidestaffPopup()" class="popup-close">
+        <span class="oi oi-x"></span>
+      </button>
+      <p class="popup-title">Hajur ko Car Rental</p>
+      <p class="popup-subhead">Sign Up Staff</p>
 
-        <EditForm Model="@_registerModel">
-            <InputText class="input-field " type="text" id="name" @bind-Value="@_registerModel.Name" placeholder="Name" required />
-            <InputText class="input-field " type="text" id="phone" @bind-Value="@_registerModel.Phone" placeholder="Phone" required />
-            <InputText class="input-field " type="text" id="address" @bind-Value="@_registerModel.Address" placeholder="Address" required />
-            <InputText class="input-field " type="text" id="email" @bind-Value="@_registerModel.Email" placeholder="Email" required />
-            <InputText class="input-field " type="password" id="password" @bind-Value="@_registerModel.Password" placeholder="Enter Password" required />
-            <InputText class="input-field " type="password" id="confirmpassword" @bind-Value="@_confirmPassword" placeholder="Repeat Password" required />
-            <InputSelect class="input-field" name="designation" id="designation" @bind-Value="@_registerModel.Designation" required>
-                <option value="" disabled hidden selected>Designation</option>
-                <option value="mechanic">Mechanic</option>
-                <option value="accountant">Accountant</option>
-                <option value="helper">Helper</option>
-            </InputSelect>
+      <form [formGroup]="staffForm">
+        <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
+        <input class="input-field " type="text" id="phone" formControlName="Phone" placeholder="Phone" required />
+        <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
+        <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
+        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
+        <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
 
-            <button class="popup-button" type="submit">Register Now</button>
-        </EditForm>
+        <button class="popup-button" type="submit">Register Now</button>
+      </form>
     </div>
-</div>
+  </div>
+</p-dialog>

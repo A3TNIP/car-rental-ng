@@ -264,6 +264,7 @@
 .add-item-button {
     border:none;
     background-color: #F8F9FA;
+  cursor: pointer;
 }
 
 .add-item-container {
@@ -295,7 +296,6 @@
 }
 
 .popup-container {
-    display: none;
     flex-direction: column;
     position: fixed;
     transform: translate(-50%, -50%);
@@ -334,7 +334,8 @@
     background-color: #ffffff;
     padding: 1% 3% 3% 3%;
     border-radius: 15px;
-    width: 28%;
+    width: 100%;
+    height: 100%;
     border: 0.5px solid #E2E8F0;
     top: 50%;
     left: 50%;

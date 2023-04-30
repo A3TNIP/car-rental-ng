@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
   public products: any[] = [
     {
       id: '1000',
@@ -368,4 +369,48 @@ export class DashboardComponent {
       rating: 8
     }
   ]
+  adminForm!: FormGroup;
+  public staffForm!: FormGroup;
+  staffVisible: boolean = false;
+  adminVisible: boolean = false;
+  constructor(private formBuilder: FormBuilder) {
+  }
+
+  showstaffPopup() {
+    this.staffVisible = true;
+  }
+
+  showadminPopup() {
+    this.adminVisible = true;
+  }
+
+  ngOnInit(): void {
+    this.adminForm = this.formBuilder.group({
+      Email: ['', Validators.required],
+      Password: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required],
+      Phone: ['', Validators.required],
+      Address: ['', Validators.required],
+      Name: ['', Validators.required],
+      Role: [0, Validators.required]
+    });
+
+    this.staffForm = this.formBuilder.group({
+      Email: ['', Validators.required],
+      Password: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required],
+      Phone: ['', Validators.required],
+      Address: ['', Validators.required],
+      Name: ['', Validators.required],
+      Role: [1, Validators.required]
+    })
+  }
+
+  hideadminPopup() {
+    this.adminVisible = false;
+  }
+
+  hidestaffPopup() {
+    this.staffVisible = false;
+  }
 }

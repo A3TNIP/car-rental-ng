@@ -11,6 +11,8 @@ import { DamagesComponent } from './damages/damages.component';
 import { StaffComponent } from './staff.component';
 import {CustomCommonModule} from "../common/custom-common.module";
 import {TableModule} from "primeng/table";
+import {DialogModule} from "primeng/dialog";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -23,11 +25,13 @@ import {TableModule} from "primeng/table";
     DamagesComponent,
     StaffComponent
   ],
-    imports: [
-        CommonModule,
-        StaffRoutingModule,
-        CustomCommonModule,
-        TableModule
-    ]
+  imports: [
+    CommonModule,
+    StaffRoutingModule,
+    CustomCommonModule,
+    TableModule,
+    DialogModule,
+    ReactiveFormsModule
+  ]
 })
 export class StaffModule { }

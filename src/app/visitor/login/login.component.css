@@ -35,49 +35,7 @@
   width: 77%;
 }
 
-.input-field {
-  padding: 9px 9px 9px 45px;
-  border-radius: 10px;
-  margin: 3% 0% 4% 0%;
-  width: 100%;
-  border: 1.5px solid #E0E2E9;
-}
 
-.input-field#name {
-  background-image: url("/assets/Images/icons/user.svg");
-  background-repeat: no-repeat;
-  background-position: left 10px center;
-}
-
-.input-field#phone {
-  background-image: url("/assets/Images/icons/phone.svg");
-  background-repeat: no-repeat;
-  background-position: left 10px center;
-}
-
-.input-field#address {
-  background-image: url("/assets/Images/icons/address.svg");
-  background-repeat: no-repeat;
-  background-position: left 10px center;
-}
-
-.input-field#email {
-  background-image: url("/assets/Images/icons/email.svg");
-  background-repeat: no-repeat;
-  background-position: left 10px center;
-}
-
-.input-field#password {
-  background-image: url("/assets/Images/icons/pass.svg");
-  background-repeat: no-repeat;
-  background-position: left 10px center;
-}
-
-.input-field#confirmpassword {
-  background-image: url("/assets/Images/icons/pass.svg");
-  background-repeat: no-repeat;
-  background-position: left 10px center;
-}
 
 .form-button {
   padding: 9px;
