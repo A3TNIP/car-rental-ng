@@ -145,7 +145,8 @@
 .actvu-items {
     display: flex;
     justify-content: space-between;
-    overflow-x: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
     white-space: nowrap;
     padding-top: 2%;
 }
