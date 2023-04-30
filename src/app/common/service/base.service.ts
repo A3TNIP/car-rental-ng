@@ -5,14 +5,15 @@ import { ApiConstants } from '../constants/ApiConstants';
 import { MessageService } from 'primeng/api';
 import { Observable, catchError, of } from 'rxjs';
 import { BaseResponseModel } from '../model/base-response.model';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService extends AuthenticationService {
 
-  constructor(http: HttpClient, private messageService: MessageService) {
-    super(http);
+  constructor(http: HttpClient, private messageService: MessageService, public override router: Router) {
+    super(http, router);
   }
 
   private baseUrl = ApiConstants.API_URL;
@@ -49,10 +50,10 @@ export class BaseService extends AuthenticationService {
 
   /**
    * Completely update the data on the server
-   * @param model 
-   * @param url 
-   * @param noMessage 
-   * @returns 
+   * @param model
+   * @param url
+   * @param noMessage
+   * @returns
    */
   public putRequest<T = any>(model: any, url: string, noMessage = false): Observable<BaseResponseModel<T>> {
     // @ts-ignore
@@ -64,10 +65,10 @@ export class BaseService extends AuthenticationService {
 
   /**
    * Partially update the data on the server
-   * @param model 
-   * @param url 
-   * @param noMessage 
-   * @returns 
+   * @param model
+   * @param url
+   * @param noMessage
+   * @returns
    */
   public patchRequest<T = any>(model: any, url: string, noMessage = false): Observable<BaseResponseModel<T>> {
     // @ts-ignore
@@ -107,6 +108,7 @@ export class BaseService extends AuthenticationService {
    * Log a message with the MessageService
    */
   protected log(errorModel: any, noMessage = false) {
+    console.log(errorModel);
     if (errorModel && !noMessage) {
       const msg = (!!errorModel.error.message && errorModel.error.message.length < 80) ? errorModel.error.message : 'An error occurred';
       switch (errorModel.status) {

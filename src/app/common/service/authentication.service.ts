@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiConstants } from '../constants/ApiConstants';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, public router: Router) { }
 
   public login(model: any) {
     return this.http.post(`${ApiConstants.AUTHENTICATION_CONTROLLER}/Login`, model);
@@ -18,6 +19,7 @@ export class AuthenticationService {
 
   public logout() {
     localStorage.clear();
+    this.router.navigate(['/login']).then();
   }
 
   public isAuthenticated(): boolean {
