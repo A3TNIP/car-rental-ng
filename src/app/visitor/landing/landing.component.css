@@ -1,0 +1,35 @@
+.land-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0% 15%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.land-title{
+    display: flex;
+    flex-direction: column;
+    font-size: 60px;
+    margin-top: unset;
+}
+
+.land-lower{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landtext-subtitle{
+    font-size: 35px;
+    margin: unset;
+}
+
+.landtext-content{
+    margin-top: 5%;
+    font-size: 25px;
+}
+
+.landlower-img{
+    width: 52%;
+    border-radius: 20px;
+}
