@@ -47,11 +47,15 @@ export class ConfigurationComponent implements OnInit {
   }
 
   public deleteConfig(config: any) {
-    console.log('url',`${ApiConstants.CONFIG}/${config.id}`);    
+    console.log('url', `${ApiConstants.CONFIG}/${config.id}`);
     LoaderService.show();
     this.service.deleteRequest(`${ApiConstants.CONFIG}/${config.id}`).subscribe({
       next: (res: any) => {
-        this.service.showToast('Deleted successfully')
+        if (res.message == 'Configuration deleted successfully') {
+          this.service.showToast('Deleted successfully');
+          // Remove the deleted config from the configurationData array
+          this.configurationData = this.configurationData.filter((c: any) => c.id !== config.id);
+        }
         LoaderService.hide();
       },
       error: (err: any) => {
@@ -60,17 +64,17 @@ export class ConfigurationComponent implements OnInit {
       },
     });
   }
+  
 
   public addConfig(config: any) {
     LoaderService.show();
-    console.log("CONFIG IS",config);
     delete config.id; // remove id field from config object
-    console.log("CONFIG IS",config);
     this.service.postRequest(config,`${ApiConstants.CONFIG}`).subscribe({
       next: (res: any) => {
         LoaderService.hide();
-        if (res && res.isSuccess) {
+        if (res.isSuccess) {
           console.log('Configuration added successfully');
+          this.service.showToast('Configuration added successfully');
           this.configForm.reset();
           this.fetchConfigList();
         }
@@ -86,13 +90,13 @@ export class ConfigurationComponent implements OnInit {
   public updateConfig(config: any) {
     LoaderService.show();
     console.log(config);
-    config = {
+    const updatedconfig = {
       ...config,
       key: this.configForm.get('key')!.value,
       value: this.configForm.get('value')!.value,
       code: this.configForm.get('code')!.value
     };
-    this.service.putRequest(config,`${ApiConstants.CONFIG}`).subscribe({
+    this.service.putRequest(updatedconfig,`${ApiConstants.CONFIG}`).subscribe({
       next: (res: any) => {
         LoaderService.hide();
         if (res && res.isSuccess) {
@@ -100,6 +104,7 @@ export class ConfigurationComponent implements OnInit {
           this.isUpdate = false;
           this.configForm.reset();
           this.fetchConfigList();
+          this.service.showToast('Configuration updated successfully');
         }
       },
       error: (err: any) => {
@@ -108,6 +113,7 @@ export class ConfigurationComponent implements OnInit {
       },
     });
   }
+  
 
   public populateForm(config: any) {
     this.configForm.setValue({
