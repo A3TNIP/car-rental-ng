@@ -191,3 +191,8 @@
 .view-hstry-text{
     font-size: 22px;
 }
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
