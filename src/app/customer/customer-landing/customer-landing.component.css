@@ -17,7 +17,6 @@
 .cust-land-lower{
     display:flex;
     justify-content: center;
-    align-items: center;
 }
 
 .landtext-subtitle{
@@ -103,6 +102,7 @@
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 2%;
+    height: 100%;
 }
 
 .cust-land-lower-right{
@@ -114,13 +114,17 @@
 .cust-land-lower-right-upper{
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    padding: 2%;
+    padding: 4%;
+    margin-bottom: 5%;
 }
 
 .cust-land-lower-right-lower{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    padding: 2%;
+    padding: 4%;
 }
 
 .rent-card-comp{
@@ -170,7 +174,20 @@
     color: #ffffff;
 }
 
-.billing-info-comp{
-    padding: 2%;
-    width: 10%;
+.rent-card-img{
+    width: 100%;
+}
+
+.view-history-collective{
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+.view-history-img{
+    width: 20%;
+}
+
+.view-hstry-text{
+    font-size: 22px;
 }
