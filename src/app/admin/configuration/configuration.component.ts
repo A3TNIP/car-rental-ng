@@ -1,8 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiConstants } from 'src/app/common/constants/ApiConstants';
-import { ConfigurationService } from 'src/app/common/service/configuration.service';
+import { BaseService } from 'src/app/common/service/base.service';
 import { LoaderService } from 'src/app/common/service/loader.service';
-
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
@@ -10,12 +11,19 @@ import { LoaderService } from 'src/app/common/service/loader.service';
 })
 export class ConfigurationComponent implements OnInit {
   configurationData:any[] = [];
-
-  constructor(public service: ConfigurationService) { }
+  configForm!: FormGroup;
+  isUpdate!: boolean;
+  
+  constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
 
   ngOnInit() {
     this.fetchConfigList();
-    this.service.getConfig("Test");
+    this.configForm = this.fb.group({
+      id: [""],
+      code: ['', Validators.required],
+      key: ['', Validators.required],
+      value: ['', Validators.required],
+    });
   }
 
   private fetchConfigList() {
@@ -36,6 +44,82 @@ export class ConfigurationComponent implements OnInit {
           }
         }
       });
-      console.log('after api call', this.configurationData);
   }
+
+  public deleteConfig(config: any) {
+    console.log('url',`${ApiConstants.CONFIG}/${config.id}`);    
+    LoaderService.show();
+    this.service.deleteRequest(`${ApiConstants.CONFIG}/${config.id}`).subscribe({
+      next: (res: any) => {
+        this.service.showToast('Deleted successfully')
+        LoaderService.hide();
+      },
+      error: (err: any) => {
+        console.error('Failed to delete configuration', err);
+        LoaderService.hide();
+      },
+    });
+  }
+
+  public addConfig(config: any) {
+    LoaderService.show();
+    console.log("CONFIG IS",config);
+    delete config.id; // remove id field from config object
+    console.log("CONFIG IS",config);
+    this.service.postRequest(config,`${ApiConstants.CONFIG}`).subscribe({
+      next: (res: any) => {
+        LoaderService.hide();
+        if (res && res.isSuccess) {
+          console.log('Configuration added successfully');
+          this.configForm.reset();
+          this.fetchConfigList();
+        }
+      },
+      error: (err: any) => {
+        console.error('Failed to add configuration', err);
+        LoaderService.hide();
+      },
+    });
+  }
+  
+  
+  public updateConfig(config: any) {
+    LoaderService.show();
+    console.log(config);
+    config = {
+      ...config,
+      key: this.configForm.get('key')!.value,
+      value: this.configForm.get('value')!.value,
+      code: this.configForm.get('code')!.value
+    };
+    this.service.putRequest(config,`${ApiConstants.CONFIG}`).subscribe({
+      next: (res: any) => {
+        LoaderService.hide();
+        if (res && res.isSuccess) {
+          console.log('Configuration updated successfully');
+          this.isUpdate = false;
+          this.configForm.reset();
+          this.fetchConfigList();
+        }
+      },
+      error: (err: any) => {
+        console.error('Failed to update configuration', err);
+        LoaderService.hide();
+      },
+    });
+  }
+
+  public populateForm(config: any) {
+    this.configForm.setValue({
+      id:config.id,
+      key: config.key,
+      value: config.value,
+      code: config.code
+    });
+    this.isUpdate = true;
+  }
+  
+  
+
+  
 }

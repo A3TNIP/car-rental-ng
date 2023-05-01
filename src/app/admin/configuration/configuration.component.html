@@ -1,17 +1,43 @@
-CONFIG TABLE SHOULD COME HERE
+  <!-- ADD/UPDATE CONFIG FORM -->
+  <h3>{{ isUpdate ? 'Update Configuration' : 'Add Configuration' }}</h3>
+  <form [formGroup]="configForm" (ngSubmit)="isUpdate ? updateConfig(configForm.value) : addConfig(configForm.value)">
+    <div>
+      <label for="code">Key:</label>
+      <input type="text" id="key" formControlName="key">
+    </div>
+    <div>
+      <label for="description">Value:</label>
+      <input type="text" id="value" formControlName="value">
+    </div>
+    <div>
+      <label for="name">Code:</label>
+      <input type="text" id="code" formControlName="code">
+    </div>
+    <button type="submit" [disabled]="configForm.invalid">{{ isUpdate ? 'Update' : 'Add' }}</button>
+  </form>
+  
+<!-- CONFIG TABLE -->
 <p-table [value]="configurationData" [tableStyle]="{ 'min-width': '50rem' }">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>Key</th>
-      <th>Value</th>
-      <th>Code</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-config>
-    <tr>
-      <td>{{ config.key }}</td>
-      <td>{{ config.value }}</td>
-      <td>{{ config.code }}</td>
-    </tr>
-  </ng-template>
-</p-table>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+        <th>Code</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-config let-index="index">
+      <tr>
+        <td>{{ config.key }}</td>
+        <td>{{ config.value }}</td>
+        <td>{{ config.code }}</td>
+        <td>
+          <button (click)="populateForm(config)">Edit</button>
+          <button (click)="deleteConfig(config)">Delete</button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  
+
+  

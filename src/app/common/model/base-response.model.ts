@@ -1,13 +1,13 @@
 export class BaseResponseModel<T> {
-    Data!: T;
+    data!: T;
     dataList!: T[];
-    Message!: string;
-    Success!: boolean;
-    TotalCount!: number;
-    Pages!: number;
-    CurrentPage!: number;
-    PageSize!: number;
-    HasPrevious!: boolean;
-    HasNext!: boolean;
-    StatusCode!: number;
+    message!: string;
+    success!: boolean;
+    totalCount!: number;
+    pages!: number;
+    currentPage!: number;
+    pageSize!: number;
+    hasPrevious!: boolean;
+    hasNext!: boolean;
+    statusCode!: number;
 }
