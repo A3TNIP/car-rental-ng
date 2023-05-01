@@ -1,3 +1,14 @@
+a {
+    color: #ffffff;
+    background-color: none;
+    text-decoration: none;
+}
+
+button{
+    background-color: #ffffff;
+    border: none;
+}
+
 .history-container{
     display: flex;
     flex-direction: column;
@@ -6,8 +17,99 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.rent-button{
+.history-top-cont{
+    display: flex;
+    justify-content: space-between;
+}
+
+.view-rents-btn-cont{
+    display: flex;
+    justify-content: right;
+    background-color: #93592C;
+    width: 13%;
+    padding: 1.5% 2%;
+    margin: 2% 4% 0% 0%;
+    border-radius: 15px;
+    transition: ease-in 0.1s;
+}
+
+    .view-rents-btn-cont:hover{
+        background-color: #623b1d;
+    }
+
+.view-rent-btn-align{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-title{
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    margin-top: unset;
+}
+
+.profile-data-items{
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    font-size: 20px;
+    width: 65%;
+}
+
+.profile-data-item-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 0% 3%;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.profile-data-icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #93592C;
+    height: 4vh;
+    width: 13%;
     padding: 3%;
-    border: 1px solid #000000;
-    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.history-detail-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+.history-content{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4%;
+    justify-content: space-between;
+}
+
+.history-items{
+    display: flex;
+    flex-direction: column;
+    width: 43%;
+    font-size: 18px;
+    margin-bottom: 5%;
+}
+
+.history-item-img{
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.25);
+}
+
+.history-item-sub{
+    font-size: 24px;
 }
