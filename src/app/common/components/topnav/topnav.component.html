@@ -27,21 +27,21 @@
         </ng-container>
 
         <ng-template #tLoggedIn>
-          <ng-container *ngIf="is.customer; else tNotCustomer">            
+          <ng-container *ngIf="is.customer; else tNotCustomer">
             <a routerLink="history">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/clock-rewind.svg" /></div>
                 <div class="topnav-text">History</div>
               </div>
             </a>
-            
+
             <a routerLink="register">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/user.svg" /></div>
                 <div class="topnav-text">Profile</div>
               </div>
             </a>
-            
+
             <a routerLink="register">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/logout.svg" /></div>

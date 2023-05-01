@@ -7,6 +7,7 @@ import { CustomerLandingComponent } from './customer-landing/customer-landing.co
 import { CustomCommonModule } from "../common/custom-common.module";
 import { ReturnComponent } from './return/return.component';
 import { HistoryComponent } from './history/history.component';
+import {DialogModule} from "primeng/dialog";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HistoryComponent } from './history/history.component';
     imports: [
         CommonModule,
         CustomerRoutingModule,
-        CustomCommonModule
+        CustomCommonModule,
+        DialogModule
     ]
 })
 export class CustomerModule { }
