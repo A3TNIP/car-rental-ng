@@ -5,6 +5,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {LoginGuard} from "../common/guards/login.guard";
 import {LandingComponent} from "./landing/landing.component";
+import {ViewcarsComponent} from "./viewcars/viewcars.component";
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
       {path: "home", component: LandingComponent, canActivate: [LoginGuard]},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
-      {path: 'register', component: RegisterComponent, canActivate: [LoginGuard]}
+      {path: 'register', component: RegisterComponent, canActivate: [LoginGuard]},
+      {path: 'available', component: ViewcarsComponent}
     ]
   },
 ];

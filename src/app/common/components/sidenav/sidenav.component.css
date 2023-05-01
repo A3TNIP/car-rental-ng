@@ -1,6 +1,7 @@
 .nav-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 1%;
   background-color: #F8F9FA;
   z-index: 1;

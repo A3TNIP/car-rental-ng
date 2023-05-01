@@ -1,8 +1,10 @@
   <nav class="top-nav">
+    <a routerLink="/customer/home">
       <img src="/assets/Images/logo.png" />
+    </a>
       <div class="nav-items">
         <div *ngIf="!(is.admin || is.staff)">
-          <a routerLink="login">
+          <a routerLink="/visitor/available">
             <div class="topnav-align">
               <div class="topnav-icon"><img src="/assets/Images/icons/black/car-front.svg" /></div>
               <div class="topnav-text">View Cars</div>
@@ -28,42 +30,21 @@
 
         <ng-template #tLoggedIn>
           <ng-container *ngIf="is.customer; else tNotCustomer">
-            <a routerLink="register">
-              <div class="topnav-align">
-                <div class="topnav-icon"><img src="/assets/Images/icons/black/car-tilt.svg" /></div>
-                <div class="topnav-text">Damage Report</div>
-              </div>
-            </a>
-            
-            <a routerLink="register">
+            <a routerLink="history">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/clock-rewind.svg" /></div>
                 <div class="topnav-text">History</div>
               </div>
             </a>
-            
-            <a routerLink="register">
-              <div class="topnav-align">
-                <div class="topnav-icon"></div><img src="/assets/Images/icons/black/coin.svg" />
-                <div class="topnav-text"></div>Billing
-              </div>
-            </a>
-            
-            <a routerLink="register">
-              <div class="topnav-align">
-                <div class="topnav-icon"><img src="/assets/Images/icons/black/percent.svg" /></div>
-                <div class="topnav-text">Special Offers</div>
-              </div>
-            </a>
-            
-            <a routerLink="register">
+
+            <a routerLink="profile">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/user.svg" /></div>
                 <div class="topnav-text">Profile</div>
               </div>
             </a>
-            
-            <a routerLink="register">
+
+            <a (click)="service.logout()">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/logout.svg" /></div>
                 <div class="topnav-text">Logout</div>

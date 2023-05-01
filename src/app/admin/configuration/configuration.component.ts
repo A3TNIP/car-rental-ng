@@ -13,7 +13,7 @@ export class ConfigurationComponent implements OnInit {
   configurationData:any[] = [];
   configForm!: FormGroup;
   isUpdate!: boolean;
-  
+
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class ConfigurationComponent implements OnInit {
 
   private fetchConfigList() {
     LoaderService.show();
-    this.service.getRequest(`${ApiConstants.CONFIG}`)
+    this.service.getRequest(`${ApiConstants.CONFIG_CONTROLLER}`)
       .subscribe({
         next: (res: any) => {
           LoaderService.hide();
@@ -47,9 +47,9 @@ export class ConfigurationComponent implements OnInit {
   }
 
   public deleteConfig(config: any) {
-    console.log('url', `${ApiConstants.CONFIG}/${config.id}`);
+    console.log('url', `${ApiConstants.CONFIG_CONTROLLER}/${config.id}`);
     LoaderService.show();
-    this.service.deleteRequest(`${ApiConstants.CONFIG}/${config.id}`).subscribe({
+    this.service.deleteRequest(`${ApiConstants.CONFIG_CONTROLLER}/${config.id}`).subscribe({
       next: (res: any) => {
         if (res.message == 'Configuration deleted successfully') {
           this.service.showToast('Deleted successfully');
@@ -64,12 +64,12 @@ export class ConfigurationComponent implements OnInit {
       },
     });
   }
-  
+
 
   public addConfig(config: any) {
     LoaderService.show();
     delete config.id; // remove id field from config object
-    this.service.postRequest(config,`${ApiConstants.CONFIG}`).subscribe({
+    this.service.postRequest(config,`${ApiConstants.CONFIG_CONTROLLER}`).subscribe({
       next: (res: any) => {
         LoaderService.hide();
         if (res.isSuccess) {
@@ -85,8 +85,8 @@ export class ConfigurationComponent implements OnInit {
       },
     });
   }
-  
-  
+
+
   public updateConfig(config: any) {
     LoaderService.show();
     console.log(config);
@@ -96,7 +96,7 @@ export class ConfigurationComponent implements OnInit {
       value: this.configForm.get('value')!.value,
       code: this.configForm.get('code')!.value
     };
-    this.service.putRequest(updatedconfig,`${ApiConstants.CONFIG}`).subscribe({
+    this.service.putRequest(updatedconfig,`${ApiConstants.CONFIG_CONTROLLER}`).subscribe({
       next: (res: any) => {
         LoaderService.hide();
         if (res && res.isSuccess) {
@@ -113,7 +113,7 @@ export class ConfigurationComponent implements OnInit {
       },
     });
   }
-  
+
 
   public populateForm(config: any) {
     this.configForm.setValue({
@@ -124,8 +124,4 @@ export class ConfigurationComponent implements OnInit {
     });
     this.isUpdate = true;
   }
-  
-  
-
-  
 }

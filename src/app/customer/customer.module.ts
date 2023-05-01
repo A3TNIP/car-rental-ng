@@ -6,18 +6,26 @@ import { CustomerComponent } from './customer.component';
 import { CustomerLandingComponent } from './customer-landing/customer-landing.component';
 import { CustomCommonModule } from "../common/custom-common.module";
 import { ReturnComponent } from './return/return.component';
+import { HistoryComponent } from './history/history.component';
+import {DialogModule} from "primeng/dialog";
+import { ProfileComponent } from './profile/profile.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
     declarations: [
         CustomerComponent,
         CustomerLandingComponent,
-        ReturnComponent
+        ReturnComponent,
+        HistoryComponent,
+        ProfileComponent
     ],
-    imports: [
-        CommonModule,
-        CustomerRoutingModule,
-        CustomCommonModule
-    ]
+  imports: [
+    CommonModule,
+    CustomerRoutingModule,
+    CustomCommonModule,
+    DialogModule,
+    ReactiveFormsModule,
+  ]
 })
 export class CustomerModule { }

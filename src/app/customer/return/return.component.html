@@ -1,1 +1,87 @@
-<p>return works!</p>
+<div class="return-container">
+    <div class="return-title">
+        Rent
+    </div>
+
+    <div class="return-card" *ngIf="carObj">
+        <div class="return-card-content">
+            <div class="return-card-align">
+                <img src="/assets/Images/lexus-lfa.jpg" class="return-card-img" />
+                <div class="return-card-details">
+                    <p class="returncard-title">{{carObj.brand}} {{carObj.model}}</p>
+                    <p>Rate: {{carObj.rate}}</p>
+                    <p>From: {{rentalObj.startDate | date}}</p>
+                    <p>To: {{rentalObj.endDate | date}}</p>
+<!--                    <p>Discount: {{response.discount}}%</p>-->
+<!--                    <p>Total Price: {{response.totalAmount}}</p>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="return-card-btn">
+            <button>
+                <div class="report-dmg-btn">
+                    <p>Report Damage</p>
+                    <img src="/assets/Images/icons/white/car-damage.svg" />
+                </div>
+            </button>
+
+            <button (click)="showbillingPopup()" *ngIf="response">
+                <div class="gen-bil-btn">
+                    <p>View Bill</p>
+                    <img src="/assets/Images/icons/white/arrow-right.svg" />
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="billingVisible" [style]="{'width': '400px'}">
+    <div class="popup-container" id="popupbilling" *ngIf="response">
+      <div class="popup-child">
+        <p class="popup-title">Rent Billing</p>
+
+        <div>
+            <div class="billing-details-cont">
+                <p>Rate: {{response.rate}}</p>
+                <p *ngIf="rentalObj">Days: {{rentDays}}</p>
+                <p>Due Date: {{response.dueDate | date}}</p>
+                <p>Discount: {{response.discount}}</p>
+                <p>Damage Cost: {{response.repairCost}}</p>
+            </div>
+            <p class="billing-total-cont">Total Cost: {{response.totalAmount}}</p>
+        </div>
+
+        <div class="billing-card-btn">
+            <button (click)="hidebillingPopup()" class="popup-close">
+                <div class="cancel-btn">
+                    Cancel
+                </div>
+            </button>
+            <button class="popup-close" (click)="showPayment = true">
+                <div class="pay-staff-btn">
+                    Khalti Pay
+                </div>
+            </button>
+        </div>
+      </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="showPayment">
+  <ng-container *ngIf="paymentStep === 'PIN'; else tOtp">
+    <form [formGroup]="paymentInitiationForm" (submit)="initiatePayment()">
+      <input formControlName="mobile" placeholder="Phone Number">
+      <input formControlName="transactionPin" placeholder="PIN Code">
+      <button type="submit">Submit</button>
+    </form>
+
+  </ng-container>
+
+  <ng-template #tOtp>
+    <form [formGroup]="paymentOtpForm" (submit)="confirmPayment()">
+      <input formControlName="confirmationCode" placeholder="OTP">
+      <button type="submit">Submit</button>
+    </form>
+  </ng-template>
+</p-dialog>

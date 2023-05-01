@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../common/service/authentication.service";
+import {LoaderService} from "../../common/service/loader.service";
 
 @Component({
   selector: 'app-register',
@@ -31,13 +32,16 @@ export class RegisterComponent implements OnInit{
     if (this.registerForm.get('Password')?.value !== this.registerForm.get('ConfirmPassword')?.value) return;
     // remove ConfirmPassword from the request body
     delete this.registerForm.value.ConfirmPassword;
+    LoaderService.show();
     this.authService.register(this.registerForm.getRawValue())
       .subscribe({
         next: (response: any) => {
           localStorage.setItem('token', response.Token);
+          LoaderService.hide();
         },
         error: (error: any) => {
           console.log(error);
+          LoaderService.hide();
         }
       })
   }

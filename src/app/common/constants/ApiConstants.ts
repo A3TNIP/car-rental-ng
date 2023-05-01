@@ -2,7 +2,7 @@ import { environment } from "src/environments/environment.development";
 
 export class ApiConstants {
 
-    public static readonly API_URL = environment.apiUrl;
+    private static readonly API_URL = environment.apiUrl;
 
     // Controllers
     public static readonly ATTACHMENTS_CONTROLLER = ApiConstants.API_URL + '/Attachments';
@@ -12,6 +12,9 @@ export class ApiConstants {
     public static readonly CONFIG_CONTROLLER = ApiConstants.API_URL + '/Config';
     public static readonly OFFERS_CONTROLLER = ApiConstants.API_URL + '/Offers';
     public static readonly RENTAL_CONTROLLER = ApiConstants.API_URL + '/Rental';
+    public static readonly BILL_CONTROLLER = ApiConstants.API_URL + '/Bill';
+    public static readonly KHALTI_CONTROLLER = ApiConstants.API_URL + '/KhaltiPayment';
+    public static readonly PAYMENT_CONTROLLER = ApiConstants.API_URL + '/Payment';
 
 
     //Actions
@@ -32,6 +35,7 @@ export class ApiConstants {
     public static readonly REQUEST = '/Request'
     public static readonly UPLOAD_DOCUMENT = '/UploadDocument'
     public static readonly AFTER_DISCOUNT = '/AfterDiscount'
+    public static readonly RENT = '/Rent'
 
     // Count Actions
     public static readonly CARS_AVAILABLE_COUNT = '/CarsAvailableCount'
