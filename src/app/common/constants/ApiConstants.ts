@@ -46,4 +46,5 @@ export class ApiConstants {
     public static readonly ALL_CUSTOMER_COUNT = '/GetAllCustomerCount'
     public static readonly REGULAR_CUSTOMER_COUNT = '/GetRegularCustomerCount'
     public static readonly DAMAGE_COUNT = '/DamageCount'
+    public static readonly GET_DTO = '/GetDto'
 }
