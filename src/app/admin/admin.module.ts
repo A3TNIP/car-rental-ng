@@ -7,6 +7,7 @@ import {AdminListComponent} from './admin-list/admin-list.component';
 import {AdminComponent} from './admin.component';
 import {CustomCommonModule} from "../common/custom-common.module";
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { ConfigurationService } from '../common/service/configuration.service';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     CommonModule,
     AdminRoutingModule,
     CustomCommonModule
-  ]
+  ],
+  providers: [ConfigurationService],
 })
 export class AdminModule { }

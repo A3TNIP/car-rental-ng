@@ -1,1 +1,42 @@
-<app-sidenav></app-sidenav>
+CONFIG TABLE SHOULD COME HERE
+<!-- <div >
+    <ng-container >
+      <ng-container>
+        <div >
+          <div >
+            <label  for="code">Code</label>
+            <input id="code" class="ing-input" [(ngModel)]="configModel.code"/>
+          </div>
+          <div >
+            <label  for="name">Name</label>
+            <input id="name" class="ing-input" [(ngModel)]="configModel.name"/>
+          </div>
+          <div >
+            <label  for="description">Description</label>
+            <input id="description" class="ing-input" [(ngModel)]="configModel.description"/>
+          </div>
+          <button  (click)="addConfig()">Add Config</button>
+        </div>
+      </ng-container>
+      <ng-container>
+        <div>
+          <ejs-grid [dataSource]="configurationData"
+                    [allowFiltering]="true"
+                    [allowPaging]="false"
+                    [filterSettings]="{ type: 'Excel' }">
+            <e-columns>
+              <e-column field="code" headerText="Code" textAlign="left" width="50"></e-column>
+              <e-column field="name" headerText="Name" textAlign="center" width="50"></e-column>
+              <e-column field="description" headerText="Description" textAlign="center" width="60"></e-column>
+              <e-column headerText="Action" textAlign="center" width="40">
+                <ng-template #template let-row>
+                  <button (click)="deleteConfig(row.id)">Delete</button>
+                </ng-template>
+              </e-column>
+            </e-columns>
+          </ejs-grid>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div> -->
+  

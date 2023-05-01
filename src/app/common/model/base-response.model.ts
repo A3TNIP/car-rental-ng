@@ -1,6 +1,6 @@
 export class BaseResponseModel<T> {
     Data!: T;
-    DataList!: T[];
+    dataList!: T[];
     Message!: string;
     Success!: boolean;
     TotalCount!: number;

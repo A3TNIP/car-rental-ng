@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class BaseService extends AuthenticationService {
 
-  constructor(http: HttpClient, private messageService: MessageService, public override router: Router) {
+  constructor(http: HttpClient, protected messageService: MessageService, public override router: Router) {
     super(http, router);
   }
 
