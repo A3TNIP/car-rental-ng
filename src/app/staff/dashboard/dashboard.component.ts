@@ -394,7 +394,7 @@ export class DashboardComponent implements OnInit{
     LoaderService.show();
     //TOTAL CARS COUNT
 
-    this.service.getRequest(`${ApiConstants.CARS}${ApiConstants.CAR_COUNT}`).subscribe({
+    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CAR_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalCarCount = res.data;
       },
@@ -405,7 +405,7 @@ export class DashboardComponent implements OnInit{
 
     //TOTAL CARS ON RENT COUNT
 
-    this.service.getRequest(`${ApiConstants.CARS}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
+    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalCarsOnRentCount = res.data;
       },
@@ -416,7 +416,7 @@ export class DashboardComponent implements OnInit{
 
     //TOTAL STAFF COUNT
 
-    this.service.getRequest(`${ApiConstants.USER}${ApiConstants.STAFF_COUNT}`).subscribe({
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.STAFF_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalStaffCount = res.data;
       },
