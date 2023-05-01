@@ -1,82 +1,95 @@
 <div class="nav-container">
-  <p class="main-title">Hajur ko Car Rental</p>
-
-  <a>
-    <div class="nav-items" routerLink="/dashboard" routerLinkActive="active">
-      <div class="navitm-container" routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/home.svg" />
-      </div>
-      Dashboard
-    </div>
-  </a>
-  <a>
-    <div class="nav-items" routerLink="/clients" routerLinkActive="active">
-      <div class="navitm-container" routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/chart.svg" />
-      </div>
-      Clients
-    </div>
-  </a>
-  <a>
-    <div class="nav-items" routerLink="/cars" routerLinkActive="active">
-      <div class="navitm-container" routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/car.svg" />
-      </div>
-      Cars
-    </div>
-  </a>
-  <a>
-    <div class="nav-items" routerLink="/billing" routerLinkActive="active">
-      <div class="navitm-container" routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/creditcard.svg" />
-      </div>
-      Billing
-    </div>
-  </a>
-  <a>
-    <div class="nav-items" routerLink="/damages" routerLinkActive="active">
-      <div class="navitm-container"  routerLinkActive="active">
-        <img src="/assets/Images/icons/teal/wrench.svg" />
-      </div>
-      Damages
-    </div>
-  </a>
-  <ng-container *ngIf="is.admin">
-    <p class="sub-title">Admin</p>
+  <div>
+    <p class="main-title">Hajur ko Car Rental</p>
 
     <a>
-      <div class="nav-items" routerLink="/profile" routerLinkActive="active">
+      <div class="nav-items" routerLink="/dashboard" routerLinkActive="active">
         <div class="navitm-container" routerLinkActive="active">
-          <img src="/assets/Images/icons/teal/user2.svg" />
+          <img src="/assets/Images/icons/teal/home.svg" />
         </div>
-        Profile
+        Dashboard
       </div>
     </a>
     <a>
-      <div class="nav-items" routerLink="/signupadmin" routerLinkActive="active">
+      <div class="nav-items" routerLink="/clients" routerLinkActive="active">
         <div class="navitm-container" routerLinkActive="active">
-          <img src="/assets/Images/icons/teal/document.svg" />
+          <img src="/assets/Images/icons/teal/chart.svg" />
         </div>
-        Admin
+        Clients
       </div>
     </a>
     <a>
-      <div class="nav-items" routerLink="/signupstaff" routerLinkActive="active">
+      <div class="nav-items" routerLink="/cars" routerLinkActive="active">
         <div class="navitm-container" routerLinkActive="active">
-          <img src="/assets/Images/icons/teal/rocket.svg" />
+          <img src="/assets/Images/icons/teal/car.svg" />
         </div>
-        Staff
+        Cars
       </div>
     </a>
+    <a>
+      <div class="nav-items" routerLink="/billing" routerLinkActive="active">
+        <div class="navitm-container" routerLinkActive="active">
+          <img src="/assets/Images/icons/teal/creditcard.svg" />
+        </div>
+        Billing
+      </div>
+    </a>
+    <a>
+      <div class="nav-items" routerLink="/damages" routerLinkActive="active">
+        <div class="navitm-container"  routerLinkActive="active">
+          <img src="/assets/Images/icons/teal/wrench.svg" />
+        </div>
+        Damages
+      </div>
+    </a>
+
+    <ng-container *ngIf="is.admin">
+      <p class="sub-title">Admin</p>
+
+      <a>
+        <div class="nav-items" routerLink="/profile" routerLinkActive="active">
+          <div class="navitm-container" routerLinkActive="active">
+            <img src="/assets/Images/icons/teal/user2.svg" />
+          </div>
+          Profile
+        </div>
+      </a>
+      <a>
+        <div class="nav-items" routerLink="/signupadmin" routerLinkActive="active">
+          <div class="navitm-container" routerLinkActive="active">
+            <img src="/assets/Images/icons/teal/document.svg" />
+          </div>
+          Admin
+        </div>
+      </a>
+      <a>
+        <div class="nav-items" routerLink="/signupstaff" routerLinkActive="active">
+          <div class="navitm-container" routerLinkActive="active">
+            <img src="/assets/Images/icons/teal/rocket.svg" />
+          </div>
+          Staff
+        </div>
+      </a>
+      <a>
+        <div class="nav-items" routerLink="/config" routerLinkActive="active">
+          <div class="navitm-container" routerLinkActive="active">
+            <img src="/assets/Images/icons/teal/wrench.svg" />
+          </div>
+          Configuration
+        </div>
+      </a>
+    </ng-container>
+  </div>
+
+  <div>
     <a>
       <div class="nav-items" routerLink="/config" routerLinkActive="active">
         <div class="navitm-container" routerLinkActive="active">
-          <img src="/assets/Images/icons/teal/wrench.svg" />
+          <img src="/assets/Images/icons/teal/logout.svg" />
         </div>
-        Configuration
+        Logout
       </div>
     </a>
-
-  </ng-container>
+  </div>
 
 </div>
