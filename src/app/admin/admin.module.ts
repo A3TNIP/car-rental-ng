@@ -8,6 +8,7 @@ import {AdminComponent} from './admin.component';
 import {CustomCommonModule} from "../common/custom-common.module";
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationService } from '../common/service/configuration.service';
+import {TableModule} from "primeng/table";
 
 
 @NgModule({
@@ -17,11 +18,12 @@ import { ConfigurationService } from '../common/service/configuration.service';
     AdminComponent,
     ConfigurationComponent
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    CustomCommonModule
-  ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        CustomCommonModule,
+        TableModule
+    ],
   providers: [ConfigurationService],
 })
 export class AdminModule { }

@@ -21,8 +21,8 @@ export class ConfigurationComponent implements OnInit {
   private fetchConfigList() {
     LoaderService.show();
     this.service.getRequest(`${ApiConstants.CONFIG}`)
-      .subscribe(
-        (res: any) => {
+      .subscribe({
+        next: (res: any) => {
           LoaderService.hide();
           if (res && res.dataList) {
             this.configurationData = res.dataList.map((config: any) => {
@@ -34,8 +34,8 @@ export class ConfigurationComponent implements OnInit {
               }
             })
           }
-        }, () => LoaderService.hide()
-      )
-      console.log('after api call', this.configurationData);  
+        }
+      });
+      console.log('after api call', this.configurationData);
   }
 }
