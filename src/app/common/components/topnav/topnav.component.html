@@ -2,57 +2,77 @@
       <img src="/assets/Images/logo.png" />
       <div class="nav-items">
         <div *ngIf="!(is.admin || is.staff)">
-          <div class="topnav-align">
-            <img src="/assets/Images/icons/black/car-front.svg" class="topnav-icon" />
-            <a routerLink="login">View cars</a>
-          </div>
+          <a routerLink="login">
+            <div class="topnav-align">
+              <div class="topnav-icon"><img src="/assets/Images/icons/black/car-front.svg" /></div>
+              <div class="topnav-text">View Cars</div>
+            </div>
+          </a>
         </div>
+
         <ng-container *ngIf="!is.loggedIn; else tLoggedIn">
-          <div class="topnav-align">
-            <img src="/assets/Images/icons/black/circ-add.svg" class="topnav-icon" />
-            <a routerLink="login">Login</a>
-          </div>
-          <div class="topnav-align">
-            <img src="/assets/Images/icons/black/user.svg" class="topnav-icon" />
-            <a routerLink="/register">Register</a>
-          </div>
+          <a routerLink="login">
+            <div class="topnav-align">
+              <div class="topnav-icon"><img src="/assets/Images/icons/black/circ-add.svg" /></div>
+              <div class="topnav-text">Login</div>
+            </div>
+          </a>
+
+          <a routerLink="register">
+            <div class="topnav-align">
+              <div class="topnav-icon"><img src="/assets/Images/icons/black/user.svg" /></div>
+              <div class="topnav-text">Register</div>
+            </div>
+          </a>
         </ng-container>
 
         <ng-template #tLoggedIn>
           <ng-container *ngIf="is.customer; else tNotCustomer">
-            <div class="topnav-align">
-              <img src="/assets/Images/icons/black/car-tilt.svg" class="topnav-icon" />
-              <a routerLink="/register">Damage Report</a>
-            </div>
+            <a routerLink="register">
+              <div class="topnav-align">
+                <div class="topnav-icon"><img src="/assets/Images/icons/black/car-tilt.svg" /></div>
+                <div class="topnav-text">Damage Report</div>
+              </div>
+            </a>
             
-            <div class="topnav-align">
-              <img src="/assets/Images/icons/black/clock-rewind.svg" class="topnav-icon" />
-              <a routerLink="/register">History</a>
-            </div>
+            <a routerLink="register">
+              <div class="topnav-align">
+                <div class="topnav-icon"><img src="/assets/Images/icons/black/clock-rewind.svg" /></div>
+                <div class="topnav-text">History</div>
+              </div>
+            </a>
             
-            <div class="topnav-align">
-              <img src="/assets/Images/icons/black/coin.svg" class="topnav-icon" />
-              <a routerLink="/register">Billing</a>
-            </div>
+            <a routerLink="register">
+              <div class="topnav-align">
+                <div class="topnav-icon"></div><img src="/assets/Images/icons/black/coin.svg" />
+                <div class="topnav-text"></div>Billing
+              </div>
+            </a>
             
-            <div class="topnav-align">
-              <img src="/assets/Images/icons/black/percent.svg" class="topnav-icon" />
-              <a routerLink="/register">Special Offers</a>
-            </div>
+            <a routerLink="register">
+              <div class="topnav-align">
+                <div class="topnav-icon"><img src="/assets/Images/icons/black/percent.svg" /></div>
+                <div class="topnav-text">Special Offers</div>
+              </div>
+            </a>
             
-            <div class="topnav-align">
-              <img src="/assets/Images/icons/black/user.svg" class="topnav-icon" />
-              <a routerLink="/register">Profile</a>
-            </div>
+            <a routerLink="register">
+              <div class="topnav-align">
+                <div class="topnav-icon"><img src="/assets/Images/icons/black/user.svg" /></div>
+                <div class="topnav-text">Profile</div>
+              </div>
+            </a>
             
-            <div class="topnav-align">
-              <img src="/assets/Images/icons/black/logout.svg" class="topnav-icon" />
-              <a routerLink="/register">Logout</a>
-            </div>
+            <a routerLink="register">
+              <div class="topnav-align">
+                <div class="topnav-icon"><img src="/assets/Images/icons/black/logout.svg" /></div>
+                <div class="topnav-text">Logout</div>
+              </div>
+            </a>
           </ng-container>
 
         <ng-template #tNotCustomer>
-          <li><a routerLink="/register">Setting</a></li>
+          <li>Setting</li>
         </ng-template>
 
         </ng-template>
