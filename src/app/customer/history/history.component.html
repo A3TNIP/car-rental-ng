@@ -5,7 +5,7 @@
             <div class="profile-data-item-container">
                 <p>Rents Completed: {{totalRentalsMade}} </p>
                 <div class="profile-data-icon-container">
-                    
+
                     <img src="/assets/Images/icons/white/car.svg" />
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="history-details">
                   <p class="history-item-sub">{{item.car.model}}</p>
                   <p>Total Cost: {{item.totalPrice}}</p>
-                  <p>Payment Confirmation: {{item.approvedBy}}</p>
+                  <p>Payment Confirmation: <span [ngClass]="item.status === 'Completed' ? 'completed-status' : 'pending-status'">{{ item.status }}</span></p>
                   <p>Rate: {{item.car.rate}}</p>
                   <p>Rented From: {{item.startDate | date:'dd/MM/yyyy'}}</p>
                   <p>Rented To: {{item.endDate | date:'dd/MM/yyyy'}}</p>

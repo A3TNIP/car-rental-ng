@@ -113,3 +113,11 @@ button{
 .history-item-sub{
     font-size: 24px;
 }
+
+.completed-status {
+  color: green;
+}
+
+.pending-status {
+  color: yellow;
+}
