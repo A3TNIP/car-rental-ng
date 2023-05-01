@@ -8,6 +8,7 @@ import { CustomCommonModule } from "../common/custom-common.module";
 import { ReturnComponent } from './return/return.component';
 import { HistoryComponent } from './history/history.component';
 import {DialogModule} from "primeng/dialog";
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {DialogModule} from "primeng/dialog";
         CustomerComponent,
         CustomerLandingComponent,
         ReturnComponent,
-        HistoryComponent
+        HistoryComponent,
+        ProfileComponent
     ],
     imports: [
         CommonModule,
