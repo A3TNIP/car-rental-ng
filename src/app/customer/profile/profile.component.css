@@ -154,3 +154,10 @@ button{
     .view-history-btn:hover{
         background-color: #623b1d;
     }
+
+    .edit-input {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 20px;
+        width: 300px;
+      }
