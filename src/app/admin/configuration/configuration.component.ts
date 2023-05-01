@@ -124,8 +124,4 @@ export class ConfigurationComponent implements OnInit {
     });
     this.isUpdate = true;
   }
-
-
-
-
 }
