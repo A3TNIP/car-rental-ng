@@ -14,6 +14,15 @@ export class ApiConstants {
     public static readonly RENTAL_CONTROLLER = ApiConstants.API_URL + '/Rental';
 
 
+    //Actions
+    public static readonly ATTACHMENTS ='/Attachments';
+    public static readonly AUTHENTICATION ='/Authentication';
+    public static readonly CARS ='/Cars';
+    public static readonly USER ='/User';
+    public static readonly CONFIG ='/Config';
+    public static readonly OFFERS ='/Offers';
+    public static readonly RENTAL ='/Rental';
+
     // Actions
     public static readonly STAFF = '/Staff'
     public static readonly ADMIN = '/Admin'
@@ -23,5 +32,4 @@ export class ApiConstants {
     public static readonly REQUEST = '/Request'
     public static readonly UPLOAD_DOCUMENT = '/UploadDocument'
     public static readonly AFTER_DISCOUNT = '/AfterDiscount'
-    public static readonly ATTACHMENTS = '/Attachments'
 }
