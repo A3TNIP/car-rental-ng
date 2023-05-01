@@ -17,15 +17,6 @@ export class ApiConstants {
     public static readonly PAYMENT_CONTROLLER = ApiConstants.API_URL + '/Payment';
 
 
-    //Actions
-    public static readonly ATTACHMENTS ='/Attachments';
-    public static readonly AUTHENTICATION ='/Authentication';
-    public static readonly CARS ='/Cars';
-    public static readonly USER ='/User';
-    public static readonly CONFIG ='/Config';
-    public static readonly OFFERS ='/Offers';
-    public static readonly RENTAL ='/Rental';
-
     // Actions
     public static readonly STAFF = '/Staff'
     public static readonly ADMIN = '/Admin'
