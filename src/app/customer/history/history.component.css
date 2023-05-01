@@ -1,0 +1,13 @@
+.history-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0% 12%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.rent-button{
+    padding: 3%;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+}

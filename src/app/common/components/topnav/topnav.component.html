@@ -27,32 +27,11 @@
         </ng-container>
 
         <ng-template #tLoggedIn>
-          <ng-container *ngIf="is.customer; else tNotCustomer">
-            <a routerLink="register">
-              <div class="topnav-align">
-                <div class="topnav-icon"><img src="/assets/Images/icons/black/car-tilt.svg" /></div>
-                <div class="topnav-text">Damage Report</div>
-              </div>
-            </a>
-            
-            <a routerLink="register">
+          <ng-container *ngIf="is.customer; else tNotCustomer">            
+            <a routerLink="history">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/clock-rewind.svg" /></div>
                 <div class="topnav-text">History</div>
-              </div>
-            </a>
-            
-            <a routerLink="register">
-              <div class="topnav-align">
-                <div class="topnav-icon"></div><img src="/assets/Images/icons/black/coin.svg" />
-                <div class="topnav-text"></div>Billing
-              </div>
-            </a>
-            
-            <a routerLink="register">
-              <div class="topnav-align">
-                <div class="topnav-icon"><img src="/assets/Images/icons/black/percent.svg" /></div>
-                <div class="topnav-text">Special Offers</div>
               </div>
             </a>
             

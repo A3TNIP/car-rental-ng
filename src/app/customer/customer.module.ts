@@ -6,13 +6,15 @@ import { CustomerComponent } from './customer.component';
 import { CustomerLandingComponent } from './customer-landing/customer-landing.component';
 import { CustomCommonModule } from "../common/custom-common.module";
 import { ReturnComponent } from './return/return.component';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
     declarations: [
         CustomerComponent,
         CustomerLandingComponent,
-        ReturnComponent
+        ReturnComponent,
+        HistoryComponent
     ],
     imports: [
         CommonModule,
