@@ -379,6 +379,8 @@ export class DashboardComponent implements OnInit{
   totalCarCount!: string;
   totalCarsOnRentCount!: string;
   totalStaffCount!: string;
+  totalUserCount!: string;
+  totalRegularUserCount!:string;
   constructor(private formBuilder: FormBuilder,private service:BaseService) {
   }
 
@@ -399,7 +401,7 @@ export class DashboardComponent implements OnInit{
         this.totalCarCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error(err);
       },
     });
 
@@ -410,7 +412,7 @@ export class DashboardComponent implements OnInit{
         this.totalCarsOnRentCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error(err);
       },
     });
 
@@ -421,9 +423,32 @@ export class DashboardComponent implements OnInit{
         this.totalStaffCount = res.data;
       },
       error: (err: any) => {
+        console.error(err);
+      },
+    });
+
+    //Total User Count 
+
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.ALL_CUSTOMER_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalUserCount = res.data;
+      },
+      error: (err: any) => {
         console.error('Failed to update configuration', err);
       },
     });
+
+    //Total Active User Count 
+
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.REGULAR_CUSTOMER_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalRegularUserCount = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to update configuration', err);
+      },
+    });
+
     LoaderService.hide();
     this.adminForm = this.formBuilder.group({
       Email: ['', Validators.required],

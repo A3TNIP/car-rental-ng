@@ -42,4 +42,6 @@ export class ApiConstants {
     public static readonly CARS_ON_RENT_COUNT = '/CarsOnRentCount'
     public static readonly CAR_COUNT = '/TotalCarCount'
     public static readonly STAFF_COUNT = '/GetStaffCount'
+    public static readonly ALL_CUSTOMER_COUNT = '/GetAllCustomerCount'
+    public static readonly REGULAR_CUSTOMER_COUNT = '/GetRegularCustomerCount'
 }
