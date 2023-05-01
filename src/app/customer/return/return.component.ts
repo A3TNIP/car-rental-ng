@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-return',
   templateUrl: './return.component.html',
   styleUrls: ['./return.component.css']
 })
-export class ReturnComponent {
+export class ReturnComponent implements OnInit {
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
+  billingVisible: boolean = false;
+
+  showbillingPopup() {
+    this.billingVisible = true;
+  }
+  
+  hidebillingPopup() {
+    this.billingVisible = false;
+  }
 }

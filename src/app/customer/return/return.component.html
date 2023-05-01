@@ -1,1 +1,70 @@
-<p>return works!</p>
+<div class="return-container">
+    <div class="return-title">
+        Return Rented Car
+    </div>
+
+    <div class="return-card">
+        <div class="return-card-content">
+            <div>
+                <img src="" />
+            </div>
+            <div class="return-card-details">
+                <p class="returncard-title"></p>
+                <p>Rate: </p>
+                <p>Rented Date: </p>
+                <p>From: </p>
+                <p>To: </p>
+                <p>Days Overdue: </p>
+                <p>Total Days: </p>
+            </div>
+        </div>
+        
+        <div class="return-card-btn">
+            <button>
+                <div class="report-dmg-btn">
+                    <p>Report Damange</p>
+                    <img src="" />
+                </div>
+            </button>
+
+            <button (click)="showbillingPopup()">
+                <div class="gen-bil-btn">
+                    <p>Generate Bill</p>
+                    <img src="" />
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="billingVisible" [style]="{'width': '400px'}">
+    <div class="popup-container" id="popupbilling">
+      <div class="popup-child">
+        <p class="popup-title">Rent Billing</p>
+  
+        <div class="">
+            <div class="">
+                <p>Name: </p>
+                <p>Memember Type: </p>
+                <p>Rent Cost: </p>
+                <p>Discount: </p>
+                <p>Offer Discount: </p>
+                <p>Damage Cost: </p>
+                <p>Discount Cost: </p>
+            </div>
+            <div class="">
+                <p>Total Cost: </p>
+            </div>
+        </div>
+
+        <div class="">
+            <button (click)="hidebillingPopup()" class="popup-close">
+                Cancel
+            </button>
+            <button class="popup-close">
+                Pay Staff
+            </button>
+        </div>
+      </div>
+    </div>
+  </p-dialog>
