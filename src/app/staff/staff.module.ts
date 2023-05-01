@@ -13,6 +13,7 @@ import {CustomCommonModule} from "../common/custom-common.module";
 import {TableModule} from "primeng/table";
 import {DialogModule} from "primeng/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
+import { PaymentsComponent } from './payments/payments.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BillingListComponent,
     RentalListComponent,
     DamagesComponent,
-    StaffComponent
+    StaffComponent,
+    PaymentsComponent
   ],
   imports: [
     CommonModule,
