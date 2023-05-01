@@ -8,6 +8,7 @@ import {LandingComponent} from './landing/landing.component';
 import {VisitorComponent} from './visitor.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CustomCommonModule } from "../common/custom-common.module";
+import { ViewcarsComponent } from './viewcars/viewcars.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CustomCommonModule } from "../common/custom-common.module";
         RegisterComponent,
         LoginComponent,
         LandingComponent,
-        VisitorComponent
+        VisitorComponent,
+        ViewcarsComponent
     ],
     imports: [
         CommonModule,

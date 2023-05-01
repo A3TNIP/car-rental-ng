@@ -5,6 +5,7 @@ import {CustomerLandingComponent} from "./customer-landing/customer-landing.comp
 import {AuthGuard} from "../common/guards/auth.guard";
 import {ReturnComponent} from "./return/return.component";
 import {HistoryComponent} from "./history/history.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
       {path: 'home', component: CustomerLandingComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'return', component: ReturnComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}},
-      {path: 'history', component: HistoryComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}}
+      {path: 'history', component: HistoryComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}},
+      {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}}
     ]
   },
 ];
