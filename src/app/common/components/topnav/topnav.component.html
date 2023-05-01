@@ -30,14 +30,14 @@
 
         <ng-template #tLoggedIn>
           <ng-container *ngIf="is.customer; else tNotCustomer">
-            <a routerLink="history">
+            <a routerLink="/customer/history">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/clock-rewind.svg" /></div>
                 <div class="topnav-text">History</div>
               </div>
             </a>
 
-            <a routerLink="profile">
+            <a routerLink="/customer/profile">
               <div class="topnav-align">
                 <div class="topnav-icon"><img src="/assets/Images/icons/black/user.svg" /></div>
                 <div class="topnav-text">Profile</div>

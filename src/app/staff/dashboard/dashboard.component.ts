@@ -379,6 +379,10 @@ export class DashboardComponent implements OnInit{
   totalCarCount!: string;
   totalCarsOnRentCount!: string;
   totalStaffCount!: string;
+  totalUserCount!: string;
+  totalRegularUserCount!:string;
+  totalRentCount!:string;
+  totalDamageCount!:string;
   constructor(private formBuilder: FormBuilder,private service:BaseService) {
   }
 
@@ -394,18 +398,63 @@ export class DashboardComponent implements OnInit{
     LoaderService.show();
     //TOTAL CARS COUNT
 
-    this.service.getRequest(`${ApiConstants.CARS}${ApiConstants.CAR_COUNT}`).subscribe({
+    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CAR_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalCarCount = res.data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+
+    //TOTAL CARS ON RENT COUNT
+
+    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalCarsOnRentCount = res.data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+
+    //TOTAL STAFF COUNT
+
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.STAFF_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalStaffCount = res.data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+
+    //Total User Count 
+
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.ALL_CUSTOMER_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalUserCount = res.data;
       },
       error: (err: any) => {
         console.error('Failed to update configuration', err);
       },
     });
 
-    //TOTAL CARS ON RENT COUNT
+    //Total Active User Count 
 
-    this.service.getRequest(`${ApiConstants.CARS}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.REGULAR_CUSTOMER_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalRegularUserCount = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to update configuration', err);
+      },
+    });
+
+
+    //Total Rented Car Count 
+
+    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalCarsOnRentCount = res.data;
       },
@@ -414,16 +463,17 @@ export class DashboardComponent implements OnInit{
       },
     });
 
-    //TOTAL STAFF COUNT
+    //Total Rented Car Count 
 
-    this.service.getRequest(`${ApiConstants.USER}${ApiConstants.STAFF_COUNT}`).subscribe({
+    this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}${ApiConstants.DAMAGE_COUNT}`).subscribe({
       next: (res: any) => {
-        this.totalStaffCount = res.data;
+        this.totalDamageCount = res.data;
       },
       error: (err: any) => {
         console.error('Failed to update configuration', err);
       },
     });
+
     LoaderService.hide();
     this.adminForm = this.formBuilder.group({
       Email: ['', Validators.required],

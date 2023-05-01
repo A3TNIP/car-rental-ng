@@ -10,7 +10,7 @@ import { HistoryComponent } from './history/history.component';
 import {DialogModule} from "primeng/dialog";
 import { ProfileComponent } from './profile/profile.component';
 import {ReactiveFormsModule} from "@angular/forms";
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -26,6 +26,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     CustomCommonModule,
     DialogModule,
     ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class CustomerModule { }
