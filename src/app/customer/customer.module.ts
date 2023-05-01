@@ -5,12 +5,14 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
 import { CustomerLandingComponent } from './customer-landing/customer-landing.component';
 import { CustomCommonModule } from "../common/custom-common.module";
+import { ReturnComponent } from './return/return.component';
 
 
 @NgModule({
     declarations: [
         CustomerComponent,
-        CustomerLandingComponent
+        CustomerLandingComponent,
+        ReturnComponent
     ],
     imports: [
         CommonModule,
