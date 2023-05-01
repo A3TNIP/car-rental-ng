@@ -9,7 +9,7 @@ import {ConfirmationService, MessageService} from "primeng/api";
 import {RequestInterceptor} from "./common/interceptor/request.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastModule} from "primeng/toast";
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import {ToastModule} from "primeng/toast";
     HttpClientModule,
     BrowserAnimationsModule,
     ToastModule,
+    FormsModule,
   ],
   providers: [
     MessageService,
