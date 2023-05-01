@@ -32,4 +32,10 @@ export class ApiConstants {
     public static readonly REQUEST = '/Request'
     public static readonly UPLOAD_DOCUMENT = '/UploadDocument'
     public static readonly AFTER_DISCOUNT = '/AfterDiscount'
+
+    // Count Actions
+    public static readonly CARS_AVAILABLE_COUNT = '/CarsAvailableCount'
+    public static readonly CARS_ON_RENT_COUNT = '/CarsOnRentCount'
+    public static readonly CAR_COUNT = '/TotalCarCount'
+    public static readonly STAFF_COUNT = '/GetStaffCount'
 }

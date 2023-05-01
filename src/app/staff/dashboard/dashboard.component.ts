@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { ApiConstants } from 'src/app/common/constants/ApiConstants';
+import { BaseService } from 'src/app/common/service/base.service';
+import { LoaderService } from 'src/app/common/service/loader.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -373,7 +376,10 @@ export class DashboardComponent implements OnInit{
   public staffForm!: FormGroup;
   staffVisible: boolean = false;
   adminVisible: boolean = false;
-  constructor(private formBuilder: FormBuilder) {
+  totalCarCount!: string;
+  totalCarsOnRentCount!: string;
+  totalStaffCount!: string;
+  constructor(private formBuilder: FormBuilder,private service:BaseService) {
   }
 
   showstaffPopup() {
@@ -385,6 +391,40 @@ export class DashboardComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    LoaderService.show();
+    //TOTAL CARS COUNT
+
+    this.service.getRequest(`${ApiConstants.CARS}${ApiConstants.CAR_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalCarCount = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to update configuration', err);
+      },
+    });
+
+    //TOTAL CARS ON RENT COUNT
+
+    this.service.getRequest(`${ApiConstants.CARS}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalCarsOnRentCount = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to update configuration', err);
+      },
+    });
+
+    //TOTAL STAFF COUNT
+
+    this.service.getRequest(`${ApiConstants.USER}${ApiConstants.STAFF_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalStaffCount = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to update configuration', err);
+      },
+    });
+    LoaderService.hide();
     this.adminForm = this.formBuilder.group({
       Email: ['', Validators.required],
       Password: ['', Validators.required],
