@@ -17,11 +17,11 @@ import {DialogModule} from "primeng/dialog";
         ReturnComponent,
         HistoryComponent
     ],
-    imports: [
-        CommonModule,
-        CustomerRoutingModule,
-        CustomCommonModule,
-        DialogModule
-    ]
+  imports: [
+    CommonModule,
+    CustomerRoutingModule,
+    CustomCommonModule,
+    DialogModule,
+  ]
 })
 export class CustomerModule { }
