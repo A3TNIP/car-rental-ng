@@ -1,0 +1,117 @@
+.cust-land-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0% 12%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cust-land-title{
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    margin-top: unset;
+    padding-bottom: 3%  ;
+}
+
+.cust-land-lower{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landtext-subtitle{
+    font-size: 35px;
+    margin: unset;
+}
+
+.cust-landtext-content{
+    margin-top: 5%;
+    font-size: 25px;
+}
+
+.cust-landlower-img{
+    width: 52%;
+    border-radius: 20px;
+}
+
+.offer-tab{
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 2%;
+}
+
+.offer-title{
+    font-size: 30px;
+    margin: unset;
+    padding-bottom: 2%;
+}
+
+.offer-content{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.offer-card{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.ofrcrd-main{
+    font-size: 24px;
+    padding-bottom: 1.5%;
+}
+
+.ofrcrd-sub{
+    font-size: 22px;
+    padding-bottom: 3%;
+}
+
+.card-buttons-cont{
+    display: flex;
+    padding-top: 2%;
+    gap: 3%;
+}
+
+.card-buttons{
+    background-color: none !important;
+    border: none !important;
+    background-color: #ffffff;
+}
+
+.card-buttons:active{
+    background-color: #f4f4f4;
+}
+
+.cust-land-lower{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cust-land-lower-left{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 2%;
+}
+
+.cust-land-lower-right{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 2%;
+}
+
+.rent-card-comp{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 60%;
+    background: #93592C;
+    border-radius: 20px;
+}
+
