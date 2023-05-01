@@ -44,8 +44,6 @@ export class HistoryComponent implements OnInit {
       next: (res: any) => {
         this.rentalHistory = res.dataList;
         this.totalRentalsMade = this.rentalHistory.length;
-        console.log('rental history is,',this.rentalHistory);
-        console.log('number of rents made',this.totalRentalsMade);
         for (let i = 0; i < this.rentalHistory.length; i++) {
           const rental = this.rentalHistory[i];
           // make API call to fetch each car detail
@@ -55,7 +53,6 @@ export class HistoryComponent implements OnInit {
           });
         LoaderService.hide();
         }
-        console.log('rented cars were these:',this.rentedCars);
       },
         error: (err: any) => {
         console.error(err);

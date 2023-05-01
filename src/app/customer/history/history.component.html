@@ -24,18 +24,23 @@
         </div>
 
         <div class="history-content">
-            <div class="history-items" *ngFor="let item of rentedCars">
-              <img [src]="item.imageUrl ? item.imageUrl : '/assets/Images/lexus-lfa.jpg'" class="history-item-img" />
-              <div class="history-details">
-                <p class="history-item-sub">{{item.car.model}}</p>
-                <p>Total Cost: {{item.totalPrice}}</p>
-                <p>Payment Confirmation: {{item.approvedBy}}</p>
-                <p>Rate: {{item.car.rate}}</p>
-                <p>Rented From: {{item.startDate | date:'dd/MM/yyyy'}}</p>
-                <p>Rented To: {{item.endDate | date:'dd/MM/yyyy'}}</p>
-                <p>Discount: {{item.discount}}</p>
+            <ng-container *ngIf="rentedCars && rentedCars.length > 0; else noHistory">
+              <div class="history-items" *ngFor="let item of rentedCars">
+                <img [src]="item.imageUrl ? item.imageUrl : '/assets/Images/lexus-lfa.jpg'" class="history-item-img" />
+                <div class="history-details">
+                  <p class="history-item-sub">{{item.car.model}}</p>
+                  <p>Total Cost: {{item.totalPrice}}</p>
+                  <p>Payment Confirmation: {{item.approvedBy}}</p>
+                  <p>Rate: {{item.car.rate}}</p>
+                  <p>Rented From: {{item.startDate | date:'dd/MM/yyyy'}}</p>
+                  <p>Rented To: {{item.endDate | date:'dd/MM/yyyy'}}</p>
+                  <p>Discount: {{item.discount}}</p>
+                </div>
               </div>
-            </div>
-          </div>     
+            </ng-container>
+            <ng-template #noHistory>
+              <p>No Rental History</p>
+            </ng-template>
+          </div>
     </div>
 </div>
