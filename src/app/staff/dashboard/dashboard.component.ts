@@ -381,6 +381,8 @@ export class DashboardComponent implements OnInit{
   totalStaffCount!: string;
   totalUserCount!: string;
   totalRegularUserCount!:string;
+  totalRentCount!:string;
+  totalDamageCount!:string;
   constructor(private formBuilder: FormBuilder,private service:BaseService) {
   }
 
@@ -443,6 +445,29 @@ export class DashboardComponent implements OnInit{
     this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.REGULAR_CUSTOMER_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalRegularUserCount = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to update configuration', err);
+      },
+    });
+
+
+    //Total Rented Car Count 
+
+    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalCarsOnRentCount = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to update configuration', err);
+      },
+    });
+
+    //Total Rented Car Count 
+
+    this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}${ApiConstants.DAMAGE_COUNT}`).subscribe({
+      next: (res: any) => {
+        this.totalDamageCount = res.data;
       },
       error: (err: any) => {
         console.error('Failed to update configuration', err);

@@ -15,6 +15,7 @@ export class ApiConstants {
     public static readonly BILL_CONTROLLER = ApiConstants.API_URL + '/Bill';
     public static readonly KHALTI_CONTROLLER = ApiConstants.API_URL + '/KhaltiPayment';
     public static readonly PAYMENT_CONTROLLER = ApiConstants.API_URL + '/Payment';
+    public static readonly DAMAGE_CONTROLLER = ApiConstants.API_URL + '/Damage';
 
 
     //Actions
@@ -44,4 +45,5 @@ export class ApiConstants {
     public static readonly STAFF_COUNT = '/GetStaffCount'
     public static readonly ALL_CUSTOMER_COUNT = '/GetAllCustomerCount'
     public static readonly REGULAR_CUSTOMER_COUNT = '/GetRegularCustomerCount'
+    public static readonly DAMAGE_COUNT = '/DamageCount'
 }
