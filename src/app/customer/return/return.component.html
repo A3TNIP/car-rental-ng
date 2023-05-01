@@ -5,32 +5,32 @@
 
     <div class="return-card">
         <div class="return-card-content">
-            <div>
-                <img src="" />
-            </div>
-            <div class="return-card-details">
-                <p class="returncard-title"></p>
-                <p>Rate: </p>
-                <p>Rented Date: </p>
-                <p>From: </p>
-                <p>To: </p>
-                <p>Days Overdue: </p>
-                <p>Total Days: </p>
+            <div class="return-card-align">
+                <img src="/assets/Images/lexus-lfa.jpg" class="return-card-img" />
+                <div class="return-card-details">
+                    <p class="returncard-title">Lexus LFA</p>
+                    <p>Rate: </p>
+                    <p>Rented Date: </p>
+                    <p>From: </p>
+                    <p>To: </p>
+                    <p>Days Overdue: </p>
+                    <p>Total Days: </p>
+                </div>
             </div>
         </div>
         
         <div class="return-card-btn">
             <button>
                 <div class="report-dmg-btn">
-                    <p>Report Damange</p>
-                    <img src="" />
+                    <p>Report Damage</p>
+                    <img src="/assets/Images/icons/white/car-damage.svg" />
                 </div>
             </button>
 
             <button (click)="showbillingPopup()">
                 <div class="gen-bil-btn">
                     <p>Generate Bill</p>
-                    <img src="" />
+                    <img src="/assets/Images/icons/white/arrow-right.svg" />
                 </div>
             </button>
         </div>
@@ -42,8 +42,8 @@
       <div class="popup-child">
         <p class="popup-title">Rent Billing</p>
   
-        <div class="">
-            <div class="">
+        <div>
+            <div class="billing-details-cont">
                 <p>Name: </p>
                 <p>Memember Type: </p>
                 <p>Rent Cost: </p>
@@ -52,19 +52,21 @@
                 <p>Damage Cost: </p>
                 <p>Discount Cost: </p>
             </div>
-            <div class="">
-                <p>Total Cost: </p>
-            </div>
+            <p class="billing-total-cont">Total Cost: </p>
         </div>
 
-        <div class="">
+        <div class="billing-card-btn">
             <button (click)="hidebillingPopup()" class="popup-close">
-                Cancel
+                <div class="cancel-btn">
+                    Cancel
+                </div>
             </button>
             <button class="popup-close">
-                Pay Staff
+                <div class="pay-staff-btn">
+                    Pay Staff
+                </div>
             </button>
         </div>
       </div>
     </div>
-  </p-dialog>
+</p-dialog>

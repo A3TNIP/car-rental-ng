@@ -42,6 +42,7 @@
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 2%;
+    margin-bottom: 3%;
 }
 
 .offer-title{
@@ -90,17 +91,33 @@
 .cust-land-lower{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+.cust-land-lower-left, .cust-land-lower-right{
+    background: #FFFFFF;
+    width: 48.5%;
 }
 
 .cust-land-lower-left{
-    background: #FFFFFF;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 2%;
 }
 
 .cust-land-lower-right{
-    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+.cust-land-lower-right-upper{
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 2%;
+}
+
+.cust-land-lower-right-lower{
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 2%;
@@ -109,9 +126,51 @@
 .rent-card-comp{
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    width: 60%;
     background: #93592C;
     border-radius: 20px;
+    padding: 5%;
+    margin-bottom: 5%;
 }
 
+.rent-card-img{
+    border-radius: 15px;
+    margin-bottom: 3%;
+}
+
+.cust-lower-titles{
+    font-weight: 500;
+    font-size: 22px;
+    margin: unset;
+    padding-bottom: 2%;
+}
+
+.rent-card-title{
+    font-size: 500;
+    font-size: 24px;
+    margin: unset;
+}
+
+.rent-card-detail{
+    font-size: 18px;
+}
+
+.rent-now-redirect{
+    display: flex;
+    justify-content: right;
+}
+
+.view-more-cars{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #93592C;
+    width: 25%;
+    padding: 2%;
+    border-radius: 15px;
+    color: #ffffff;
+}
+
+.billing-info-comp{
+    padding: 2%;
+    width: 10%;
+}
