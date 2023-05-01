@@ -9,8 +9,7 @@ import { LoaderService } from 'src/app/common/service/loader.service';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
-  user!:any;
-  userDto: any;
+  userDto!: any;
   rentalHistory: any[] = [];
   totalRentalsMade: number = 0;
   rentedCars: any[] = [];
@@ -19,18 +18,12 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    //GET Current User 
-    this.user = localStorage.getItem('currentUser')
-    console.log('CurrentUser is,',this.user);
-    
     //GET USER DTO
     LoaderService.show();
-    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.GET_DTO}`,this.user).subscribe({
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.GET_DTO}`).subscribe({
       next: (res: any) => {
         LoaderService.hide();
         this.userDto = res.data;
-        console.log('user ko dto is,',this.userDto);
       },
       error: (err: any) => {
         LoaderService.hide();
