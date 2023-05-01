@@ -34,7 +34,6 @@ export class ProfileComponent implements OnInit {
       phoneNumber: this.userDto.phoneNumber,
       password: "",
     };
-    console.log('user ko dto is,',this.userDto);
   },
   error: (err: any) => {
     LoaderService.hide();
@@ -44,12 +43,12 @@ export class ProfileComponent implements OnInit {
   }
 
   public onSave(){
-    this.userDto.Name = this.editedUserDto.name;
-    this.userDto.Address = this.editedUserDto.address;
-    this.userDto.Email = this.editedUserDto.email;
-    this.userDto.PhoneNumber = this.editedUserDto.phoneNumber;
-    this.userDto.role = Roles.Customer;
-    this.userDto.Password = 'Test@123!';
+    this.userDto.name = this.editedUserDto.name;
+    this.userDto.address = this.editedUserDto.address;
+    this.userDto.email = this.editedUserDto.email;
+    this.userDto.phoneNumber = this.editedUserDto.phoneNumber;
+    this.userDto.role = this.roleName;
+    this.userDto.password = 'Test@123!';
     LoaderService.show();
     console.log(this.userDto);
     // this.service.patchRequest(requestBody,`${ApiConstants.USER_CONTROLLER}`).subscribe({
