@@ -12,6 +12,7 @@ import {LoaderService} from "../../common/service/loader.service";
 export class RegisterComponent implements OnInit{
   confirmPassword: any;
   registerForm!: FormGroup;
+  public showDocument = false;
 
   constructor(private fb: FormBuilder, private authService: AuthenticationService, private router: Router) {
   }
@@ -26,6 +27,9 @@ export class RegisterComponent implements OnInit{
       Name: ['', Validators.required],
     });
   }
+  public navigateToHome() {
+    this.router.navigateByUrl('/home').then();
+  }
 
   eRegister() {
     if (this.registerForm.invalid) return;
@@ -36,7 +40,8 @@ export class RegisterComponent implements OnInit{
     this.authService.register(this.registerForm.getRawValue())
       .subscribe({
         next: (response: any) => {
-          localStorage.setItem('token', response.Token);
+          localStorage.setItem('token', response.token);
+          this.showDocument = true;
           LoaderService.hide();
         },
         error: (error: any) => {

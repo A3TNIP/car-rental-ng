@@ -21,6 +21,7 @@ export class RequestInterceptor implements HttpInterceptor {
     for (let i = 0; i < RequestInterceptor.whiteList.length; i++) {
       if (request.url.includes(RequestInterceptor.whiteList[i])) return next.handle(request);
     }
+    console.log(localStorage.getItem('token')!);
     if (localStorage.getItem('token')!) {
       const req = request.clone({
         headers: new HttpHeaders({
