@@ -46,9 +46,11 @@ export class ReturnComponent implements OnInit {
     this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}/Latest`)
       .subscribe({
         next: (resp) => {
-          if (resp.data) this.rentalId = resp.data.id;
+          if (resp.data) {
+            this.rentalId = resp.data.id;
+            this.getBillingInfo();
+          }
           else this.service.showToast("Warning", "warn", "No rental found");
-          this.getBillingInfo();
           console.log(resp.data);
         }
       })

@@ -7,6 +7,7 @@ import { RedirectComponent } from './redirect/redirect.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 
 
 
@@ -16,7 +17,8 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     SidenavComponent,
     LoaderComponent,
     RedirectComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DocumentUploadComponent
   ],
   exports: [
     SidenavComponent,

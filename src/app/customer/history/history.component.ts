@@ -23,6 +23,7 @@ export class HistoryComponent implements OnInit {
     this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.GET_DTO}`).subscribe({
       next: (res: any) => {
         this.userDto = res.data;
+        LoaderService.hide()
       },
       error: (err: any) => {
         LoaderService.hide();

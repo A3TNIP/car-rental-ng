@@ -1,5 +1,5 @@
 <div class="history-container">
-    <div class="history-top-cont">
+    <div class="history-top-cont" *ngIf="userDto">
         <p class="profile-title">{{userDto.name.split(' ')[0]}}'s Rental History</p>
         <div class="profile-data-items">
             <div class="profile-data-item-container">
