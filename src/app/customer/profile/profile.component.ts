@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
         LoaderService.hide();
         // make API call to fetch each car detail
         LoaderService.show();
-        this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}/${this.latestRental.carId}`).subscribe((car) => {
+        if (res.dataList.length > 0) this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}/${this.latestRental.carId}`).subscribe((car) => {
           this.latestRental.car = car.data;
           LoaderService.hide();
         });
