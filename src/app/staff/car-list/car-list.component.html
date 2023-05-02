@@ -12,27 +12,35 @@
 
 <div class="tables-container">
     <div class="table-style">
-      <p-table [value]="configurationData" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table [value]="carList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10" [paginator]="true">
         <ng-template pTemplate="header">
           <tr class="table-data-format">
-            <th>Code</th>
-            <th>Key</th>
-            <th>Value</th>
-            <th>Action</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Build Year</th>
+            <th>Status</th>
+            <th>Rate</th>
+            <th>License Plate</th>
+            <th>Actions</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-config let-index="index">
+        <ng-template pTemplate="body" let-car let-index="index">
           <tr class="table-data-format">
-            <td>{{ config.code }}</td>
-            <td>{{ config.key }}</td>
-            <td>{{ config.value }}</td>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.color }}</td>
+            <td>{{ car.buildYear }}</td>
+            <td>{{ car.status }}</td>
+            <td>{{ car.rate }}</td>
+            <td>{{ car.licensePlate }}</td>
             <td>
-              <button>
+              <button (click)="populateForm(car)">
                 <div class="add-config-btn pointer">
                   Edit
                 </div>
               </button>
-              <button>
+              <button (click)="deleteCar(car)">
                 <div class="add-config-btn pointer">
                   Delete
                 </div>

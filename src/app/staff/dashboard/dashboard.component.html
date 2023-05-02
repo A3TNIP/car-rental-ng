@@ -101,21 +101,24 @@
 <div class="pagebtm-container">
   <div class="tables-container">
     <div class="table-style">
-      <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table [value]="customerList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="8" [paginator]="true">
         <ng-template pTemplate="header">
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th>Category</th>
-            <th>Quantity</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Documents</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-product>
+        <ng-template pTemplate="body" let-user>
           <tr>
-            <td>{{ product.code }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.quantity }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.address }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.document ? 'YES' : 'NO' }}</td>
           </tr>
         </ng-template>
       </p-table>
@@ -129,7 +132,7 @@
           <p>Returned On: </p>
           <p>Payment Confirmation: </p>
         </div>
-        <div class="view-history-btn pointer">
+        <div class="view-history-btn">
           <img src="/assets/Images/icons/white/reverse.svg" />
           <div>View History</div>
         </div>
@@ -143,7 +146,7 @@
           <p>Returned On: </p>
           <p>Payment Confirmation: </p>
         </div>
-        <div class="view-history-btn pointer">
+        <div class="view-history-btn">
           <img src="/assets/Images/icons/white/reverse.svg" />
           <div>View History</div>
         </div>
@@ -192,13 +195,13 @@
 
       <form [formGroup]="adminForm">
         <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
-        <input class="input-field " type="text" id="phone" formControlName="Phone" placeholder="Phone" required />
+        <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone Number" required />
         <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
         <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
         <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
         <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
 
-        <button class="popup-button" type="submit">Register Now</button>
+        <button class="popup-button" type="submit" (click)="registerAdmin()">Register Now</button>
       </form>
     </div>
   </div>
@@ -215,13 +218,13 @@
 
       <form [formGroup]="staffForm">
         <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
-        <input class="input-field " type="text" id="phone" formControlName="Phone" placeholder="Phone" required />
+        <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone Number" required />
         <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
         <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
         <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
         <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
 
-        <button class="popup-button" type="submit">Register Now</button>
+        <button class="popup-button" type="submit" (click)="registerStaff()">Register Now</button>
       </form>
     </div>
   </div>
@@ -237,15 +240,18 @@
       <p class="popup-subhead">Add Cars</p>
 
       <form [formGroup]="carForm">
-        <input class="input-field " type="text" id="model" formControlName="Model" placeholder="Model" required />
-        <input class="input-field " type="text" id="color" formControlName="Color" placeholder="Color" required />
-        <input class="input-field " type="text" id="license" formControlName="License" placeholder="License" required />
-        <input class="input-field " type="text" id="rate" formControlName="Rate" placeholder="Rate" required />
+        <input class="input-field " type="text" id="model" formControlName="model" placeholder="Model" required />
+        <input class="input-field " type="text" id="make" formControlName="make" placeholder="Maker" required />
+        <input class="input-field " type="text" id="color" formControlName="color" placeholder="color" required />
+        <input class="input-field " type="text" id="buildYear" formControlName="buildYear" placeholder="buildYear" required />
+        <input class="input-field " type="text" id="brand" formControlName="brand" placeholder="brand" required />
+        <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="rate" required />
+        <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="licensePlate" required />
         <div class="upload-btn-cont">
           <button class="upload-btn" type="submit">Upload Documents</button>
           <img src="/assets/Images/icons/white/upload.svg" />
         </div>
-        <button class="popup-button" type="submit">Add Now</button>
+        <button class="popup-button" type="submit" (click)="registerCar()">Add Now</button>
       </form>
     </div>
   </div>
