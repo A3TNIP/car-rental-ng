@@ -2,50 +2,12 @@
     <div class="content-title">
         CARS LIST
     </div>
-</div>
 
-<div class="config-entry">
-  <form [formGroup]="carForm" (ngSubmit)="isUpdate ? updateCar(carForm.value) : addCar(carForm.value)">
-    <div class="entry-fields">
-      <label for="brand">Brand:</label>
-      <input class="input-field" type="text" id="brand" formControlName="brand">
-    </div>
-    <div class="entry-fields">
-      <label for="model">Model:</label>
-      <input class="input-field" type="text" id="model" formControlName="model">
-    </div>
-    <div class="entry-fields">
-      <label for="color">Color:</label>
-      <input class="input-field" type="text" id="color" formControlName="color">
-    </div>
-    <div class="entry-fields">
-      <label for="buildYear">Build Year:</label>
-      <input class="input-field" type="text" id="buildYear" formControlName="buildYear">
-    </div>
-    <div class="entry-fields">
-      <label for="status">Status:</label>
-      <input class="input-field" type="text" id="status" formControlName="status">
-    </div>
-    <div class="entry-fields">
-      <label for="rate">Rate:</label>
-      <input class="input-field" type="text" id="rate" formControlName="rate">
-    </div>
-    <div class="entry-fields">
-      <label for="licensePlate">License Plate:</label>
-      <input class="input-field" type="text" id="licensePlate" formControlName="licensePlate">
-    </div>
-    <button type="submit" [disabled]="carForm.invalid">
-      <div class="add-config-btn pointer">
-        {{ isUpdate ? 'Update' : 'Add' }}
+    <button (click)="showcarPopup()">
+      <div class="add-car-btn pointer">
+        Add
       </div>
     </button>
-
-    <button (click)="resetForm()" *ngIf="isUpdate">
-      <div class="add-config-btn pointer">
-        Cancel
-      </div>
-    </button>
-  </form>
 </div>
 
 <div class="tables-container">
@@ -88,4 +50,27 @@
         </ng-template>
       </p-table>
     </div>
+</div>
+
+<p-dialog [(visible)]="carVisible" [style]="{'width': '400px'}">
+  <div class="popup-container" id="popupcar">
+    <div class="popup-child">
+      <button (click)="hidecarPopup()" class="popup-close">
+        <img src="/assets/Images/icons/close.svg">
+      </button>
+      <p class="popup-subhead">Add Cars</p>
+
+      <form [formGroup]="carForm">
+        <input class="input-field " type="text" id="model" formControlName="Model" placeholder="Model" required />
+        <input class="input-field " type="text" id="color" formControlName="Color" placeholder="Color" required />
+        <input class="input-field " type="text" id="license" formControlName="License" placeholder="License" required />
+        <input class="input-field " type="text" id="rate" formControlName="Rate" placeholder="Rate" required />
+        <div class="upload-btn-cont">
+          <button class="upload-btn" type="submit">Upload Image</button>
+          <img src="/assets/Images/icons/white/upload.svg" />
+        </div>
+        <button class="popup-button" type="submit">Add Now</button>
+      </form>
+    </div>
   </div>
+</p-dialog>

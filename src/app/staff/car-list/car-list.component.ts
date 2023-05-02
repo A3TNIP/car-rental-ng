@@ -10,10 +10,14 @@ import { LoaderService } from 'src/app/common/service/loader.service';
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.css']
 })
-export class CarListComponent implements OnInit{
-  carList!: any;
-  carForm!: FormGroup;
-  isUpdate!:boolean;
+export class CarListComponent {
+  configurationData: any;
+  carVisible: boolean = false;
+  public carForm!: FormGroup;
+  formBuilder: any;
+  carList: any;
+  isUpdate: boolean = false;
+
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
   ngOnInit():void{
     this.fetchCars();
@@ -126,5 +130,13 @@ export class CarListComponent implements OnInit{
   public resetForm(){
     this.carForm.reset()
     this.isUpdate = false;
+  }
+
+  showcarPopup() {
+    this.carVisible = true;
+  }
+
+  hidecarPopup() {
+    this.carVisible = false;
   }
 }
