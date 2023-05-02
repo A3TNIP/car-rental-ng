@@ -1,1 +1,48 @@
-<p>rental-list works!</p>
+<div class="pagetop-container">
+    <div class="content-title">
+        RENTAL LIST
+    </div>
+</div>
+
+<div class="tables-container">
+    <div class="table-style">
+      <p-table [value]="configurationData" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+          <tr class="table-data-format">
+            <th>Requested By:</th>
+            <th>Car:</th>
+            <th>Start Date:</th>
+            <th>End Date:</th>
+            <th>Status:</th>
+            <th>Action:</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-config let-index="index">
+          <tr class="table-data-format">
+            <td>{{ config.code }}</td>
+            <td>{{ config.key }}</td>
+            <td>{{ config.value }}</td>
+            <td>{{ config.value }}</td>
+            <td>
+                <div class="add-config-btn pointer">
+                    <select>
+                        <option>Waiting</option>
+                        <option>Approved</option>
+                        <option>Rejected</option>
+                        <option>Cancelled</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <button>
+                    <div class="add-config-btn pointer">
+                    Generate Bill
+                    </div>
+                </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>

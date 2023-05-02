@@ -5,6 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './user.component';
 import { CustomCommonModule } from "../common/custom-common.module";
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CustomCommonModule } from "../common/custom-common.module";
     imports: [
         CommonModule,
         UserRoutingModule,
-        CustomCommonModule
+        CustomCommonModule,
+        DialogModule
     ]
 })
 export class UserModule { }
