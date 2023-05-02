@@ -7,6 +7,7 @@ import {ActivatedRoute, NavigationStart, Router} from "@angular/router";
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
+  rentCarVisible: boolean = false;
   constructor(private route: ActivatedRoute, private router: Router) {
 
   }
@@ -18,5 +19,13 @@ export class CarDetailComponent implements OnInit {
   private getCar() {
     const car = localStorage.getItem("viewingCar")!;
     console.log(JSON.parse(car));
+  }
+
+  showrentcarPopup() {
+    this.rentCarVisible = true;
+  }
+
+  hiderentcarPopup() {
+    this.rentCarVisible = false;
   }
 }
