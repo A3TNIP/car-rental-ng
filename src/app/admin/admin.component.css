@@ -11,4 +11,6 @@
     flex-direction: column;
     background: #F8F9FA;
     width: 85%;
+    height: 100%;
+    min-height: 1080px;
 }
