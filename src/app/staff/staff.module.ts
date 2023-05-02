@@ -14,6 +14,7 @@ import {TableModule} from "primeng/table";
 import {DialogModule} from "primeng/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import { PaymentsComponent } from './payments/payments.component';
+import {ChartModule} from "primeng/chart";
 
 
 @NgModule({
@@ -27,13 +28,14 @@ import { PaymentsComponent } from './payments/payments.component';
     StaffComponent,
     PaymentsComponent
   ],
-  imports: [
-    CommonModule,
-    StaffRoutingModule,
-    CustomCommonModule,
-    TableModule,
-    DialogModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        StaffRoutingModule,
+        CustomCommonModule,
+        TableModule,
+        DialogModule,
+        ReactiveFormsModule,
+        ChartModule
+    ]
 })
 export class StaffModule { }

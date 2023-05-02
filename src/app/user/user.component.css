@@ -1,0 +1,15 @@
+.web-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  font-family: 'Poppins', sans-serif
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  background: #F8F9FA;
+  width: 85%;
+  height: 100%;
+}

@@ -11,6 +11,8 @@ import { DocumentUploadComponent } from './components/document-upload/document-u
 import { DialogModule } from 'primeng/dialog';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
+import {FileUploadModule} from "primeng/fileupload";
+import {CalendarModule} from "primeng/calendar";
 
 
 @NgModule({
@@ -28,14 +30,16 @@ import { FormsModule } from '@angular/forms';
     LoaderComponent,
     DocumentUploadComponent
   ],
-    imports: [
-        CommonModule,
-        ProgressSpinnerModule,
-        RouterLink,
-        RouterLinkActive,
-        DialogModule,
-        RadioButtonModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    ProgressSpinnerModule,
+    RouterLink,
+    RouterLinkActive,
+    DialogModule,
+    RadioButtonModule,
+    FormsModule,
+    FileUploadModule,
+    CalendarModule
+  ]
 })
 export class CustomCommonModule { }
