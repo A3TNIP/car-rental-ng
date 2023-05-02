@@ -54,7 +54,7 @@ export class ConfigurationComponent implements OnInit {
         if (res.message == 'Configuration deleted successfully') {
           this.service.showToast('Deleted successfully');
           // Remove the deleted config from the configurationData array
-          this.configurationData = this.configurationData.filter((c: any) => c.id !== config.id);
+          this.fetchConfigList();
         }
         LoaderService.hide();
       },
@@ -74,7 +74,7 @@ export class ConfigurationComponent implements OnInit {
         LoaderService.hide();
         if (res.isSuccess) {
           console.log('Configuration added successfully');
-          this.service.showToast('Configuration added successfully');
+          this.service.showToast('Success', 'success', 'Configuration added successfully');
           this.configForm.reset();
           this.fetchConfigList();
         }
@@ -104,7 +104,7 @@ export class ConfigurationComponent implements OnInit {
           this.isUpdate = false;
           this.configForm.reset();
           this.fetchConfigList();
-          this.service.showToast('Configuration updated successfully');
+          this.service.showToast('Success', 'success', 'Configuration updated successfully');
         }
       },
       error: (err: any) => {
@@ -123,5 +123,11 @@ export class ConfigurationComponent implements OnInit {
       code: config.code
     });
     this.isUpdate = true;
+  }
+
+
+  public resetForm(){
+    this.configForm.reset()
+    this.isUpdate = false;
   }
 }
