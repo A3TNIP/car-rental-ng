@@ -1,14 +1,14 @@
 <div class="profile-container">
-    <div class="profile-section">
+    <div class="profile-section" *ngIf="userDto">
         <p class="profile-title">{{userDto.name}}'s Profile</p>
         <div class="profile-data-items"></div>
 
         <div class="personal-details-cont">
           <div *ngIf="!isEditMode" class="personal-details">
-            <p>Name: {{userDto.name}}</p>
-            <p>Address: {{userDto.address}}</p>
-            <p>Email: {{userDto.email}}</p>
-            <p>Phone Number: {{userDto.phoneNumber}}</p>
+            <p>Name: {{userDto?.name}}</p>
+            <p>Address: {{userDto?.address}}</p>
+            <p>Email: {{userDto?.email}}</p>
+            <p>Phone Number: {{userDto?.phoneNumber}}</p>
             <div class="verification-section">
               <p>Verifications:
               <ng-container *ngIf="userDto.document; else uploadDocument">
@@ -60,12 +60,12 @@
         </div>
       </div>
 
-    <div class="profile-last-rent">
+    <div class="profile-last-rent" *ngIf="latestRental">
         <p class="profile-last-rent-title">Last Rented Car:</p>
         <img src="/assets/Images/lexus-lfa.jpg" class="profile-last-rent-img" />
         <div class="profile-last-rent-details">
-            <p class="profile-last-rent-sub">{{this.latestRental.car.brand}}  {{this.latestRental.car.model}}</p>
-            <p>Returned On: {{this.latestRental.endDate | date}}</p>
+            <p class="profile-last-rent-sub">{{latestRental.car.brand}}  {{latestRental.car.model}}</p>
+            <p>Returned On: {{latestRental.endDate | date}}</p>
         </div>
 
         <div class="history-btn-holder">
