@@ -15,6 +15,8 @@ export class CarListComponent {
   carVisible: boolean = false;
   public carForm!: FormGroup;
   formBuilder: any;
+  carList: any;
+  isUpdate: boolean = false;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
   ngOnInit():void{
