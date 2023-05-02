@@ -16,7 +16,13 @@
             <p>Color: {{ car.color }}</p>
             <p>Availability: <span [ngClass]="car.status === 'available' ? 'completed-status' : 'pending-status'">{{ car.status }}</span></p>
           </div>
-          <div><button style="background-color: orange;padding:4px; margin:5px">View Rent History</button><button style="background-color: green; padding:4px; margin:5px" [disabled]="car.status !== 'available'">Rent Now</button></div>
+          <div class="view-cars-btn-cont">
+            <button class="view-rent-hstry-btn">View Rent History</button>
+            <div class="rent-now-btn-cont">
+              <button class="rent-now-btn" [disabled]="car.status !== 'available'">Rent Now</button>
+              <img src="/assets/Images/icons/white/arrow-right.svg" />
+            </div>
+          </div>
 
         </div>
       </ng-container>
