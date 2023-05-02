@@ -47,17 +47,12 @@ export class ProfileComponent implements OnInit {
     this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.USER}`,this.userDto).subscribe({
       next: (res: any) => {
         const length = res.dataList.length;
-        console.log("length is this",length)
-        console.log("latest is this",res.dataList[length-1])
         this.latestRental = res.dataList[length-1];
-        console.log("latest is this", this.latestRental)
         LoaderService.hide();
           // make API call to fetch each car detail
           LoaderService.show();
           this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}/${this.latestRental.carId}`).subscribe((car) => {
-            console.log("BEFORE ADDING CAR DETAIL",this.latestRental)
             this.latestRental.car = car.data;
-            console.log("FINAL",this.latestRental)
             LoaderService.hide();
           });
           LoaderService.hide();
