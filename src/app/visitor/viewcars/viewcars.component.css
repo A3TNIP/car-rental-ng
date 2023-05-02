@@ -4,7 +4,7 @@ a {
 }
 
 button{
-  background-color: #ffffff;
+  background-color: none;
   border: none;
 }
 
@@ -119,4 +119,30 @@ button{
 
 .pending-status {
   color: red;
+}
+
+.view-cars-btn-cont{
+  display: flex;
+  gap: 4%;
+}
+
+.view-rent-hstry-btn, .rent-now-btn-cont{
+  border-radius: 15px;
+  padding: 1.5% 3%;
+  width: 9.5vw;
+  transition: ease-in 0.1s;
+}
+
+.rent-now-btn{
+  background-color: #93592C;
+  color: #ffffff;
+}
+
+.rent-now-btn-cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #93592C;
+  display: flex;
+  gap: 2%;
 }

@@ -54,7 +54,7 @@ button{
     justify-content: space-between;
     gap: 5%;
     font-size: 20px;
-    width: 65%;
+    width: 35%;
 }
 
 .profile-data-item-container{
@@ -66,7 +66,7 @@ button{
     border-radius: 15px;
     padding: 0% 3%;
     width: 100%;
-    margin-bottom: 5%;
+    margin-bottom: 6%;
 }
 
 .profile-data-icon-container{

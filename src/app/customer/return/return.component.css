@@ -53,6 +53,7 @@
 .return-card-btn{
     display: flex;
     justify-content: flex-end;
+    gap: 1%;
 }
 
 .report-dmg-btn, .gen-bil-btn{
@@ -69,9 +70,17 @@
     background-color: #656D4A;
 }
 
+    .report-dmg-btn:hover{
+        background-color: #545b3e;
+    }
+
 .gen-bil-btn{
     background-color: #93592C;
 }
+
+    .gen-bil-btn:hover{
+        background-color: #623b1d;
+    }
 
 button{
     border:none;
@@ -195,4 +204,9 @@ button{
     border-radius: 10px;
     opacity: 1;
     font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+    font-size: 12px;
 }

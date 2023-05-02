@@ -1,0 +1,61 @@
+<div class="car-detail-container">
+    <p class="car-detail-title">Rent a Car</p>
+    <div class="car-detail-card">
+        <div class="car-detail-card-top">
+            <img src="/assets/Images/lexus-lfa.jpg" class="detail-card-img" />
+            <div class="detail-card-info">
+                <div class="detail-card-info-top">
+                    <div class="detail-card-info-title">Lexus LFA</div>
+            
+                    <button class="rent-now-btn-cont">
+                        <div class="rent-history-btn">View Rent History</div>
+                    </button>
+                </div>
+                
+                <div class="detail-card-info-bot">
+                    <p>Rate: </p>
+                    <p>Rent Date: </p>
+                    <p>From: To:</p>
+                    <p>Total Days: </p>
+                    <p>Verifications: </p>
+                </div>
+            </div>
+        </div>
+    
+        <button class="rent-now-btn-cont" (click)="showrentcarPopup()">
+            <div class="rent-now-btn">
+                Rent Now
+                <img src="/assets/Images/icons/white/arrow-right.svg" />
+            </div>
+        </button>
+    </div>
+</div>
+
+<p-dialog [(visible)]="rentCarVisible" [style]="{'width': '400px'}">
+    <div class="popup-container" id="popupstaff">
+      <div class="popup-child">
+        <p class="popup-title">Rent Confirmation</p>
+
+        <div class="rent-confirm-details">
+            <p>Name: </p>
+            <p>Car Color: </p>
+            <p>Car Model: </p>
+            <p>Car Number: </p>
+        </div>
+
+        <div class="rent-confirm-btns">
+            <button class="cancel-btn-cont" (click)="hiderentcarPopup()">
+                <div class="cancel-btn">
+                    Cancel
+                </div>
+            </button>
+
+            <button class="rent-confirm-btn-cont">
+                <div class="rent-confirm-btn">
+                    Rent Now
+                </div>
+            </button>
+        </div>
+      </div>
+    </div>
+  </p-dialog>

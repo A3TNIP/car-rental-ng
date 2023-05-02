@@ -109,14 +109,13 @@ export class BaseService extends AuthenticationService {
   protected log(errorModel: any, noMessage = false) {
     console.log(errorModel);
     if (errorModel && !noMessage) {
-      const msg = (!!errorModel.error.message && errorModel.error.message.length < 80) ? errorModel.error.message : 'An error occurred';
+      const msg = (!!errorModel?.error?.message && errorModel?.error?.message?.length < 80) ? errorModel.error.message : 'An error occurred';
       switch (errorModel.status) {
         case 401:
           // Invalid Session
+          console.log("here");
+
           this.logout();
-          setTimeout(() => {
-            location.reload();
-          }, 1500);
           break;
         case 400:
           // Bad Request

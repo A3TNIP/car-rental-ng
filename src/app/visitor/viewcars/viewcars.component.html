@@ -11,12 +11,17 @@
         <div class="history-items" *ngFor="let car of availableCars">
           <img [src]="car.imageUrl ? car.imageUrl : '/assets/Images/lexus-lfa.jpg'" class="history-item-img" />
           <div class="history-details">
-            <p class="history-item-sub">{{ car.make }} {{ car.model }}</p>
-            <p>Rate: {{ car.discountedRate }}</p>
+            <p class="history-item-sub">{{ car.brand }} {{ car.model }}</p>
+            <p>Rate: {{ car.discountedRate != 0 ? car.discountedRate : car.rate }}</p>
             <p>Color: {{ car.color }}</p>
-            <p>Availability: <span [ngClass]="car.status === 'available' ? 'completed-status' : 'pending-status'">{{ car.status }}</span></p>
+<!--            <p>Availability: <span [ngClass]="car.status === 'available' ? 'completed-status' : 'pending-status'">{{ car.status }}</span></p>-->
           </div>
-          <div><button style="background-color: orange;padding:4px; margin:5px">View Rent History</button><button style="background-color: green; padding:4px; margin:5px" [disabled]="car.status !== 'available'">Rent Now</button></div>
+          <div class="view-cars-btn-cont">
+            <div class="rent-now-btn-cont">
+              <button class="rent-now-btn" (click)="viewCar(car)">Rent Now</button>
+              <img src="/assets/Images/icons/white/arrow-right.svg" />
+            </div>
+          </div>
 
         </div>
       </ng-container>

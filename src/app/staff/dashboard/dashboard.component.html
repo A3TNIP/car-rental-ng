@@ -120,8 +120,34 @@
         </ng-template>
       </p-table>
     </div>
-    <div class="table-style">
-      table 2
+    <div class="least-freq-cont">
+      <div class="least-freq-item">
+        <p class="least-freq-title">Frequently Rented Car:</p>
+        <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
+        <div class="least-freq-size">
+          <p class="least-freq-sub">Lexus LFA</p>
+          <p>Returned On: </p>
+          <p>Payment Confirmation: </p>
+        </div>
+        <div class="view-history-btn">
+          <img src="/assets/Images/icons/white/reverse.svg" />
+          <div>View History</div>
+        </div>
+      </div>
+      
+      <div class="least-freq-item">
+        <p class="least-freq-title">Least Rented Car:</p>
+        <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
+        <div class="least-freq-size">
+          <p class="least-freq-sub">Lexus LFA</p>
+          <p>Returned On: </p>
+          <p>Payment Confirmation: </p>
+        </div>
+        <div class="view-history-btn">
+          <img src="/assets/Images/icons/white/reverse.svg" />
+          <div>View History</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -140,6 +166,15 @@
         <p class="additm-p">Add Admin</p>
         <div class="additm-icon-cont">
           <img src="/assets/Images/icons/white/addadmin.svg" />
+        </div>
+      </div>
+    </button>
+
+    <button (click)="showcarPopup()" class="add-item-button">
+      <div class="add-item-container">
+        <p class="additm-p">Add Car</p>
+        <div class="additm-icon-cont">
+          <img src="/assets/Images/icons/white/car-med.svg" />
         </div>
       </div>
     </button>
@@ -187,6 +222,30 @@
         <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
 
         <button class="popup-button" type="submit">Register Now</button>
+      </form>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog [(visible)]="carVisible" [style]="{'width': '400px'}">
+  <div class="popup-container" id="popupcar">
+    <div class="popup-child">
+      <button (click)="hidecarPopup()" class="popup-close">
+        <img src="/assets/Images/icons/close.svg">
+      </button>
+      <p class="popup-title">Hajur ko Car Rental</p>
+      <p class="popup-subhead">Add Cars</p>
+
+      <form [formGroup]="carForm">
+        <input class="input-field " type="text" id="model" formControlName="Model" placeholder="Model" required />
+        <input class="input-field " type="text" id="color" formControlName="Color" placeholder="Color" required />
+        <input class="input-field " type="text" id="license" formControlName="License" placeholder="License" required />
+        <input class="input-field " type="text" id="rate" formControlName="Rate" placeholder="Rate" required />
+        <div class="upload-btn-cont">
+          <button class="upload-btn" type="submit">Upload Documents</button>
+          <img src="/assets/Images/icons/white/upload.svg" />
+        </div>
+        <button class="popup-button" type="submit">Add Now</button>
       </form>
     </div>
   </div>

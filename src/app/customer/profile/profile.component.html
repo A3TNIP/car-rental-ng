@@ -9,14 +9,16 @@
             <p>Address: {{userDto.address}}</p>
             <p>Email: {{userDto.email}}</p>
             <p>Phone Number: {{userDto.phoneNumber}}</p>
-            <p>Verifications:
-            <ng-container *ngIf="userDto.document; else uploadDocument">
-              <i class="fas fa-check-circle"></i>
-            </ng-container>
-            <ng-template #uploadDocument>
-              <i class="fas fa-times-circle"></i>
-              <button class="upload-button" style="font-size: 20px;border-radius: 15px;background-color: #93592C;padding : 10px; margin: 10px;cursor: pointer;color:white;">Upload Document</button>
-            </ng-template></p>
+            <div class="verification-section">
+              <p>Verifications:
+              <ng-container *ngIf="userDto.document; else uploadDocument">
+                <i class="fas fa-check-circle"></i>
+              </ng-container>
+              <ng-template #uploadDocument>
+                <i class="fas fa-times-circle"></i>
+                <button class="updoc-btn">Upload Document</button>
+              </ng-template></p>
+            </div>
           </div>
 
           <div *ngIf="isEditMode" class="personal-details">
@@ -58,7 +60,6 @@
         </div>
       </div>
 
-
     <div class="profile-last-rent">
         <p class="profile-last-rent-title">Last Rented Car:</p>
         <img src="/assets/Images/lexus-lfa.jpg" class="profile-last-rent-img" />
@@ -77,7 +78,7 @@
         <div class="history-btn-holder">
             <button>
                 <div class="view-history-btn">
-                    <img src="" />
+                    <img src="/assets/Images/icons/white/reverse.svg" />
                     <p>View History</p>
                 </div>
             </button>

@@ -11,6 +11,7 @@ import {DialogModule} from "primeng/dialog";
 import { ProfileComponent } from './profile/profile.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { FormsModule } from '@angular/forms';
+import { DamagesComponent } from './damages/damages.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
         CustomerLandingComponent,
         ReturnComponent,
         HistoryComponent,
-        ProfileComponent
+        ProfileComponent,
+        DamagesComponent
     ],
   imports: [
     CommonModule,
