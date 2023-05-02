@@ -104,6 +104,7 @@
       <p-table [value]="customerList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="8" [paginator]="true">
         <ng-template pTemplate="header">
           <tr>
+            <th>Code</th>
             <th>Name</th>
             <th>Address</th>
             <th>Phone Number</th>
@@ -127,11 +128,13 @@
         <p class="least-freq-title">Frequently Rented Car:</p>
         <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
         <div class="least-freq-size">
-          <p class="least-freq-sub">{{mostRentedCar.brand}} {{mostRentedCar.model}}</p>
-          <p>Rate: {{mostRentedCar.rate}}</p>
-          <p>Color: {{mostRentedCar.color}}</p>
-          <p>Build Year: {{mostRentedCar.buildYear}}</p>
-          <p>Status: {{mostRentedCar.status}}</p>
+          <p class="least-freq-sub">Lexus LFA</p>
+          <p>Returned On: </p>
+          <p>Payment Confirmation: </p>
+        </div>
+        <div class="view-history-btn">
+          <img src="/assets/Images/icons/white/reverse.svg" />
+          <div>View History</div>
         </div>
       </div>
 
@@ -139,11 +142,13 @@
         <p class="least-freq-title">Least Rented Car:</p>
         <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
         <div class="least-freq-size">
-          <p class="least-freq-sub">{{leastRentedCar.brand}} {{leastRentedCar.model}}</p>
-          <p>Rate: {{leastRentedCar.rate}}</p>
-          <p>Color: {{leastRentedCar.color}}</p>
-          <p>Build Year: {{leastRentedCar.buildYear}}</p>
-          <p>Status: {{leastRentedCar.status}}</p>
+          <p class="least-freq-sub">Lexus LFA</p>
+          <p>Returned On: </p>
+          <p>Payment Confirmation: </p>
+        </div>
+        <div class="view-history-btn">
+          <img src="/assets/Images/icons/white/reverse.svg" />
+          <div>View History</div>
         </div>
       </div>
     </div>

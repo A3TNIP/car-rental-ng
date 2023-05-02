@@ -2,7 +2,7 @@
   <div>
     <p class="main-title">Hajur ko Car Rental</p>
 
-    <a>
+    <a class="pointer">
       <div class="nav-items" routerLink="/dashboard" routerLinkActive="active">
         <div class="navitm-container" routerLinkActive="active">
           <img src="/assets/Images/icons/teal/home.svg" />
@@ -10,7 +10,7 @@
         Dashboard
       </div>
     </a>
-    <a>
+    <a class="pointer">
       <div class="nav-items" routerLink="/clients" routerLinkActive="active">
         <div class="navitm-container" routerLinkActive="active">
           <img src="/assets/Images/icons/teal/chart.svg" />
@@ -18,7 +18,7 @@
         Clients
       </div>
     </a>
-    <a>
+    <a class="pointer">
       <div class="nav-items" routerLink="/cars" routerLinkActive="active">
         <div class="navitm-container" routerLinkActive="active">
           <img src="/assets/Images/icons/teal/car.svg" />
@@ -26,7 +26,7 @@
         Cars
       </div>
     </a>
-    <a>
+    <a class="pointer">
       <div class="nav-items" routerLink="/bills" routerLinkActive="active">
         <div class="navitm-container" routerLinkActive="active">
           <img src="/assets/Images/icons/teal/creditcard.svg" />
@@ -34,7 +34,7 @@
         Billing
       </div>
     </a>
-    <a>
+    <a class="pointer">
       <div class="nav-items" routerLink="/damages" routerLinkActive="active">
         <div class="navitm-container"  routerLinkActive="active">
           <img src="/assets/Images/icons/teal/wrench.svg" />
@@ -46,7 +46,7 @@
     <ng-container *ngIf="is.admin">
       <p class="sub-title">Admin</p>
 
-      <a>
+      <a class="pointer">
         <div class="nav-items" routerLink="/user/profile" routerLinkActive="active">
           <div class="navitm-container" routerLinkActive="active">
             <img src="/assets/Images/icons/teal/user2.svg" />
@@ -54,7 +54,7 @@
           Profile
         </div>
       </a>
-      <a>
+      <a class="pointer">
         <div class="nav-items" routerLink="/admin/admins" routerLinkActive="active">
           <div class="navitm-container" routerLinkActive="active">
             <img src="/assets/Images/icons/teal/document.svg" />
@@ -62,7 +62,7 @@
           Admin
         </div>
       </a>
-      <a>
+      <a class="pointer">
         <div class="nav-items" routerLink="/admin/staffs" routerLinkActive="active">
           <div class="navitm-container" routerLinkActive="active">
             <img src="/assets/Images/icons/teal/rocket.svg" />
@@ -70,7 +70,7 @@
           Staff
         </div>
       </a>
-      <a>
+      <a class="pointer">
         <div class="nav-items" routerLink="/admin/config" routerLinkActive="active">
           <div class="navitm-container" routerLinkActive="active">
             <img src="/assets/Images/icons/teal/wrench.svg" />
@@ -82,7 +82,7 @@
   </div>
 
   <div>
-    <a>
+    <a class="pointer">
       <div class="nav-items" (click)="service.logout()">
         <div class="navitm-container" routerLinkActive="active">
           <img src="/assets/Images/icons/teal/logout.svg" />

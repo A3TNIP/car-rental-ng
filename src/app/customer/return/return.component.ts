@@ -23,6 +23,7 @@ export class ReturnComponent implements OnInit {
 
   public paymentInitiationForm!: FormGroup;
   paymentOtpForm!: FormGroup;
+  damageVisible: boolean = false;
   constructor(private service: BaseService, private fb: FormBuilder, private http: HttpClient) {
   }
 
@@ -143,5 +144,13 @@ export class ReturnComponent implements OnInit {
           this.paymentStep = "OTP";
         }
       })
+  }
+
+  showdamagePopup() {
+    this.damageVisible = true;
+  }
+
+  hidedamagePopup() {
+    this.damageVisible = false;
   }
 }

@@ -29,7 +29,9 @@
                 <img [src]="item.imageUrl ? item.imageUrl : '/assets/Images/lexus-lfa.jpg'" class="history-item-img" />
                 <div class="history-details">
                   <p class="history-item-sub">{{item.car.model}}</p>
-                  <p>Payment Confirmation: <span [ngClass]="item.status === 'Completed' ? 'completed-status' : 'pending-status'">{{ item.status }}</span></p>
+                  <p>Total Cost: {{item.totalPrice}}</p>
+                  <p>Payment Confirmation: <span [ngClass]="item.status === 'Completed' ? 'completed-status' : item.status === 'Approved' ? 'approved-status' : 'pending-status'">{{ item.status }}</span></p>
+                  <p>Rate: {{item.car.rate}}</p>
                   <p>Rented From: {{item.startDate | date:'dd/MM/yyyy'}}</p>
                   <p>Rented To: {{item.endDate | date:'dd/MM/yyyy'}}</p>
                 </div>

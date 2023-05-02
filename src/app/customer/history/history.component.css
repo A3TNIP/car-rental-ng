@@ -118,6 +118,10 @@ button{
   color: green;
 }
 
+.approved-status {
+    color: rgb(26, 108, 190);
+}
+
 .pending-status {
-  color: yellow;
+  color: rgb(245, 155, 72);
 }
