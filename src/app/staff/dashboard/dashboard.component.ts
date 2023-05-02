@@ -118,14 +118,15 @@ export class DashboardComponent implements OnInit {
   totalCarsOnRentCount!: string;
   totalStaffCount!: string;
   totalUserCount!: string;
-  totalRegularUserCount!: string;
-  totalRentCount!: string;
-  totalDamageCount!: string;
+  totalRegularUserCount!:string;
+  totalRentCount!:string;
+  totalDamageCount!:string;
+  mostRentedCar!:any;
+  leastRentedCar!:any;
+  customerList!:any;
+  constructor(private formBuilder: FormBuilder,private service:BaseService) {}
   public chartOptions!: any;
   public data!: any;
-
-  constructor(private formBuilder: FormBuilder, private service: BaseService) {
-  }
 
   showstaffPopup() {
     this.staffVisible = true;
@@ -246,7 +247,7 @@ export class DashboardComponent implements OnInit {
         this.totalUserCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error('Failed to get total user count', err);
       },
     });
 
@@ -257,7 +258,7 @@ export class DashboardComponent implements OnInit {
         this.totalRegularUserCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error('Failed to get total active count', err);
       },
     });
 
@@ -269,7 +270,7 @@ export class DashboardComponent implements OnInit {
         this.totalCarsOnRentCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error('Failed to get total rent car count', err);
       },
     });
 
@@ -280,7 +281,40 @@ export class DashboardComponent implements OnInit {
         this.totalDamageCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error('Failed to get total rented car count', err);
+      },
+    });
+
+    //Frequently Rented Car
+
+    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.MOST_RENTED_CAR}`).subscribe({
+      next: (res: any) => {
+        this.mostRentedCar = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to get Frequently Rented Car', err);
+      },
+    });
+
+
+    //Least Rented Car
+
+    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.LEAST_RENTED_CAR}`).subscribe({
+      next: (res: any) => {
+        this.leastRentedCar = res.data;
+      },
+      error: (err: any) => {
+        console.error('Failed to get Least Rented Car', err);
+      },
+    });
+
+    //GET customer list
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.CUSTOMER}`).subscribe({
+      next: (res: any) => {
+        this.customerList = res.dataList;
+      },
+      error: (err: any) => {
+        console.error('Failed to get users', err);
       },
     });
 
@@ -289,7 +323,7 @@ export class DashboardComponent implements OnInit {
       Email: ['', Validators.required],
       Password: ['', Validators.required],
       ConfirmPassword: ['', Validators.required],
-      Phone: ['', Validators.required],
+      PhoneNumber: ['', Validators.required],
       Address: ['', Validators.required],
       Name: ['', Validators.required],
       Role: [0, Validators.required]
@@ -299,19 +333,21 @@ export class DashboardComponent implements OnInit {
       Email: ['', Validators.required],
       Password: ['', Validators.required],
       ConfirmPassword: ['', Validators.required],
-      Phone: ['', Validators.required],
+      PhoneNumber: ['', Validators.required],
       Address: ['', Validators.required],
       Name: ['', Validators.required],
       Role: [1, Validators.required]
     })
 
     this.carForm = this.formBuilder.group({
-      Model: ['', Validators.required],
-      Color: ['', Validators.required],
-      License: ['', Validators.required],
-      Rate: ['', Validators.required],
-      Address: ['', Validators.required],
-      Role: [2, Validators.required]
+      model: ['', Validators.required],
+      make: ['', Validators.required],
+      color: ['', Validators.required],
+      buildYear: ['', Validators.required],
+      brand: ['', Validators.required],
+      rate: ['', Validators.required],
+      licensePlate: ['', Validators.required],
+      status: ['Available', Validators.required]
     })
   }
 
@@ -325,5 +361,63 @@ export class DashboardComponent implements OnInit {
 
   hidecarPopup() {
     this.carVisible = false;
+  }
+
+  public registerAdmin(){
+    if (this.adminForm.invalid) return;
+    if (this.adminForm.get('Password')?.value !== this.adminForm.get('ConfirmPassword')?.value) return;
+    this.adminForm.value.ConfirmPassword;
+    const payload = this.adminForm.getRawValue();
+    this.service.postRequest(payload,`${ApiConstants.AUTHENTICATION_CONTROLLER}${ApiConstants.REGISTER}`).subscribe({
+      next: (res: any) => {
+        if (res.isSuccess){
+          this.service.showToast('Admin Registered Successfully');
+          this.adminForm.reset();
+          this.adminVisible = false;
+        }
+      },
+      error: (err: any) => {
+        console.error('Failed to register admin', err);
+      },
+    });
+  }
+
+  public registerCar(){
+    if (this.carForm.invalid) return;
+    const payload = {
+      ...this.carForm.getRawValue(),
+      buildYear: +this.carForm.get('buildYear')!.value
+    }
+    this.service.postRequest(payload,`${ApiConstants.CARS_CONTROLLER}`).subscribe({
+      next: (res: any) => {
+        if (res.data){
+          this.service.showToast('Car Added Successfully');
+          this.carForm.reset();
+          this.carVisible = false;
+        }
+      },
+      error: (err: any) => {
+        console.error('Failed to add car', err);
+      },
+    });
+  }
+
+  public registerStaff(){
+    if (this.staffForm.invalid) return;
+    if (this.staffForm.get('Password')?.value !== this.staffForm.get('ConfirmPassword')?.value) return;
+    this.staffForm.value.ConfirmPassword;
+    const payload = this.staffForm.getRawValue();
+    this.service.postRequest(payload,`${ApiConstants.AUTHENTICATION_CONTROLLER}${ApiConstants.REGISTER}`).subscribe({
+      next: (res: any) => {
+        if (res.isSuccess){
+          this.service.showToast('Staff Registered Successfully');
+          this.staffForm.reset();
+          this.staffVisible = false;
+        }
+      },
+      error: (err: any) => {
+        console.error('Failed to register staff', err);
+      },
+    });
   }
 }

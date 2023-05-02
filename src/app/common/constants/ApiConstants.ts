@@ -37,6 +37,7 @@ export class ApiConstants {
     public static readonly UPLOAD_DOCUMENT = '/UploadDocument'
     public static readonly AFTER_DISCOUNT = '/AfterDiscount'
     public static readonly RENT = '/Rent'
+    public static readonly REGISTER ='/Register';
 
     // Count Actions
     public static readonly CARS_AVAILABLE_COUNT = '/CarsAvailableCount'
@@ -47,4 +48,6 @@ export class ApiConstants {
     public static readonly REGULAR_CUSTOMER_COUNT = '/GetRegularCustomerCount'
     public static readonly DAMAGE_COUNT = '/DamageCount'
     public static readonly GET_DTO = '/GetDto'
+    public static readonly MOST_RENTED_CAR = '/MostRentedCar'
+    public static readonly LEAST_RENTED_CAR = '/LeastRentedCar'
 }

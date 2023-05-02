@@ -1,15 +1,15 @@
 .pagetop-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2%;
-    margin-top: 1%;
-    height: 9vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  margin-top: 1%;
+  height: 9vh;
 }
 
 .content-title {
-    font-weight: 700;
-    font-size: 35px;
+  font-weight: 700;
+  font-size: 35px;
 }
 
 .car-entry{
@@ -27,55 +27,55 @@
 }
 
 .add-car-btn{
-    background-color: #4FD1C5;
-    font-size: 18px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 4vh;
-    width: 7vw;
-    color: #ffffff;
-    transition: ease-in 0.1s;
+  background-color: #4FD1C5;
+  font-size: 18px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4vh;
+  width: 7vw;
+  color: #ffffff;
+  transition: ease-in 0.1s;
 }
 
-    .add-car-btn:hover{
-        background-color: #3ea49a;
-    }
+.add-car-btn:hover{
+  background-color: #3ea49a;
+}
 
 .tables-container {
-    display: flex;
-    flex-direction: column;
-    padding: 1% 1.5% 1.5% 1.5%;
-    width: 95%;
+  display: flex;
+  flex-direction: column;
+  padding: 1% 1.5% 1.5% 1.5%;
+  width: 95%;
 }
 
 .table-style {
-    background-color: #ffffff;
-    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    width: 38%;
-    padding: 1.5%;
-    margin-bottom: 3%;
-    width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  width: 38%;
+  padding: 1.5%;
+  margin-bottom: 3%;
+  width: 100%;
 }
 
 .table-data-format{
-    font-family: 'Poppins', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 button{
-    border: none;
-    background-color: #ffffff00;
-    color: #000000;
+  border: none;
+  background-color: #ffffff00;
+  color: #000000;
 }
 
 .input-field {
-    padding: 9px;
-    border-radius: 10px;
-    margin: 0% !important;
-    width: 80%;
-    border: 1.5px solid #E0E2E9;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
+  padding: 9px;
+  border-radius: 10px;
+  margin: 0% !important;
+  width: 80%;
+  border: 1.5px solid #E0E2E9;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
 }
