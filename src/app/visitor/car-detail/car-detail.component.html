@@ -5,23 +5,19 @@
       <img src="/assets/Images/lexus-lfa.jpg" class="detail-card-img"/>
       <div class="detail-card-info">
         <div class="detail-card-info-top">
-          <div class="detail-card-info-title">Lexus LFA</div>
-
-          <button class="rent-now-btn-cont">
-            <div class="rent-history-btn">View Rent History</div>
-          </button>
+          <div class="detail-card-info-title">{{car.brand}} {{car.model}}</div>
         </div>
 
         <div class="detail-card-info-bot">
-          <p>Rate: </p>
+          <p>Rate: {{car.discountedRate}}</p>
           <p>Rent Date:</p>
           <div class="date-pick-cont">
-            <p-calendar placeholder="From"></p-calendar>
+            <p-calendar [disabledDates]="disabledDates" placeholder="From"></p-calendar>
             <img src="/assets/Images/icons/arrow-right-brown.svg">
-            <p-calendar placeholder="To"></p-calendar>
+            <p-calendar [disabledDates]="disabledDates" placeholder="To"></p-calendar>
           </div>
           <p>Total Days: </p>
-          <p>Verifications: </p>
+          <p>Total cost: </p>
         </div>
       </div>
     </div>

@@ -36,6 +36,7 @@ export class ApiConstants {
     public static readonly REQUEST = '/Request'
     public static readonly UPLOAD_DOCUMENT = '/UploadDocument'
     public static readonly AFTER_DISCOUNT = '/AfterDiscount'
+    public static readonly CHANGE_PASSWORD = '/Change-Password'
     public static readonly RENT = '/Rent'
     public static readonly REGISTER ='/Register';
 
