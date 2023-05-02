@@ -131,4 +131,12 @@ export class CarListComponent {
     this.carForm.reset()
     this.isUpdate = false;
   }
+
+  showcarPopup() {
+    this.carVisible = true;
+  }
+
+  hidecarPopup() {
+    this.carVisible = false;
+  }
 }
