@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiConstants } from 'src/app/common/constants/ApiConstants';
 import { BaseService } from 'src/app/common/service/base.service';
 import { LoaderService } from 'src/app/common/service/loader.service';
@@ -12,6 +12,9 @@ import { LoaderService } from 'src/app/common/service/loader.service';
 })
 export class CarListComponent {
   configurationData: any;
+  carVisible: boolean = false;
+  public carForm!: FormGroup;
+  formBuilder: any;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
   
@@ -33,5 +36,24 @@ export class CarListComponent {
           }
         }
       });
+  }
+
+  ngOnInit(): void {
+    this.carForm = this.formBuilder.group({
+      Model: ['', Validators.required],
+      Color: ['', Validators.required],
+      License: ['', Validators.required],
+      Rate: ['', Validators.required],
+      Address: ['', Validators.required],
+      Role: [2, Validators.required]
+    })
+  }
+
+  showcarPopup() {
+    this.carVisible = true;
+  }
+
+  hidecarPopup() {
+    this.carVisible = false;
   }
 }

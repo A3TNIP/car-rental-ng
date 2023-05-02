@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiConstants } from 'src/app/common/constants/ApiConstants';
 import { BaseService } from 'src/app/common/service/base.service';
 import { LoaderService } from 'src/app/common/service/loader.service';
@@ -13,6 +13,9 @@ import { LoaderService } from 'src/app/common/service/loader.service';
 })
 export class StaffComponent {
   configurationData: any;
+  staffVisible: boolean = false;
+  public staffForm!: FormGroup;
+  formBuilder: any;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
   
@@ -34,5 +37,25 @@ export class StaffComponent {
           }
         }
       });
+  }
+
+  ngOnInit(): void {
+    this.staffForm = this.formBuilder.group({
+      Email: ['', Validators.required],
+      Password: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required],
+      Phone: ['', Validators.required],
+      Address: ['', Validators.required], 
+      Name: ['', Validators.required],
+      Role: [1, Validators.required]
+    })
+  }
+
+  showstaffPopup() {
+    this.staffVisible = true;
+  }
+
+  hidestaffPopup() {
+    this.staffVisible = false;
   }
 }

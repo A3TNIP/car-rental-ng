@@ -2,35 +2,12 @@
     <div class="content-title">
         CARS LIST
     </div>
-</div>
 
-<div class="car-entry">
-    <form>
-      <div class="entry-fields">
-        <label for="code">Code:</label>
-        <input class="input-field" type="text" id="code" >
+    <button (click)="showcarPopup()">
+      <div class="add-car-btn pointer">
+        Add
       </div>
-      <div class="entry-fields">
-        <label for="key">Key:</label>
-        <input class="input-field" type="text" id="key" >
-      </div>
-      <div class="entry-fields">
-        <label for="value">Value:</label>
-        <input class="input-field" type="text" id="value" >
-      </div>
-      
-      <button type="submit">
-        <div class="add-car-btn pointer">
-          Add
-        </div>
-      </button>
-      
-      <button>
-        <div class="add-car-btn pointer">
-          Cancel
-        </div>
-      </button>
-    </form>
+    </button>
 </div>
 
 <div class="tables-container">
@@ -65,4 +42,27 @@
         </ng-template>
       </p-table>
     </div>
+</div>
+
+<p-dialog [(visible)]="carVisible" [style]="{'width': '400px'}">
+  <div class="popup-container" id="popupcar">
+    <div class="popup-child">
+      <button (click)="hidecarPopup()" class="popup-close">
+        <img src="/assets/Images/icons/close.svg">
+      </button>
+      <p class="popup-subhead">Add Cars</p>
+
+      <form [formGroup]="carForm">
+        <input class="input-field " type="text" id="model" formControlName="Model" placeholder="Model" required />
+        <input class="input-field " type="text" id="color" formControlName="Color" placeholder="Color" required />
+        <input class="input-field " type="text" id="license" formControlName="License" placeholder="License" required />
+        <input class="input-field " type="text" id="rate" formControlName="Rate" placeholder="Rate" required />
+        <div class="upload-btn-cont">
+          <button class="upload-btn" type="submit">Upload Image</button>
+          <img src="/assets/Images/icons/white/upload.svg" />
+        </div>
+        <button class="popup-button" type="submit">Add Now</button>
+      </form>
+    </div>
   </div>
+</p-dialog>

@@ -8,6 +8,7 @@ import {AdminComponent} from './admin.component';
 import {CustomCommonModule} from "../common/custom-common.module";
 import { ConfigurationComponent } from './configuration/configuration.component';
 import {TableModule} from "primeng/table";
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {TableModule} from "primeng/table";
         AdminRoutingModule,
         CustomCommonModule,
         TableModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        DialogModule
     ],
 })
 export class AdminModule { }
