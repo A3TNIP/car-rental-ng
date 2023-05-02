@@ -1,68 +1,36 @@
 <div class="pagetop-container">
-    <div class="content-title">
-        BILLING LIST
-    </div>
-</div>
-
-<div class="car-entry">
-    <form>
-      <div class="entry-fields">
-        <label for="code">Code:</label>
-        <input class="input-field" type="text" id="code" >
-      </div>
-      <div class="entry-fields">
-        <label for="key">Key:</label>
-        <input class="input-field" type="text" id="key" >
-      </div>
-      <div class="entry-fields">
-        <label for="value">Value:</label>
-        <input class="input-field" type="text" id="value" >
-      </div>
-      
-      <button type="submit">
-        <div class="add-car-btn pointer">
-          Add
-        </div>
-      </button>
-      
-      <button>
-        <div class="add-car-btn pointer">
-          Cancel
-        </div>
-      </button>
-    </form>
+  <div class="content-title">
+      BILLING LIST
+  </div>
 </div>
 
 <div class="tables-container">
-    <div class="table-style">
-      <p-table [value]="configurationData" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template pTemplate="header">
-          <tr class="table-data-format">
-            <th>Code</th>
-            <th>Key</th>
-            <th>Value</th>
-            <th>Action</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-config let-index="index">
-          <tr class="table-data-format">
-            <td>{{ config.code }}</td>
-            <td>{{ config.key }}</td>
-            <td>{{ config.value }}</td>
-            <td>
-              <button>
-                <div class="add-config-btn pointer">
-                  Edit
-                </div>
-              </button>
-              <button>
-                <div class="add-config-btn pointer">
-                  Delete
-                </div>
-              </button>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
+  <div class="table-style">
+    <p-table [value]="carList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10" [paginator]="true">
+      <ng-template pTemplate="header">
+        <tr class="table-data-format">
+          <th>Rent ID</th>
+          <th>Generated Date</th>
+          <th>Total Amount</th>
+          <th>Bill For</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-car let-index="index">
+        <tr class="table-data-format">
+          <td>{{ car.brand }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.color }}</td>
+          <td>{{ car.buildYear }}</td>
+          <td>
+            <button>
+              <div class="add-config-btn pointer">
+                Approve
+              </div>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
+</div>
