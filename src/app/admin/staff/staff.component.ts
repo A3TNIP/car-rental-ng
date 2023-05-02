@@ -15,10 +15,9 @@ export class StaffComponent {
   configurationData: any;
   staffVisible: boolean = false;
   public staffForm!: FormGroup;
-  formBuilder: any;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
-  
+
   private fetchConfigList() {
     LoaderService.show();
     this.service.getRequest(`${ApiConstants.CONFIG_CONTROLLER}`)
@@ -40,12 +39,12 @@ export class StaffComponent {
   }
 
   ngOnInit(): void {
-    this.staffForm = this.formBuilder.group({
+    this.staffForm = this.fb.group({
       Email: ['', Validators.required],
       Password: ['', Validators.required],
       ConfirmPassword: ['', Validators.required],
       Phone: ['', Validators.required],
-      Address: ['', Validators.required], 
+      Address: ['', Validators.required],
       Name: ['', Validators.required],
       Role: [1, Validators.required]
     })

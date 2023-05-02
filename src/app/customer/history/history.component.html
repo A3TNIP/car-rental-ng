@@ -17,7 +17,7 @@
             <div class="view-rents-btn-cont">
                 <a routerLink="/customer/return">
                     <div class="rent-button">
-                        Current Rent >>
+                        Latest Rent >>
                     </div>
                 </a>
             </div>
@@ -31,6 +31,7 @@
                   <p class="history-item-sub">{{item.car.model}}</p>
                   <p>Rented From: {{item.startDate | date:'dd/MM/yyyy'}}</p>
                   <p>Rented To: {{item.endDate | date:'dd/MM/yyyy'}}</p>
+                  <p>Rent Status: <span [ngClass]="item.status === 'Completed' ? 'completed-status' : item.status === 'Approved' ? 'approved-status' : 'pending-status'">{{ item.status }}</span></p>
                 </div>
               </div>
             </ng-container>

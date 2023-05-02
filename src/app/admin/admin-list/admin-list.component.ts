@@ -14,10 +14,9 @@ export class AdminListComponent {
   configurationData: any;
   adminVisible: boolean = false;
   public adminForm!: FormGroup;
-  formBuilder: any;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
-  
+
   private fetchConfigList() {
     LoaderService.show();
     this.service.getRequest(`${ApiConstants.CONFIG_CONTROLLER}`)
@@ -39,12 +38,12 @@ export class AdminListComponent {
   }
 
   ngOnInit(): void {
-    this.adminForm = this.formBuilder.group({
+    this.adminForm = this.fb.group({
       Email: ['', Validators.required],
       Password: ['', Validators.required],
       ConfirmPassword: ['', Validators.required],
       Phone: ['', Validators.required],
-      Address: ['', Validators.required], 
+      Address: ['', Validators.required],
       Name: ['', Validators.required],
       Role: [1, Validators.required]
     })

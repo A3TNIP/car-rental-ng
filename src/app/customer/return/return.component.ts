@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {BaseService} from "../../common/service/base.service";
 import {ApiConstants} from "../../common/constants/ApiConstants";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-return',
@@ -24,7 +25,7 @@ export class ReturnComponent implements OnInit {
   public paymentInitiationForm!: FormGroup;
   paymentOtpForm!: FormGroup;
   damageVisible: boolean = false;
-  constructor(private service: BaseService, private fb: FormBuilder, private http: HttpClient) {
+  constructor(private service: BaseService, private fb: FormBuilder, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -152,5 +153,20 @@ export class ReturnComponent implements OnInit {
 
   hidedamagePopup() {
     this.damageVisible = false;
+  }
+
+  cancelRequest() {
+    const payload = {
+      ...this.rentalObj,
+      status: "Cancelled"
+    }
+    this.service.postRequest(payload,`${ApiConstants.RENTAL_CONTROLLER}/ChangeStatus`)
+      .subscribe({
+        next: (resp) => {
+          console.log(resp.data);
+          this.service.showToast("Success", "success", "Request has been cancelled successfully");
+          this.router.navigateByUrl("/home").then();
+        }
+      })
   }
 }

@@ -42,6 +42,12 @@
                         <img src="/assets/Images/icons/white/arrow-right.svg" />
                     </div>
                 </button>
+              <button (click)="cancelRequest()" *ngIf="rentalObj.status==='Waiting'">
+                <div class="gen-bil-btn">
+                  <p>Cancel Request</p>
+                  <img src="/assets/Images/icons/white/arrow-right.svg" />
+                </div>
+              </button>
             </div>
         </ng-container>
     </div>
@@ -141,13 +147,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <p class="fixed-margin">Others (specify): </p>
                 <input class="damage-field" placeholder="Parts..." required />
 
                 <p class="fixed-margin">Describe the damages: </p>
                 <input class="damage-field" placeholder="Type here..." required />
-        
+
                 <div class="damage-btns-cont">
                     <button class="damage-button-cancel pointer" (click)="hidedamagePopup()">Cancel</button>
                     <button class="damage-button pointer" type="submit">Submit</button>

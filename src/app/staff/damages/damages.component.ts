@@ -17,7 +17,7 @@ export class DamagesComponent {
   formBuilder: any;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
-  
+
   private fetchConfigList() {
     LoaderService.show();
     this.service.getRequest(`${ApiConstants.CONFIG_CONTROLLER}`)
@@ -39,14 +39,13 @@ export class DamagesComponent {
   }
 
   ngOnInit(): void {
-    this.staffForm = this.formBuilder.group({
-      Email: ['', Validators.required],
-      Password: ['', Validators.required],
-      ConfirmPassword: ['', Validators.required],
-      Phone: ['', Validators.required],
-      Address: ['', Validators.required], 
-      Name: ['', Validators.required],
-      Role: [1, Validators.required]
+    this.staffForm = this.fb.group({
+      DamageID: ['', Validators.required],
+      RentalID: ['', Validators.required],
+      Description: ['', Validators.required],
+      Damages: ['', Validators.required],
+      CustomerName: ['', Validators.required],
+      Cost: ['', Validators.required],
     })
   }
 
