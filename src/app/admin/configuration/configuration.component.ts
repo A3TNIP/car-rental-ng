@@ -47,7 +47,6 @@ export class ConfigurationComponent implements OnInit {
   }
 
   public deleteConfig(config: any) {
-    console.log('url', `${ApiConstants.CONFIG_CONTROLLER}/${config.id}`);
     LoaderService.show();
     this.service.deleteRequest(`${ApiConstants.CONFIG_CONTROLLER}/${config.id}`).subscribe({
       next: (res: any) => {
