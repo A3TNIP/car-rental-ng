@@ -8,6 +8,8 @@ import {ActivatedRoute, NavigationStart, Router} from "@angular/router";
 })
 export class CarDetailComponent implements OnInit {
   rentCarVisible: boolean = false;
+  carData!:any;
+  rentPayload!:any;
   constructor(private route: ActivatedRoute, private router: Router) {
 
   }
@@ -18,6 +20,8 @@ export class CarDetailComponent implements OnInit {
 
   private getCar() {
     const car = localStorage.getItem("viewingCar")!;
+    this.carData = JSON.parse(car);
+    this.rentPayload.carId = this.carData.carId;
     console.log(JSON.parse(car));
   }
 

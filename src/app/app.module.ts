@@ -11,7 +11,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastModule} from "primeng/toast";
 import { FormsModule } from '@angular/forms';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
-
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,7 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     BrowserAnimationsModule,
     ToastModule,
     FormsModule,
+    CalendarModule,
   ],
   providers: [
     MessageService,

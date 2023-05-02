@@ -5,23 +5,26 @@
             <img src="/assets/Images/lexus-lfa.jpg" class="detail-card-img" />
             <div class="detail-card-info">
                 <div class="detail-card-info-top">
-                    <div class="detail-card-info-title">Lexus LFA</div>
-            
+                    <div class="detail-card-info-title">{{this.carData.brand}} {{this.carData.model}}</div>
+
                     <button class="rent-now-btn-cont">
                         <div class="rent-history-btn">View Rent History</div>
                     </button>
                 </div>
-                
                 <div class="detail-card-info-bot">
-                    <p>Rate: </p>
-                    <p>Rent Date: </p>
-                    <p>From: To:</p>
-                    <p>Total Days: </p>
-                    <p>Verifications: </p>
+                  <p>Rate: {{this.carData.rate}}</p>
+
+                  From:<p-calendar [(ngModel)]="rentPayload.startDate" placeholder="From"></p-calendar>
+
+                  To:<p-calendar [(ngModel)]="rentPayload.endDate"  placeholder="To"></p-calendar>
+
+                  <p>Total Days: </p>
+
+                  <p>Verifications: </p>
                 </div>
             </div>
         </div>
-    
+
         <button class="rent-now-btn-cont" (click)="showrentcarPopup()">
             <div class="rent-now-btn">
                 Rent Now
