@@ -19,7 +19,7 @@ export class AuthenticationService {
 
   public logout() {
     localStorage.clear();
-    this.router.navigate(['/login']).then();
+    this.router.navigate(['/home']).then();
   }
 
   public isAuthenticated(): boolean {

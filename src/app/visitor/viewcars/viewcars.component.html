@@ -1,1 +1,26 @@
-<p>viewcars works!</p>
+<div class="history-container">
+  <div class="history-top-cont">
+    <p class="profile-title">Available Cars</p>
+    <div class="profile-data-items">
+    </div>
+  </div>
+
+  <div class="history-detail-container">
+    <div class="history-content">
+      <ng-container *ngIf="availableCars && availableCars.length > 0">
+        <div class="history-items" *ngFor="let car of availableCars">
+          <img [src]="car.imageUrl ? car.imageUrl : '/assets/Images/lexus-lfa.jpg'" class="history-item-img" />
+          <div class="history-details">
+            <p class="history-item-sub">{{ car.make }} {{ car.model }}</p>
+            <p>Rate: {{ car.discountedRate }}</p>
+            <p>Color: {{ car.color }}</p>
+            <p>Availability: <span [ngClass]="car.status === 'available' ? 'completed-status' : 'pending-status'">{{ car.status }}</span></p>
+          </div>
+          <div><button style="background-color: orange;padding:4px; margin:5px">View Rent History</button><button style="background-color: green; padding:4px; margin:5px" [disabled]="car.status !== 'available'">Rent Now</button></div>
+
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>

@@ -1,35 +1,35 @@
 <div class="return-container">
     <div class="return-title">
-        Return Rented Car
+        Rent
     </div>
 
-    <div class="return-card">
+    <div class="return-card" *ngIf="carObj">
         <div class="return-card-content">
             <div class="return-card-align">
                 <img src="/assets/Images/lexus-lfa.jpg" class="return-card-img" />
                 <div class="return-card-details">
-                    <p class="returncard-title">Lexus LFA</p>
-                    <p>Rate: </p>
-                    <p>Rented Date: </p>
-                    <p>From: </p>
-                    <p>To: </p>
-                    <p>Days Overdue: </p>
-                    <p>Total Days: </p>
+                    <p class="returncard-title">{{carObj.brand}} {{carObj.model}}</p>
+                    <p>Rate: {{carObj.rate}}</p>
+                    <p>From: {{rentalObj.startDate | date}}</p>
+                    <p>To: {{rentalObj.endDate | date}}</p>
+<!--                    <p>Discount: {{response.discount}}%</p>-->
+<!--                    <p>Total Price: {{response.totalAmount}}</p>-->
+                  <p style="color: #48BB78" *ngIf="billPaid">Bill already paid</p>
                 </div>
             </div>
         </div>
-        
-        <div class="return-card-btn">
-            <a routerLink="/customer/damages">
+
+        <div class="return-card-btn" *ngIf="!billPaid">
+            <button>
                 <div class="report-dmg-btn">
                     <p>Report Damage</p>
                     <img src="/assets/Images/icons/white/car-damage.svg" />
                 </div>
             </a>
 
-            <button (click)="showbillingPopup()">
+            <button (click)="showbillingPopup()" *ngIf="response">
                 <div class="gen-bil-btn">
-                    <p>Generate Bill</p>
+                    <p>View Bill</p>
                     <img src="/assets/Images/icons/white/arrow-right.svg" />
                 </div>
             </button>
@@ -38,21 +38,19 @@
 </div>
 
 <p-dialog [(visible)]="billingVisible" [style]="{'width': '400px'}">
-    <div class="popup-container" id="popupbilling">
+    <div class="popup-container" id="popupbilling" *ngIf="response">
       <div class="popup-child">
         <p class="popup-title">Rent Billing</p>
-  
+
         <div>
             <div class="billing-details-cont">
-                <p>Name: </p>
-                <p>Memember Type: </p>
-                <p>Rent Cost: </p>
-                <p>Discount: </p>
-                <p>Offer Discount: </p>
-                <p>Damage Cost: </p>
-                <p>Discount Cost: </p>
+                <p>Rate: {{response.rate}}</p>
+                <p *ngIf="rentalObj">Days: {{rentDays}}</p>
+                <p>Due Date: {{response.dueDate | date}}</p>
+                <p>Discount: {{response.discount}}</p>
+                <p>Damage Cost: {{response.repairCost}}</p>
             </div>
-            <p class="billing-total-cont">Total Cost: </p>
+            <p class="billing-total-cont">Total Cost: {{response.totalAmount}}</p>
         </div>
 
         <div class="billing-card-btn">
@@ -61,12 +59,30 @@
                     Cancel
                 </div>
             </button>
-            <button class="popup-close">
+            <button class="popup-close" (click)="showPayment = true">
                 <div class="pay-staff-btn">
-                    Pay Staff
+                    Khalti Pay
                 </div>
             </button>
         </div>
       </div>
     </div>
+</p-dialog>
+
+<p-dialog [(visible)]="showPayment">
+  <ng-container *ngIf="paymentStep === 'PIN'; else tOtp">
+    <form [formGroup]="paymentInitiationForm" (submit)="initiatePayment()">
+      <input formControlName="mobile" placeholder="Phone Number">
+      <input formControlName="transactionPin" placeholder="PIN Code">
+      <button type="submit">Submit</button>
+    </form>
+
+  </ng-container>
+
+  <ng-template #tOtp>
+    <form [formGroup]="paymentOtpForm" (submit)="confirmPayment()">
+      <input formControlName="confirmationCode" placeholder="OTP">
+      <button type="submit">Submit</button>
+    </form>
+  </ng-template>
 </p-dialog>

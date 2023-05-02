@@ -47,7 +47,7 @@
       <p class="sub-title">Admin</p>
 
       <a>
-        <div class="nav-items" routerLink="/profile" routerLinkActive="active">
+        <div class="nav-items" routerLink="admin/profile" routerLinkActive="active">
           <div class="navitm-container" routerLinkActive="active">
             <img src="/assets/Images/icons/teal/user2.svg" />
           </div>
@@ -55,7 +55,7 @@
         </div>
       </a>
       <a>
-        <div class="nav-items" routerLink="/signupadmin" routerLinkActive="active">
+        <div class="nav-items" routerLink="admin/signupadmin" routerLinkActive="active">
           <div class="navitm-container" routerLinkActive="active">
             <img src="/assets/Images/icons/teal/document.svg" />
           </div>
@@ -63,7 +63,7 @@
         </div>
       </a>
       <a>
-        <div class="nav-items" routerLink="/signupstaff" routerLinkActive="active">
+        <div class="nav-items" routerLink="admin/signupstaff" routerLinkActive="active">
           <div class="navitm-container" routerLinkActive="active">
             <img src="/assets/Images/icons/teal/rocket.svg" />
           </div>
@@ -71,7 +71,7 @@
         </div>
       </a>
       <a>
-        <div class="nav-items" routerLink="/config" routerLinkActive="active">
+        <div class="nav-items" routerLink="admin/config" routerLinkActive="active">
           <div class="navitm-container" routerLinkActive="active">
             <img src="/assets/Images/icons/teal/wrench.svg" />
           </div>
@@ -83,7 +83,7 @@
 
   <div>
     <a>
-      <div class="nav-items" routerLink="/config" routerLinkActive="active">
+      <div class="nav-items" (click)="service.logout()">
         <div class="navitm-container" routerLinkActive="active">
           <img src="/assets/Images/icons/teal/logout.svg" />
         </div>

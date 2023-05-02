@@ -9,8 +9,8 @@ import { ReturnComponent } from './return/return.component';
 import { HistoryComponent } from './history/history.component';
 import {DialogModule} from "primeng/dialog";
 import { ProfileComponent } from './profile/profile.component';
-import { DamagesComponent } from './damages/damages.component';
-
+import {ReactiveFormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -21,11 +21,13 @@ import { DamagesComponent } from './damages/damages.component';
         ProfileComponent,
         DamagesComponent
     ],
-    imports: [
-        CommonModule,
-        CustomerRoutingModule,
-        CustomCommonModule,
-        DialogModule
-    ]
+  imports: [
+    CommonModule,
+    CustomerRoutingModule,
+    CustomCommonModule,
+    DialogModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ]
 })
 export class CustomerModule { }

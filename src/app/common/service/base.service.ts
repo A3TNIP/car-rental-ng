@@ -16,7 +16,6 @@ export class BaseService extends AuthenticationService {
     super(http, router);
   }
 
-  private baseUrl = ApiConstants.API_URL;
 
   public showToast(message: string, type: string = 'success', detail: string = ''): void {
     this.messageService.add({severity: type, summary: message, detail: detail});
@@ -31,7 +30,7 @@ export class BaseService extends AuthenticationService {
    */
   public postRequest<T = any>(model: any, url: string, noMessage = false): Observable<BaseResponseModel<T>> {
     // @ts-ignore
-    return this.http.post<T>(this.baseUrl + url, model)
+    return this.http.post<T>(url, model)
       .pipe(
         catchError(this.handleError<T>(undefined, noMessage))
       );
@@ -42,7 +41,7 @@ export class BaseService extends AuthenticationService {
    */
   public getRequest<T = any>(url: string, noMessage = false): Observable<BaseResponseModel<T>> {
     // @ts-ignore
-    return this.http.get<T>(this.baseUrl + url)
+    return this.http.get<T>(url)
       .pipe(
         catchError(this.handleError<T>(undefined, noMessage))
       );
@@ -57,7 +56,7 @@ export class BaseService extends AuthenticationService {
    */
   public putRequest<T = any>(model: any, url: string, noMessage = false): Observable<BaseResponseModel<T>> {
     // @ts-ignore
-    return this.http.put<T>(this.baseUrl + url, model)
+    return this.http.put<T>(url, model)
       .pipe(
         catchError(this.handleError<T>(undefined, noMessage))
       );
@@ -72,7 +71,7 @@ export class BaseService extends AuthenticationService {
    */
   public patchRequest<T = any>(model: any, url: string, noMessage = false): Observable<BaseResponseModel<T>> {
     // @ts-ignore
-    return this.http.patch<T>(this.baseUrl + url, model)
+    return this.http.patch<T>(url, model)
       .pipe(
         catchError(this.handleError<T>(undefined, noMessage))
       );
@@ -82,7 +81,7 @@ export class BaseService extends AuthenticationService {
    * DELETE: delete the data from the server
    */
   public deleteRequest<T = any>(apiUrl: string): Observable<any> {
-    return this.http.delete<T>(this.baseUrl + apiUrl)
+    return this.http.delete<T>(apiUrl)
       .pipe(
         catchError(this.handleError<T>(undefined))
       );

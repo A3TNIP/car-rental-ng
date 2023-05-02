@@ -1,18 +1,12 @@
 <div class="history-container">
     <div class="history-top-cont">
-        <p class="profile-title">Ryan Linkerton</p>
+        <p class="profile-title">{{userDto.name.split(' ')[0]}}'s Rental History</p>
         <div class="profile-data-items">
             <div class="profile-data-item-container">
-                <p>Rents Completed: </p>
+                <p>Rents Completed: {{totalRentalsMade}} </p>
                 <div class="profile-data-icon-container">
-                    <img src="/assets/Images/icons/white/car.svg" />
-                </div>
-            </div>
 
-            <div class="profile-data-item-container">
-                <p>Member Type:</p>
-                <div class="profile-data-icon-container">
-                    <img src="/assets/Images/icons/white/user-type.svg" />
+                    <img src="/assets/Images/icons/white/car.svg" />
                 </div>
             </div>
         </div>
@@ -23,72 +17,30 @@
             <div class="view-rents-btn-cont">
                 <a routerLink="/customer/return">
                     <div class="rent-button">
-                        View all rents >>
+                        Current Rent >>
                     </div>
                 </a>
             </div>
         </div>
 
         <div class="history-content">
-            <div class="history-items">
-                <img src="/assets/Images/lexus-lfa.jpg" class="history-item-img" />
+            <ng-container *ngIf="rentedCars && rentedCars.length > 0; else noHistory">
+              <div class="history-items" *ngFor="let item of rentedCars">
+                <img [src]="item.imageUrl ? item.imageUrl : '/assets/Images/lexus-lfa.jpg'" class="history-item-img" />
                 <div class="history-details">
-                    <p class="history-item-sub">Lexus LFA</p>
-                    <p>Total Cost: </p>
-                    <p>Payment Confirmation: </p>
-                    <p>Rate: </p>
-                    <p>Rented From: </p>
-                    <p>Rented To: </p>
-                    <p>Total Days Rented: </p>
-                    <p>Damages Cost: </p>
-                    <p>Discount: </p>
+                  <p class="history-item-sub">{{item.car.model}}</p>
+                  <p>Total Cost: {{item.totalPrice}}</p>
+                  <p>Payment Confirmation: <span [ngClass]="item.status === 'Completed' ? 'completed-status' : 'pending-status'">{{ item.status }}</span></p>
+                  <p>Rate: {{item.car.rate}}</p>
+                  <p>Rented From: {{item.startDate | date:'dd/MM/yyyy'}}</p>
+                  <p>Rented To: {{item.endDate | date:'dd/MM/yyyy'}}</p>
+                  <p>Discount: {{item.discount}}</p>
                 </div>
-            </div>
-
-            <div class="history-items">
-                <img src="/assets/Images/lexus-lfa.jpg" class="history-item-img" />
-                <div class="history-details">
-                    <p class="history-item-sub">Lexus LFA</p>
-                    <p>Total Cost: </p>
-                    <p>Payment Confirmation: </p>
-                    <p>Rate: </p>
-                    <p>Rented From: </p>
-                    <p>Rented To: </p>
-                    <p>Total Days Rented: </p>
-                    <p>Damages Cost: </p>
-                    <p>Discount: </p>
-                </div>
-            </div>
-
-            <div class="history-items">
-                <img src="/assets/Images/lexus-lfa.jpg" class="history-item-img" />
-                <div class="history-details">
-                    <p class="history-item-sub">Lexus LFA</p>
-                    <p>Total Cost: </p>
-                    <p>Payment Confirmation: </p>
-                    <p>Rate: </p>
-                    <p>Rented From: </p>
-                    <p>Rented To: </p>
-                    <p>Total Days Rented: </p>
-                    <p>Damages Cost: </p>
-                    <p>Discount: </p>
-                </div>
-            </div>
-
-            <div class="history-items">
-                <img src="/assets/Images/lexus-lfa.jpg" class="history-item-img" />
-                <div class="history-details">
-                    <p class="history-item-sub">Lexus LFA</p>
-                    <p>Total Cost: </p>
-                    <p>Payment Confirmation: </p>
-                    <p>Rate: </p>
-                    <p>Rented From: </p>
-                    <p>Rented To: </p>
-                    <p>Total Days Rented: </p>
-                    <p>Damages Cost: </p>
-                    <p>Discount: </p>
-                </div>
-            </div>
-        </div>
+              </div>
+            </ng-container>
+            <ng-template #noHistory>
+              <p>No Rental History</p>
+            </ng-template>
+          </div>
     </div>
 </div>
