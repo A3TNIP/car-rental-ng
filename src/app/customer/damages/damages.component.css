@@ -1,0 +1,7 @@
+.damages-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0% 12%;
+    font-family: 'Poppins', sans-serif;
+}

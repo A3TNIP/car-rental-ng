@@ -9,6 +9,7 @@ import { ReturnComponent } from './return/return.component';
 import { HistoryComponent } from './history/history.component';
 import {DialogModule} from "primeng/dialog";
 import { ProfileComponent } from './profile/profile.component';
+import { DamagesComponent } from './damages/damages.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
         CustomerLandingComponent,
         ReturnComponent,
         HistoryComponent,
-        ProfileComponent
+        ProfileComponent,
+        DamagesComponent
     ],
     imports: [
         CommonModule,
