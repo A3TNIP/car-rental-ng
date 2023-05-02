@@ -4,29 +4,81 @@
     </div>
 </div>
 
+<div class="config-entry">
+  <form [formGroup]="carForm" (ngSubmit)="isUpdate ? updateCar(carForm.value) : addCar(carForm.value)">
+    <div class="entry-fields">
+      <label for="brand">Brand:</label>
+      <input class="input-field" type="text" id="brand" formControlName="brand">
+    </div>
+    <div class="entry-fields">
+      <label for="model">Model:</label>
+      <input class="input-field" type="text" id="model" formControlName="model">
+    </div>
+    <div class="entry-fields">
+      <label for="color">Color:</label>
+      <input class="input-field" type="text" id="color" formControlName="color">
+    </div>
+    <div class="entry-fields">
+      <label for="buildYear">Build Year:</label>
+      <input class="input-field" type="text" id="buildYear" formControlName="buildYear">
+    </div>
+    <div class="entry-fields">
+      <label for="status">Status:</label>
+      <input class="input-field" type="text" id="status" formControlName="status">
+    </div>
+    <div class="entry-fields">
+      <label for="rate">Rate:</label>
+      <input class="input-field" type="text" id="rate" formControlName="rate">
+    </div>
+    <div class="entry-fields">
+      <label for="licensePlate">License Plate:</label>
+      <input class="input-field" type="text" id="licensePlate" formControlName="licensePlate">
+    </div>
+    <button type="submit" [disabled]="carForm.invalid">
+      <div class="add-config-btn pointer">
+        {{ isUpdate ? 'Update' : 'Add' }}
+      </div>
+    </button>
+
+    <button (click)="resetForm()" *ngIf="isUpdate">
+      <div class="add-config-btn pointer">
+        Cancel
+      </div>
+    </button>
+  </form>
+</div>
+
 <div class="tables-container">
     <div class="table-style">
-      <p-table [value]="configurationData" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table [value]="carList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10" [paginator]="true">
         <ng-template pTemplate="header">
           <tr class="table-data-format">
-            <th>Code</th>
-            <th>Key</th>
-            <th>Value</th>
-            <th>Action</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Build Year</th>
+            <th>Status</th>
+            <th>Rate</th>
+            <th>License Plate</th>
+            <th>Actions</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-config let-index="index">
+        <ng-template pTemplate="body" let-car let-index="index">
           <tr class="table-data-format">
-            <td>{{ config.code }}</td>
-            <td>{{ config.key }}</td>
-            <td>{{ config.value }}</td>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.color }}</td>
+            <td>{{ car.buildYear }}</td>
+            <td>{{ car.status }}</td>
+            <td>{{ car.rate }}</td>
+            <td>{{ car.licensePlate }}</td>
             <td>
-              <button>
+              <button (click)="populateForm(car)">
                 <div class="add-config-btn pointer">
                   Edit
                 </div>
               </button>
-              <button>
+              <button (click)="deleteCar(car)">
                 <div class="add-config-btn pointer">
                   Delete
                 </div>

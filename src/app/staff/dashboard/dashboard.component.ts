@@ -290,7 +290,6 @@ export class DashboardComponent implements OnInit {
     this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.MOST_RENTED_CAR}`).subscribe({
       next: (res: any) => {
         this.mostRentedCar = res.data;
-        console.log('most rented car chai yo ho',this.mostRentedCar);
       },
       error: (err: any) => {
         console.error('Failed to get Frequently Rented Car', err);
@@ -303,7 +302,6 @@ export class DashboardComponent implements OnInit {
     this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.LEAST_RENTED_CAR}`).subscribe({
       next: (res: any) => {
         this.leastRentedCar = res.data;
-        console.log('least rented car chai yo ho',this.leastRentedCar);
       },
       error: (err: any) => {
         console.error('Failed to get Least Rented Car', err);
@@ -314,7 +312,6 @@ export class DashboardComponent implements OnInit {
     this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.CUSTOMER}`).subscribe({
       next: (res: any) => {
         this.customerList = res.dataList;
-        console.log('customer list chai yo ho',this.customerList);
       },
       error: (err: any) => {
         console.error('Failed to get users', err);
