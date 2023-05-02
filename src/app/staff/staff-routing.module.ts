@@ -7,6 +7,7 @@ import {BillingListComponent} from "./billing-list/billing-list.component";
 import {CarListComponent} from "./car-list/car-list.component";
 import {DamagesComponent} from "./damages/damages.component";
 import {RentalListComponent} from "./rental-list/rental-list.component";
+import {ClientListComponent} from "./client-list/client-list.component";
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
       {path: "", redirectTo: "dashboard", pathMatch: "full"},
       {path: "bills", component: BillingListComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
       {path: "cars", component: CarListComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
-      {path: "clients", component: CarListComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
+      {path: "clients", component: ClientListComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
       {path: "damages", component: DamagesComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
       {path: "rentals", component: RentalListComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
     ]

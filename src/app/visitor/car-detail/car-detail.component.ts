@@ -8,6 +8,8 @@ import {ActivatedRoute, NavigationStart, Router} from "@angular/router";
 })
 export class CarDetailComponent implements OnInit {
   rentCarVisible: boolean = false;
+  public car!: any;
+  public disabledDates!: any[];
   constructor(private route: ActivatedRoute, private router: Router) {
 
   }
@@ -17,8 +19,9 @@ export class CarDetailComponent implements OnInit {
   }
 
   private getCar() {
-    const car = localStorage.getItem("viewingCar")!;
-    console.log(JSON.parse(car));
+    this.car = JSON.parse(localStorage.getItem("viewingCar")!);
+    this.disabledDates = this.car.rentedDates.map((x: string) => new Date(x));
+    console.log(this.car)
   }
 
   showrentcarPopup() {
