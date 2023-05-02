@@ -134,7 +134,7 @@
           <div>View History</div>
         </div>
       </div>
-      
+
       <div class="least-freq-item">
         <p class="least-freq-title">Least Rented Car:</p>
         <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
@@ -192,13 +192,13 @@
 
       <form [formGroup]="adminForm">
         <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
-        <input class="input-field " type="text" id="phone" formControlName="Phone" placeholder="Phone" required />
+        <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone Number" required />
         <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
         <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
         <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
         <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
 
-        <button class="popup-button" type="submit">Register Now</button>
+        <button class="popup-button" type="submit" (click)="registerAdmin()">Register Now</button>
       </form>
     </div>
   </div>
@@ -215,13 +215,13 @@
 
       <form [formGroup]="staffForm">
         <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
-        <input class="input-field " type="text" id="phone" formControlName="Phone" placeholder="Phone" required />
+        <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone Number" required />
         <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
         <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
         <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
         <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
 
-        <button class="popup-button" type="submit">Register Now</button>
+        <button class="popup-button" type="submit" (click)="registerStaff()">Register Now</button>
       </form>
     </div>
   </div>
@@ -237,15 +237,18 @@
       <p class="popup-subhead">Add Cars</p>
 
       <form [formGroup]="carForm">
-        <input class="input-field " type="text" id="model" formControlName="Model" placeholder="Model" required />
-        <input class="input-field " type="text" id="color" formControlName="Color" placeholder="Color" required />
-        <input class="input-field " type="text" id="license" formControlName="License" placeholder="License" required />
-        <input class="input-field " type="text" id="rate" formControlName="Rate" placeholder="Rate" required />
+        <input class="input-field " type="text" id="model" formControlName="model" placeholder="Model" required />
+        <input class="input-field " type="text" id="make" formControlName="make" placeholder="Maker" required />
+        <input class="input-field " type="text" id="color" formControlName="color" placeholder="color" required />
+        <input class="input-field " type="text" id="buildYear" formControlName="buildYear" placeholder="buildYear" required />
+        <input class="input-field " type="text" id="brand" formControlName="brand" placeholder="brand" required />
+        <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="rate" required />
+        <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="licensePlate" required />
         <div class="upload-btn-cont">
           <button class="upload-btn" type="submit">Upload Documents</button>
           <img src="/assets/Images/icons/white/upload.svg" />
         </div>
-        <button class="popup-button" type="submit">Add Now</button>
+        <button class="popup-button" type="submit" (click)="registerCar()">Add Now</button>
       </form>
     </div>
   </div>

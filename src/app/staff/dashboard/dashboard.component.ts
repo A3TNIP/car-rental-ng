@@ -172,48 +172,48 @@ export class DashboardComponent implements OnInit{
       },
     });
 
-    //Total User Count 
+    //Total User Count
 
     this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.ALL_CUSTOMER_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalUserCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error('Failed to get total user count', err);
       },
     });
 
-    //Total Active User Count 
+    //Total Active User Count
 
     this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.REGULAR_CUSTOMER_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalRegularUserCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error('Failed to get total active count', err);
       },
     });
 
 
-    //Total Rented Car Count 
+    //Total Rented Car Count
 
     this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalCarsOnRentCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error('Failed to get total rent car count', err);
       },
     });
 
-    //Total Rented Car Count 
+    //Total Rented Car Count
 
     this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}${ApiConstants.DAMAGE_COUNT}`).subscribe({
       next: (res: any) => {
         this.totalDamageCount = res.data;
       },
       error: (err: any) => {
-        console.error('Failed to update configuration', err);
+        console.error('Failed to get total rented car count', err);
       },
     });
 
@@ -222,7 +222,7 @@ export class DashboardComponent implements OnInit{
       Email: ['', Validators.required],
       Password: ['', Validators.required],
       ConfirmPassword: ['', Validators.required],
-      Phone: ['', Validators.required],
+      PhoneNumber: ['', Validators.required],
       Address: ['', Validators.required],
       Name: ['', Validators.required],
       Role: [0, Validators.required]
@@ -232,19 +232,21 @@ export class DashboardComponent implements OnInit{
       Email: ['', Validators.required],
       Password: ['', Validators.required],
       ConfirmPassword: ['', Validators.required],
-      Phone: ['', Validators.required],
+      PhoneNumber: ['', Validators.required],
       Address: ['', Validators.required],
       Name: ['', Validators.required],
       Role: [1, Validators.required]
     })
 
     this.carForm = this.formBuilder.group({
-      Model: ['', Validators.required],
-      Color: ['', Validators.required],
-      License: ['', Validators.required],
-      Rate: ['', Validators.required],
-      Address: ['', Validators.required],
-      Role: [2, Validators.required]
+      model: ['', Validators.required],
+      make: ['', Validators.required],
+      color: ['', Validators.required],
+      buildYear: ['', Validators.required],
+      brand: ['', Validators.required],
+      rate: ['', Validators.required],
+      licensePlate: ['', Validators.required],
+      status: ['Available', Validators.required]
     })
   }
 
@@ -258,5 +260,63 @@ export class DashboardComponent implements OnInit{
 
   hidecarPopup() {
     this.carVisible = false;
+  }
+
+  public registerAdmin(){
+    if (this.adminForm.invalid) return;
+    if (this.adminForm.get('Password')?.value !== this.adminForm.get('ConfirmPassword')?.value) return;
+    this.adminForm.value.ConfirmPassword;
+    const payload = this.adminForm.getRawValue();
+    this.service.postRequest(payload,`${ApiConstants.AUTHENTICATION_CONTROLLER}${ApiConstants.REGISTER}`).subscribe({
+      next: (res: any) => {
+        if (res.isSuccess){
+          this.service.showToast('Admin Registered Successfully');
+          this.adminForm.reset();
+          this.adminVisible = false;
+        }
+      },
+      error: (err: any) => {
+        console.error('Failed to register admin', err);
+      },
+    });
+  }
+
+  public registerCar(){
+    if (this.carForm.invalid) return;
+    const payload = {
+      ...this.carForm.getRawValue(),
+      buildYear: +this.carForm.get('buildYear')!.value
+    }
+    this.service.postRequest(payload,`${ApiConstants.CARS_CONTROLLER}`).subscribe({
+      next: (res: any) => {
+        if (res.data){
+          this.service.showToast('Car Added Successfully');
+          this.carForm.reset();
+          this.carVisible = false;
+        }
+      },
+      error: (err: any) => {
+        console.error('Failed to add car', err);
+      },
+    });
+  }
+
+  public registerStaff(){
+    if (this.staffForm.invalid) return;
+    if (this.staffForm.get('Password')?.value !== this.staffForm.get('ConfirmPassword')?.value) return;
+    this.staffForm.value.ConfirmPassword;
+    const payload = this.staffForm.getRawValue();
+    this.service.postRequest(payload,`${ApiConstants.AUTHENTICATION_CONTROLLER}${ApiConstants.REGISTER}`).subscribe({
+      next: (res: any) => {
+        if (res.isSuccess){
+          this.service.showToast('Staff Registered Successfully');
+          this.staffForm.reset();
+          this.staffVisible = false;
+        }
+      },
+      error: (err: any) => {
+        console.error('Failed to register staff', err);
+      },
+    });
   }
 }
