@@ -169,3 +169,19 @@
   max-width: 400px;
   max-height: 180px;
 }
+
+.border-brown {
+  border-color: #93592C;
+}
+
+.border-cyan {
+  border-color: #4FD1C5;
+}
+
+.background-brown {
+  background-color: #93592C;
+}
+
+.background-cyan {
+  background-color: #4FD1C5;
+}

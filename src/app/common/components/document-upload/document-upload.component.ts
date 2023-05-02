@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 export class DocumentUploadComponent implements OnInit{
   @Input("Type") public type : "Document" | "Image" = "Document";
   @Input("Extra") public extra?: any;
+  @Input("Role") public role: string = "Customer";
   @ViewChild('tFileUploadButton') uploadButton !: FileUpload;
 
   public selectedDocument: string = "citizenship";
