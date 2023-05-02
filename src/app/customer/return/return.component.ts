@@ -11,8 +11,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class ReturnComponent implements OnInit {
   public response!: any;
+  public billPaid: boolean = false;
 
-  public rentalId: string = "8bb86a26-44f8-4140-9b92-bc5a6920d10b";
+  public rentalId!: string;
   public rentalObj!: any;
   public rentDays!: number;
   public carObj!: any;
@@ -26,7 +27,7 @@ export class ReturnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBillingInfo();
+    this.getLatestRental();
     this.paymentInitiationForm = this.fb.group({
       mobile: ['', Validators.required],
       transactionPin: ['', Validators.required],
@@ -41,37 +42,50 @@ export class ReturnComponent implements OnInit {
     })
   }
 
+  private getLatestRental() {
+    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}/Latest`)
+      .subscribe({
+        next: (resp) => {
+          if (resp.data) this.rentalId = resp.data.id;
+          else this.service.showToast("Warning", "warn", "No rental found");
+          this.getBillingInfo();
+          console.log(resp.data);
+        }
+      })
+  }
+
   public getBillingInfo() {
     console.log(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.RENT}/${this.rentalId}`);
     this.service.getRequest(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.RENT}/${this.rentalId}`)
       .subscribe({
         next: (resp) => {
           this.response = resp.data;
+          if (resp.message) this.billPaid = true;
           this.paymentInitiationForm.patchValue({
             amount: this.response.totalAmount,
             productIdentity: this.response.billId,
             productName: `Bill for rent - ${this.response.rentalId}`,
           })
           console.log(this.paymentInitiationForm.getRawValue())
-          this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}/${resp.data.rentalId}`)
-            .subscribe({
-              next: (resp) => {
-                this.rentalObj = resp.data;
-                this.rentDays = Math.ceil((new Date(this.rentalObj.endDate).getTime() - new Date(this.rentalObj.startDate).getTime()) / (1000 * 3600 * 24));
-                this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}/${resp.data.carId}`)
-                  .subscribe({
-                    next: (resp) => {
-                      this.carObj = resp.data;
-                      console.log(resp.data)
-                    }
-                  })
-                console.log(resp.data);
-              }
-            })
           console.log(resp.data);
         },
         error: error => {
           this.service.showToast("Error", "error", error.message)
+        }
+      })
+    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}/${this.rentalId}`)
+      .subscribe({
+        next: (resp) => {
+          this.rentalObj = resp.data;
+          this.rentDays = Math.ceil((new Date(this.rentalObj.endDate).getTime() - new Date(this.rentalObj.startDate).getTime()) / (1000 * 3600 * 24));
+          this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}/${resp.data.carId}`)
+            .subscribe({
+              next: (resp) => {
+                this.carObj = resp.data;
+                console.log(resp.data)
+              }
+            })
+          console.log(resp.data);
         }
       })
   }
@@ -104,7 +118,7 @@ export class ReturnComponent implements OnInit {
   private savePayment() {
     const payload = {
       billId: this.response.billId,
-      paymentMode: "KHALTI",
+      paymentMethod: "KHALTI",
       paidAmount: this.response.totalAmount,
       customerId: this.rentalObj.requestedBy
     }

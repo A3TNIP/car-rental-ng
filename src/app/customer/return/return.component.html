@@ -14,11 +14,12 @@
                     <p>To: {{rentalObj.endDate | date}}</p>
 <!--                    <p>Discount: {{response.discount}}%</p>-->
 <!--                    <p>Total Price: {{response.totalAmount}}</p>-->
+                  <p style="color: #48BB78" *ngIf="billPaid">Bill already paid</p>
                 </div>
             </div>
         </div>
 
-        <div class="return-card-btn">
+        <div class="return-card-btn" *ngIf="!billPaid">
             <button>
                 <div class="report-dmg-btn">
                     <p>Report Damage</p>
