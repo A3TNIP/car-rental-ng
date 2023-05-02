@@ -10,6 +10,7 @@ import {RequestInterceptor} from "./common/interceptor/request.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastModule} from "primeng/toast";
 import { FormsModule } from '@angular/forms';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [

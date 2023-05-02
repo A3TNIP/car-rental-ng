@@ -19,6 +19,7 @@ export class AuthenticationService {
 
   public logout() {
     localStorage.clear();
+    console.log('logged out')
     this.router.navigate(['/home']).then();
   }
 

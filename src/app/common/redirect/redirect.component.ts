@@ -51,6 +51,15 @@ export class RedirectComponent implements OnInit{
         this.userService.setCurrentUser(response);
         this.role = response.roleName;
         this.redirect();
+      },
+      error: (err: any) => {
+      //   if error is 401, redirect to home
+        if (err.status === 401) {
+          this.router.navigateByUrl('/home').then(
+            () => location.reload()
+          );
+          LoaderService.hide();
+        }
       }
     })
   }
