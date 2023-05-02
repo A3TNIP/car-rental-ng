@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   currentUser!:any;
   roleName!:any;
   latestRental!:any;
+  showDocumentUpload: boolean = false;
   constructor(private service:BaseService) {
   }
 
@@ -70,7 +71,6 @@ export class ProfileComponent implements OnInit {
   public onSave(){
     this.userDto.name = this.editedUserDto.name;
     this.userDto.address = this.editedUserDto.address;
-    this.userDto.email = this.editedUserDto.email;
     this.userDto.phoneNumber = this.editedUserDto.phoneNumber;
     this.userDto.role = this.roleName;
     this.userDto.password = 'Test@123!';

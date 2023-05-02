@@ -55,6 +55,7 @@ export class RedirectComponent implements OnInit{
       error: (err: any) => {
       //   if error is 401, redirect to home
         if (err.status === 401) {
+          localStorage.clear();
           this.router.navigateByUrl('/home').then(
             () => location.reload()
           );
