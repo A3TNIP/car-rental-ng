@@ -22,10 +22,22 @@
           </div>
 
           <div *ngIf="isEditMode" class="personal-details">
-            <p>Name: <input [(ngModel)]="editedUserDto.name" class="edit-input"></p>
-            <p>Address: <input [(ngModel)]="editedUserDto.address" class="edit-input"></p>
-            <p>Email: <input disabled [(ngModel)]="editedUserDto.email" class="edit-input"></p>
-            <p>Phone Number: <input [(ngModel)]="editedUserDto.phoneNumber" class="edit-input"></p>
+            <div class="edit-profile-item">
+              <p>Name:</p>
+              <input class="input-field" [(ngModel)]="editedUserDto.name">
+            </div>
+            <div class="edit-profile-item">
+              <p>Address: </p>
+              <input class="input-field" [(ngModel)]="editedUserDto.address">
+            </div>
+            <div class="edit-profile-item">
+              <p>Email: </p>
+              <input class="input-field" disabled [(ngModel)]="editedUserDto.email">
+            </div>
+            <div class="edit-profile-item">
+              <p>Phone Number: </p>
+              <input class="input-field" [(ngModel)]="editedUserDto.phoneNumber">
+            </div>
           </div>
 
           <div class="profile-btns">

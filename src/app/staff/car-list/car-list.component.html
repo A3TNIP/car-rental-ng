@@ -4,6 +4,35 @@
     </div>
 </div>
 
+<div class="car-entry">
+    <form>
+      <div class="entry-fields">
+        <label for="code">Code:</label>
+        <input class="input-field" type="text" id="code" >
+      </div>
+      <div class="entry-fields">
+        <label for="key">Key:</label>
+        <input class="input-field" type="text" id="key" >
+      </div>
+      <div class="entry-fields">
+        <label for="value">Value:</label>
+        <input class="input-field" type="text" id="value" >
+      </div>
+      
+      <button type="submit">
+        <div class="add-car-btn pointer">
+          Add
+        </div>
+      </button>
+      
+      <button>
+        <div class="add-car-btn pointer">
+          Cancel
+        </div>
+      </button>
+    </form>
+</div>
+
 <div class="tables-container">
     <div class="table-style">
       <p-table [value]="configurationData" [tableStyle]="{ 'min-width': '50rem' }">

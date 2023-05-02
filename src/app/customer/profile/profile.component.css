@@ -272,3 +272,20 @@ a{
     display: flex;
     gap: 3.5%;
 }
+
+.edit-profile-item{
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    margin: unset;
+}
+
+.input-field {
+    padding: 9px;
+    border-radius: 10px;
+    width: 40%;
+    border: 1.5px solid #E0E2E9;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin: unset;
+}
