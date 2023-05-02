@@ -79,3 +79,20 @@ button{
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
 }
+
+.add-config-btn{
+    background-color: #4FD1C5;
+    font-size: 18px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+    width: 7vw;
+    color: #ffffff;
+    transition: ease-in 0.1s;
+}
+
+    .add-config-btn:hover{
+        background-color: #3ea49a;
+    }
