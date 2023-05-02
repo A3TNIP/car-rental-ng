@@ -1,4 +1,4 @@
-<div class="car-detail-container">
+<div class="car-detail-container" *ngIf="user">
   <p class="car-detail-title">Rent a Car</p>
   <div class="car-detail-card">
     <div class="car-detail-card-top">
@@ -12,17 +12,17 @@
           <p>Rate: {{car.discountedRate}}</p>
           <p>Rent Date:</p>
           <div class="date-pick-cont">
-            <p-calendar (onSelect)="calculateDifference()" [(ngModel)]="startDate" [disabledDates]="disabledDates" placeholder="From"></p-calendar>
+            <p-calendar [disabled]="!(user.hasDocument && user.hasNoBills)" [minDate]="startDate" (onSelect)="calculateDifference()" [(ngModel)]="startDate" [disabledDates]="disabledDates" placeholder="From"></p-calendar>
             <img src="/assets/Images/icons/arrow-right-brown.svg">
-            <p-calendar (onSelect)="calculateDifference()" [(ngModel)]="endDate" [disabledDates]="disabledDates" placeholder="To"></p-calendar>
+            <p-calendar [disabled]="!(user.hasDocument && user.hasNoBills)" [minDate]="endDate" (onSelect)="calculateDifference()" [(ngModel)]="endDate" [disabledDates]="disabledDates" placeholder="To"></p-calendar>
           </div>
           <p>Total Days: {{totalDays}}</p>
-          <p>Total cost: </p>
+          <p>Total cost: {{totalCost}} </p>
         </div>
       </div>
     </div>
 
-    <button class="rent-now-btn-cont" (click)="showrentcarPopup()">
+    <button class="rent-now-btn-cont" [disabled]="!(user.hasDocument && user.hasNoBills)" (click)="showrentcarPopup()">
       <div class="rent-now-btn">
         Rent Now
         <img src="/assets/Images/icons/white/arrow-right.svg"/>
@@ -37,10 +37,9 @@
       <p class="popup-title">Rent Confirmation</p>
 
       <div class="rent-confirm-details">
-        <p>Name: </p>
-        <p>Car Color: </p>
-        <p>Car Model: </p>
-        <p>Car Number: </p>
+        <p>Name: {{car.brand}} {{car.model}}</p>
+        <p>Car Color: {{car.color}}</p>
+        <p>Car Number: {{car.licensePlate}}</p>
       </div>
 
       <div class="rent-confirm-btns">
@@ -50,7 +49,7 @@
           </div>
         </button>
 
-        <button class="rent-confirm-btn-cont">
+        <button class="rent-confirm-btn-cont" (click)="submitRentRequest()">
           <div class="rent-confirm-btn">
             Rent Now
           </div>

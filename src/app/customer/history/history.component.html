@@ -3,7 +3,7 @@
         <p class="profile-title">{{userDto.name.split(' ')[0]}}'s Rental History</p>
         <div class="profile-data-items">
             <div class="profile-data-item-container">
-                <p>Rents Completed: {{totalRentalsMade}} </p>
+                <p>Rents: {{totalRentalsMade}} </p>
                 <div class="profile-data-icon-container">
 
                     <img src="/assets/Images/icons/white/car.svg" />
@@ -29,9 +29,6 @@
                 <img [src]="item.imageUrl ? item.imageUrl : '/assets/Images/lexus-lfa.jpg'" class="history-item-img" />
                 <div class="history-details">
                   <p class="history-item-sub">{{item.car.model}}</p>
-                  <p>Total Cost: {{item.totalPrice}}</p>
-                  <p>Payment Confirmation: <span [ngClass]="item.status === 'Completed' ? 'completed-status' : item.status === 'Approved' ? 'approved-status' : 'pending-status'">{{ item.status }}</span></p>
-                  <p>Rate: {{item.car.rate}}</p>
                   <p>Rented From: {{item.startDate | date:'dd/MM/yyyy'}}</p>
                   <p>Rented To: {{item.endDate | date:'dd/MM/yyyy'}}</p>
                 </div>
