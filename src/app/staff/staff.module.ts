@@ -15,6 +15,7 @@ import {DialogModule} from "primeng/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import { PaymentsComponent } from './payments/payments.component';
 import {ChartModule} from "primeng/chart";
+import { OffersComponent } from './offers/offers.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {ChartModule} from "primeng/chart";
     RentalListComponent,
     DamagesComponent,
     StaffComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    OffersComponent
   ],
     imports: [
         CommonModule,
