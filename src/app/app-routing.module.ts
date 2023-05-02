@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '' , loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule) },
   { path: '' , loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule) },
   { path: '' , loadChildren: () => import('./visitor/visitor.module').then(m => m.VisitorModule) },
+  { path: '' , loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   { path: "redirect", component: RedirectComponent },
   { path: "not-found", component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
