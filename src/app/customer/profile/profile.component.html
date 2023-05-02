@@ -64,11 +64,11 @@
         <p class="profile-last-rent-title">Last Rented Car:</p>
         <img src="/assets/Images/lexus-lfa.jpg" class="profile-last-rent-img" />
         <div class="profile-last-rent-details">
-            <p class="profile-last-rent-sub">Lexus LFA</p>
-            <p>Returned On: </p>
-            <p>Payment Confirmation: </p>
+            <p class="profile-last-rent-sub">{{this.latestRental.car.brand}}  {{this.latestRental.car.model}}</p>
+            <p>Returned On: {{this.latestRental.endDate}}</p>
+            <p>Payment Confirmation: {{this.latestRental.status}}</p>
             <button>
-                <div class="change-pw-btn">
+                <div class="change-pw-btn" *ngIf="this.latestRental.status !== 'Approved'">
                     <p>Return Now</p>
                     <img src="/assets/Images/icons/white/arrow-right.svg" />
                 </div>
