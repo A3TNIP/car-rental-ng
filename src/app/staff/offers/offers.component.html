@@ -1,1 +1,76 @@
-<p>offers works!</p>
+<div class="pagetop-container">
+    <div class="content-title">
+        OFFERS LIST
+    </div>
+
+    <button (click)="showofferPopup()">
+      <div class="add-car-btn pointer">
+        Add
+      </div>
+    </button>
+</div>
+
+<div class="tables-container">
+    <div class="table-style">
+      <p-table [value]="carList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10" [paginator]="true">
+        <ng-template pTemplate="header">
+          <tr class="table-data-format">
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Build Year</th>
+            <th>Status</th>
+            <th>Rate</th>
+            <th>License Plate</th>
+            <th>Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car let-index="index">
+          <tr class="table-data-format">
+            <td>{{ car.brand }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.color }}</td>
+            <td>{{ car.buildYear }}</td>
+            <td>{{ car.status }}</td>
+            <td>{{ car.rate }}</td>
+            <td>{{ car.licensePlate }}</td>
+            <td>
+              <button (click)="populateForm(car)">
+                <div class="add-config-btn pointer">
+                  Edit
+                </div>
+              </button>
+              <button (click)="deleteCar(car)">
+                <div class="add-config-btn pointer">
+                  Delete
+                </div>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+</div>
+
+<p-dialog [(visible)]="offerVisible" [style]="{'width': '400px'}">
+  <div class="popup-container" id="popupoffer">
+    <div class="popup-child">
+      <button (click)="hideofferPopup()" class="popup-close">
+        <img src="/assets/Images/icons/close.svg">
+      </button>
+      <p class="popup-subhead">Add Cars</p>
+
+      <form [formGroup]="offerForm">
+        <input class="input-field " type="text" formControlName="Model" placeholder="Model" required />
+        <input class="input-field " type="text" formControlName="Color" placeholder="Color" required />
+        <input class="input-field " type="text" formControlName="License" placeholder="License" required />
+        <input class="input-field " type="text" formControlName="Rate" placeholder="Rate" required />
+        <div class="upload-btn-cont">
+          <button class="upload-btn" type="submit">Upload Image</button>
+          <img src="/assets/Images/icons/white/upload.svg" />
+        </div>
+        <button class="popup-button" type="submit">Add Now</button>
+      </form>
+    </div>
+  </div>
+</p-dialog>
