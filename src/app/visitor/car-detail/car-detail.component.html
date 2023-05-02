@@ -12,11 +12,11 @@
           <p>Rate: {{car.discountedRate}}</p>
           <p>Rent Date:</p>
           <div class="date-pick-cont">
-            <p-calendar [disabledDates]="disabledDates" placeholder="From"></p-calendar>
+            <p-calendar (onSelect)="calculateDifference()" [(ngModel)]="startDate" [disabledDates]="disabledDates" placeholder="From"></p-calendar>
             <img src="/assets/Images/icons/arrow-right-brown.svg">
-            <p-calendar [disabledDates]="disabledDates" placeholder="To"></p-calendar>
+            <p-calendar (onSelect)="calculateDifference()" [(ngModel)]="endDate" [disabledDates]="disabledDates" placeholder="To"></p-calendar>
           </div>
-          <p>Total Days: </p>
+          <p>Total Days: {{totalDays}}</p>
           <p>Total cost: </p>
         </div>
       </div>

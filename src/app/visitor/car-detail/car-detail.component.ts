@@ -10,12 +10,17 @@ export class CarDetailComponent implements OnInit {
   rentCarVisible: boolean = false;
   public car!: any;
   public disabledDates!: any[];
+  totalDays!: number;
+  startDate: Date = new Date()
+  endDate: Date = new Date()
   constructor(private route: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit(): void {
     this.getCar();
+    // difference of days between startDate and endDate
+    this.calculateDifference();
   }
 
   private getCar() {
@@ -30,5 +35,10 @@ export class CarDetailComponent implements OnInit {
 
   hiderentcarPopup() {
     this.rentCarVisible = false;
+  }
+
+  calculateDifference() {
+    this.totalDays = Math.floor((Date.UTC(this.endDate.getFullYear(), this.endDate.getMonth(), this.endDate.getDate()) -
+      Date.UTC(this.startDate.getFullYear(), this.startDate.getMonth(), this.startDate.getDate())) / (1000 * 60 * 60 * 24));
   }
 }
