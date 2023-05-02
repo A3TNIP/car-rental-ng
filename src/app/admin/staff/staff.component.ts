@@ -49,7 +49,7 @@ export class StaffComponent {
       PhoneNumber: ['', Validators.required],
       Address: ['', Validators.required],
       Name: ['', Validators.required],
-      Role: [2, Validators.required]
+      Role: [1, Validators.required]
     })
   }
 
