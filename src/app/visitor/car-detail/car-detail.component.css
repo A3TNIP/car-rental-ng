@@ -133,6 +133,7 @@ button{
     top: 50%;
     left: 50%;
     z-index: 999;
+    font-family: 'Poppins', sans-serif;
 }
 
 .popup-button {
@@ -163,6 +164,7 @@ button{
     display: flex;
     justify-content: center;
     gap: 5%;
+    font-family: 'Poppins', sans-serif;
 }
 
 .cancel-btn-cont, .rent-confirm-btn-cont{
@@ -170,6 +172,7 @@ button{
     border-radius: 10px;
     font-size: 18px;
     width: 9.5vw;
+    font-family: 'Poppins', sans-serif;
 }
 
 .cancel-btn-cont{
@@ -189,3 +192,10 @@ button{
     .rent-confirm-btn-cont:hover{
         background-color: #693f1e;
     }
+
+.date-pick-cont{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2%;
+}
