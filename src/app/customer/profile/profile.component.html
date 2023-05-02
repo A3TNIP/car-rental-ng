@@ -96,11 +96,10 @@
     <div class="popup-child">
       <p class="popup-title">Change Password</p>
 
-      <form>
-        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Current Password" required />
-        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="New Password" required />
-        <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
-
+      <form [formGroup]="changePasswordForm" (submit)="updatePassword()">
+        <input class="input-field " type="password" id="password" formControlName="oldPassword" placeholder="Current Password" required />
+        <input class="input-field " type="password" id="password" formControlName="newPassword" placeholder="New Password" required />
+        <input class="input-field " type="password" id="confirmpassword" formControlName="confirmPassword" placeholder="Repeat Password" required />
         <div class="changepw-btns-cont">
           <button class="popup-button-cancel pointer" (click)="hidechangepwPopup()">Cancel</button>
           <button class="popup-button pointer" type="submit">Confirm</button>

@@ -148,7 +148,7 @@ export class DashboardComponent implements OnInit {
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
     this.chartOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 1.5,
+      aspectRatio: 1.7,
       plugins: {
         legend: {
           labels: {
