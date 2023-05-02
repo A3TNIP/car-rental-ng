@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { ApiConstants } from 'src/app/common/constants/ApiConstants';
-import { BaseService } from 'src/app/common/service/base.service';
-import { LoaderService } from 'src/app/common/service/loader.service';
+import {ApiConstants} from 'src/app/common/constants/ApiConstants';
+import {BaseService} from 'src/app/common/service/base.service';
+import {LoaderService} from 'src/app/common/service/loader.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
   public products: any[] = [
     {
       id: '1000',
@@ -118,11 +118,13 @@ export class DashboardComponent implements OnInit{
   totalCarsOnRentCount!: string;
   totalStaffCount!: string;
   totalUserCount!: string;
-  totalRegularUserCount!:string;
-  totalRentCount!:string;
-  totalDamageCount!:string;
+  totalRegularUserCount!: string;
+  totalRentCount!: string;
+  totalDamageCount!: string;
+  public chartOptions!: any;
+  public data!: any;
 
-  constructor(private formBuilder: FormBuilder,private service:BaseService) {
+  constructor(private formBuilder: FormBuilder, private service: BaseService) {
   }
 
   showstaffPopup() {
@@ -139,6 +141,71 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     LoaderService.show();
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+    this.chartOptions = {
+      maintainAspectRatio: false,
+      aspectRatio: 1.5,
+      plugins: {
+        legend: {
+          labels: {
+            color: textColor
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: textColorSecondary
+          },
+          grid: {
+            color: surfaceBorder
+          }
+        },
+        y: {
+          ticks: {
+            color: textColorSecondary
+          },
+          grid: {
+            color: surfaceBorder
+          }
+        }
+      }
+    };
+
+
+    this.service.getRequest(`${ApiConstants.PAYMENT_CONTROLLER}/PaymentsByDate`)
+      .subscribe({
+        next: (res) => {
+          const length = res.dataList.length;
+          // subtract length no of days from today;
+          const date = new Date();
+          date.setDate(date.getDate() - length);
+
+          const labels = [];
+          for (let i = 0; i < length; i++) {
+            labels.push(date.toDateString());
+            date.setDate(date.getDate() + 1);
+          }
+          this.data = {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Payments',
+                data: res.dataList,
+                fill: false,
+                tension: 0.1,
+                borderColor: documentStyle.getPropertyValue('--blue-500')
+              }
+            ]
+          }
+
+        }
+      })
+
+
     //TOTAL CARS COUNT
 
     this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CAR_COUNT}`).subscribe({
@@ -172,7 +239,7 @@ export class DashboardComponent implements OnInit{
       },
     });
 
-    //Total User Count 
+    //Total User Count
 
     this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.ALL_CUSTOMER_COUNT}`).subscribe({
       next: (res: any) => {
@@ -183,7 +250,7 @@ export class DashboardComponent implements OnInit{
       },
     });
 
-    //Total Active User Count 
+    //Total Active User Count
 
     this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.REGULAR_CUSTOMER_COUNT}`).subscribe({
       next: (res: any) => {
@@ -195,7 +262,7 @@ export class DashboardComponent implements OnInit{
     });
 
 
-    //Total Rented Car Count 
+    //Total Rented Car Count
 
     this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
       next: (res: any) => {
@@ -206,7 +273,7 @@ export class DashboardComponent implements OnInit{
       },
     });
 
-    //Total Rented Car Count 
+    //Total Rented Car Count
 
     this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}${ApiConstants.DAMAGE_COUNT}`).subscribe({
       next: (res: any) => {

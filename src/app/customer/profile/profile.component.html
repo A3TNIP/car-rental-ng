@@ -12,11 +12,11 @@
             <div class="verification-section">
               <p>Verifications:
               <ng-container *ngIf="userDto.document; else uploadDocument">
-                <i class="fas fa-check-circle"></i>
+                Verified
               </ng-container>
               <ng-template #uploadDocument>
                 <i class="fas fa-times-circle"></i>
-                <button class="updoc-btn pointer">Upload Document</button>
+                <button (click)="showDocumentUpload = true" class="updoc-btn pointer">Upload Document</button>
               </ng-template></p>
             </div>
           </div>
@@ -24,7 +24,7 @@
           <div *ngIf="isEditMode" class="personal-details">
             <p>Name: <input [(ngModel)]="editedUserDto.name" class="edit-input"></p>
             <p>Address: <input [(ngModel)]="editedUserDto.address" class="edit-input"></p>
-            <p>Email: <input [(ngModel)]="editedUserDto.email" class="edit-input"></p>
+            <p>Email: <input disabled [(ngModel)]="editedUserDto.email" class="edit-input"></p>
             <p>Phone Number: <input [(ngModel)]="editedUserDto.phoneNumber" class="edit-input"></p>
           </div>
 
@@ -64,13 +64,12 @@
         <p class="profile-last-rent-title">Last Rented Car:</p>
         <img src="/assets/Images/lexus-lfa.jpg" class="profile-last-rent-img" />
         <div class="profile-last-rent-details">
-            <p class="profile-last-rent-sub">Lexus LFA</p>
-            <p>Returned On: </p>
-            <p>Payment Confirmation: </p>
+            <p class="profile-last-rent-sub">{{this.latestRental.car.brand}}  {{this.latestRental.car.model}}</p>
+            <p>Returned On: {{this.latestRental.endDate | date}}</p>
         </div>
 
         <div class="history-btn-holder">
-            <a routerLink="/customer/history">
+            <button routerLink="/customer/history">
                 <div class="view-history-btn">
                     <img src="/assets/Images/icons/white/reverse.svg" />
                     <p>View History</p>
@@ -98,3 +97,6 @@
     </div>
   </div>
 </p-dialog>
+
+
+<app-document-upload *ngIf="showDocumentUpload"></app-document-upload>

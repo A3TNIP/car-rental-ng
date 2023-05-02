@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
   editedUserDto!: any;
   currentUser!:any;
   roleName!:any;
+  latestRental!:any;
+  showDocumentUpload: boolean = false;
   changepwVisible: boolean = false;
   constructor(private service:BaseService) {
   }
@@ -41,12 +43,35 @@ export class ProfileComponent implements OnInit {
     console.error(err);
   },
     });
+    LoaderService.show();
+
+//GET RENTAL BY USER ID from User Dto
+    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.USER}`,this.userDto).subscribe({
+      next: (res: any) => {
+        const length = res.dataList.length;
+        this.latestRental = res.dataList[length-1];
+        LoaderService.hide();
+          // make API call to fetch each car detail
+          LoaderService.show();
+          this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}/${this.latestRental.carId}`).subscribe((car) => {
+            this.latestRental.car = car.data;
+            LoaderService.hide();
+          });
+          LoaderService.hide();
+      },
+      error: (err: any) => {
+        LoaderService.hide();
+        console.error(err);
+      },
+    });
+
+
   }
+
 
   public onSave(){
     this.userDto.name = this.editedUserDto.name;
     this.userDto.address = this.editedUserDto.address;
-    this.userDto.email = this.editedUserDto.email;
     this.userDto.phoneNumber = this.editedUserDto.phoneNumber;
     this.userDto.role = this.roleName;
     this.userDto.password = 'Test@123!';

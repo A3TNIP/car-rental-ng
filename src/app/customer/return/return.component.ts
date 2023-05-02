@@ -59,7 +59,7 @@ export class ReturnComponent implements OnInit {
 
   public getBillingInfo() {
     console.log(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.RENT}/${this.rentalId}`);
-    this.service.getRequest(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.RENT}/${this.rentalId}`)
+    this.service.getRequest(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.RENT}/${this.rentalId}`, true)
       .subscribe({
         next: (resp) => {
           this.response = resp.data;
@@ -72,9 +72,6 @@ export class ReturnComponent implements OnInit {
           console.log(this.paymentInitiationForm.getRawValue())
           console.log(resp.data);
         },
-        error: error => {
-          this.service.showToast("Error", "error", error.message)
-        }
       })
     this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}/${this.rentalId}`)
       .subscribe({

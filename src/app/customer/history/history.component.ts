@@ -36,18 +36,22 @@ export class HistoryComponent implements OnInit {
     this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.USER}`,this.userDto).subscribe({
       next: (res: any) => {
         this.rentalHistory = res.dataList;
+        LoaderService.hide();
         this.totalRentalsMade = this.rentalHistory.length;
         for (let i = 0; i < this.rentalHistory.length; i++) {
           const rental = this.rentalHistory[i];
           // make API call to fetch each car detail
+          LoaderService.show();
           this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}/${rental.carId}`).subscribe((car) => {
             rental.car = car.data;
             this.rentedCars.push(rental);
+            LoaderService.hide();
           });
         LoaderService.hide();
         }
       },
         error: (err: any) => {
+        LoaderService.hide();
         console.error(err);
         },
       });

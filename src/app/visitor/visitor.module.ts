@@ -11,6 +11,7 @@ import { CustomCommonModule } from "../common/custom-common.module";
 import { ViewcarsComponent } from './viewcars/viewcars.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
 import { DialogModule } from 'primeng/dialog';
+import {CalendarModule} from "primeng/calendar";
 
 
 @NgModule({
@@ -22,13 +23,14 @@ import { DialogModule } from 'primeng/dialog';
         ViewcarsComponent,
         CarDetailComponent
     ],
-    imports: [
-        CommonModule,
-        VisitorRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        CustomCommonModule,
-        DialogModule
-    ]
+  imports: [
+    CommonModule,
+    VisitorRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CustomCommonModule,
+    DialogModule,
+    CalendarModule
+  ]
 })
 export class VisitorModule { }
