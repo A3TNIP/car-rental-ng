@@ -75,6 +75,7 @@ button{
 }
 
 .edit-prof-btn, .change-pw-btn{
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,6 +97,7 @@ button{
     }
 
 .change-pw-btn{
+    cursor: pointer;
     background-color: #656D4A;
 }
 
@@ -133,6 +135,7 @@ button{
 }
 
 .history-btn-holder{
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,6 +143,7 @@ button{
 }
 
 .view-history-btn{
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,7 +154,7 @@ button{
     border-radius: 15px;
     width: 21vw;
 }
-    
+
     .view-history-btn:hover{
         background-color: #623b1d;
     }
