@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   editedUserDto!: any;
   currentUser!:any;
   roleName!:any;
+  changepwVisible: boolean = false;
   constructor(private service:BaseService) {
   }
 
@@ -65,5 +66,13 @@ export class ProfileComponent implements OnInit {
 
   public onCancel(){
     this.isEditMode = false;
+  }
+
+  showchangepwPopup() {
+    this.changepwVisible = true;
+  }
+
+  hidechangepwPopup() {
+    this.changepwVisible = false;
   }
 }

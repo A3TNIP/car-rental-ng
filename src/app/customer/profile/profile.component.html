@@ -16,7 +16,7 @@
               </ng-container>
               <ng-template #uploadDocument>
                 <i class="fas fa-times-circle"></i>
-                <button class="updoc-btn">Upload Document</button>
+                <button class="updoc-btn pointer">Upload Document</button>
               </ng-template></p>
             </div>
           </div>
@@ -30,28 +30,28 @@
 
           <div class="profile-btns">
             <button *ngIf="!isEditMode" (click)="isEditMode=true">
-              <div class="edit-prof-btn">
+              <div class="edit-prof-btn pointer">
                 <img src="/assets/Images/icons/white/user.svg" />
                 <p>Edit Profile</p>
               </div>
             </button>
 
             <button *ngIf="isEditMode" (click)="onSave()">
-              <div class="change-pw-btn">
+              <div class="change-pw-btn pointer">
                 <img src="/assets/Images/icons/white/wrench.svg" />
                 <p>Save</p>
               </div>
             </button>
 
             <button *ngIf="isEditMode" (click)="onCancel()">
-              <div class="edit-prof-btn">
+              <div class="edit-prof-btn pointer">
                 <img src="/assets/Images/icons/close.svg" />
                 <p>Cancel</p>
               </div>
             </button>
 
-            <button *ngIf="!isEditMode">
-              <div class="change-pw-btn">
+            <button *ngIf="!isEditMode" (click)="showchangepwPopup()">
+              <div class="change-pw-btn pointer">
                 <img src="/assets/Images/icons/white/edit.svg" />
                 <p>Change Password</p>
               </div>
@@ -67,21 +67,34 @@
             <p class="profile-last-rent-sub">Lexus LFA</p>
             <p>Returned On: </p>
             <p>Payment Confirmation: </p>
-            <button>
-                <div class="change-pw-btn">
-                    <p>Return Now</p>
-                    <img src="/assets/Images/icons/white/arrow-right.svg" />
-                </div>
-            </button>
         </div>
 
         <div class="history-btn-holder">
-            <button>
+            <a routerLink="/customer/history">
                 <div class="view-history-btn">
                     <img src="/assets/Images/icons/white/reverse.svg" />
                     <p>View History</p>
                 </div>
-            </button>
+            </a>
         </div>
     </div>
 </div>
+
+<p-dialog [(visible)]="changepwVisible" [style]="{'width': '400px'}">
+  <div class="popup-container" id="popupchangepw">
+    <div class="popup-child">
+      <p class="popup-title">Change Password</p>
+
+      <form>
+        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Current Password" required />
+        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="New Password" required />
+        <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
+
+        <div class="changepw-btns-cont">
+          <button class="popup-button-cancel pointer" (click)="hidechangepwPopup()">Cancel</button>
+          <button class="popup-button pointer" type="submit">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-dialog>

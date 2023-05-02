@@ -84,7 +84,7 @@
 
 button{
     border:none;
-    background-color: #ffffff;
+    background-color: #ffffff00;
 }
 
 .popup-container {
@@ -209,4 +209,164 @@ button{
 a{
     text-decoration: none;
     font-size: 12px;
+}
+
+.back-btn-align{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.payment-gate-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2%;
+}
+
+.input-field {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 4%;
+    margin-top: unset;
+    width: 100%;
+    border: 1.5px solid #E0E2E9;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.damage-field {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 4%;
+    margin-top: unset;
+    width: 100%;
+    border: 1.5px solid #E0E2E9;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dialog-width-25{
+    width: 25% !important;
+}
+
+.submit-btn{
+    background-color: #93592C;
+    padding: 3%;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+    .submit-btn:hover{
+        background-color: #623b1d;
+    }
+
+.damage-container {
+    flex-direction: column;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 0, 0, 0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    width: 100vw;
+    height: 100vh;
+    border: 0.5px solid #E2E8F0;
+    z-index: 998;
+    top: 50%;
+    left: 50%;
+}
+
+.damage-title {
+    font-family: 'Oxanium', cursive;
+    font-size: 35px;
+    text-align: center;
+    padding: 8% 0% 5% 0%;
+    margin: unset;
+}
+
+.damage-subhead {
+    font-size: 22px;
+    font-family: 'Oxanium', cursive;
+    margin-bottom: unset;
+}
+
+.damage-child {
+    display: flex;
+    flex-direction: column;
+    position: inherit;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 1% 2% 2% 2%;
+    border-radius: 15px;
+    width: 30%;
+    border: 0.5px solid #E2E8F0;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    font-size: 18px;
+}
+
+.damage-button, .damage-button-cancel {
+    padding: 9px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 3%;
+    transition: ease-in 0.1s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.damage-button{
+    background: #656D4A;
+    color: white;
+}
+
+    .damage-button:hover{
+        background: #545b3e;
+    }
+
+.damage-button-cancel{
+    background: #dcdcdc;
+}
+
+    .damage-button-cancel:hover{
+        background: #b8b8b8;
+    }
+
+.damage-close {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    padding: 3% 0% 0% 0%;
+    border: none;
+    background-color: #ffffff;
+}
+
+.damage-btns-cont{
+    display: flex;
+    gap: 3.5%;
+}
+
+.damage-card-img{
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.25);
+}
+
+.damages-multi{
+    display: flex;
+    gap: 4%;
+}
+
+.dmg-multi-choices{
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+}
+
+.align-checks{
+    display: flex;
 }

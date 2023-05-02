@@ -3,37 +3,47 @@
         Rent
     </div>
 
-    <div class="return-card" *ngIf="carObj">
-        <div class="return-card-content">
-            <div class="return-card-align">
-                <img src="/assets/Images/lexus-lfa.jpg" class="return-card-img" />
-                <div class="return-card-details">
-                    <p class="returncard-title">{{carObj.brand}} {{carObj.model}}</p>
-                    <p>Rate: {{carObj.rate}}</p>
-                    <p>From: {{rentalObj.startDate | date}}</p>
-                    <p>To: {{rentalObj.endDate | date}}</p>
-<!--                    <p>Discount: {{response.discount}}%</p>-->
-<!--                    <p>Total Price: {{response.totalAmount}}</p>-->
-                  <p style="color: #48BB78" *ngIf="billPaid">Bill already paid</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="return-card-btn" *ngIf="!billPaid">
-            <a>
-                <div class="report-dmg-btn">
-                    <p>Report Damage</p>
-                    <img src="/assets/Images/icons/white/car-damage.svg" />
+    <div class="return-card">
+        <div class="back-btn-align">
+            <a routerLink="/customer/history">
+                <div class="gen-bil-btn">
+                    <p><< Back</p>
                 </div>
             </a>
-
-            <button (click)="showbillingPopup()" *ngIf="response">
-                <div class="gen-bil-btn">
-                    <p>View Bill</p>
-                    <img src="/assets/Images/icons/white/arrow-right.svg" />
-                </div>
-            </button>
         </div>
+
+        <ng-container *ngIf="carObj">
+            <div class="return-card-content">
+                <div class="return-card-align">
+                    <img src="/assets/Images/lexus-lfa.jpg" class="return-card-img" />
+                    <div class="return-card-details">
+                        <p class="returncard-title">{{carObj.brand}} {{carObj.model}}</p>
+                        <p>Rate: {{carObj.rate}}</p>
+                        <p>From: {{rentalObj.startDate | date}}</p>
+                        <p>To: {{rentalObj.endDate | date}}</p>
+    <!--                    <p>Discount: {{response.discount}}%</p>-->
+    <!--                    <p>Total Price: {{response.totalAmount}}</p>-->
+                    <p style="color: #48BB78" *ngIf="billPaid">Bill already paid</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="return-card-btn" *ngIf="!billPaid">
+                <button (click)="showdamagePopup()">
+                    <div class="report-dmg-btn">
+                        <p>Report Damage</p>
+                        <img src="/assets/Images/icons/white/car-damage.svg" />
+                    </div>
+                </button>
+
+                <button (click)="showbillingPopup()" *ngIf="response">
+                    <div class="gen-bil-btn">
+                        <p>View Bill</p>
+                        <img src="/assets/Images/icons/white/arrow-right.svg" />
+                    </div>
+                </button>
+            </div>
+        </ng-container>
     </div>
 </div>
 
@@ -69,20 +79,80 @@
     </div>
 </p-dialog>
 
-<p-dialog [(visible)]="showPayment">
-  <ng-container *ngIf="paymentStep === 'PIN'; else tOtp">
-    <form [formGroup]="paymentInitiationForm" (submit)="initiatePayment()">
-      <input formControlName="mobile" placeholder="Phone Number">
-      <input formControlName="transactionPin" placeholder="PIN Code">
-      <button type="submit">Submit</button>
-    </form>
+<p-dialog header="Payment Details" [(visible)]="showPayment" [style]="{'width': '25%', 'font-family': 'Poppins'}">
+    <ng-container *ngIf="paymentStep === 'PIN'; else tOtp">
+        <form [formGroup]="paymentInitiationForm" (submit)="initiatePayment()">
+            <div class="payment-gate-1">
+                <input class="input-field" type="text" formControlName="mobile" placeholder="Phone Number">
+                <input class="input-field" type="password" formControlName="transactionPin" placeholder="PIN Code">
+                <button type="submit" class="submit-btn pointer">Submit</button>
+            </div>
+        </form>
+    </ng-container>
 
-  </ng-container>
-
-  <ng-template #tOtp>
-    <form [formGroup]="paymentOtpForm" (submit)="confirmPayment()">
-      <input formControlName="confirmationCode" placeholder="OTP">
-      <button type="submit">Submit</button>
-    </form>
-  </ng-template>
+    <ng-template #tOtp>
+        <form [formGroup]="paymentOtpForm" (submit)="confirmPayment()">
+            <div class="payment-gate-1">
+                <input class="input-field" type="text" formControlName="confirmationCode" placeholder="OTP">
+                <button type="submit" class="submit-btn pointer">Submit</button>
+            </div>
+        </form>
+    </ng-template>
 </p-dialog>
+
+<p-dialog [(visible)]="damageVisible" [style]="{'width': '400px'}">
+    <div class="damage-container" id="damagedamage">
+        <div class="damage-child">
+            <p class="damage-title">Report Damage</p>
+
+            <img src="/assets/Images/lexus-lfa.jpg" class="damage-card-img" />
+            <form>
+                <p class="damage-subhead">Lexus LFA</p>
+                <p class="fixed-margin">Name: </p>
+                <p class="fixed-margin">Date: </p>
+                <div class="damages-multi">
+                    <p class="fixed-margin">Damages: </p>
+                    <div class="dmg-multi-choices">
+                        <div class="align-checks">
+                            <input type="checkbox" placeholder="Parts..." required />Tires
+                        </div>
+                        <div class="align-checks">
+                            <input type="checkbox" placeholder="Parts..." required />Side Mirrors
+                        </div>
+                        <div class="align-checks">
+                            <input type="checkbox" placeholder="Parts..." required />Windscreen
+                        </div>
+                        <div class="align-checks">
+                            <input type="checkbox" placeholder="Parts..." required />Hood
+                        </div>
+                    </div>
+                    <div class="dmg-multi-choices">
+                        <div class="align-checks">
+                            <input type="checkbox" placeholder="Parts..." required />Trunk
+                        </div>
+                        <div class="align-checks">
+                            <input type="checkbox" placeholder="Parts..." required />Engine
+                        </div>
+                        <div class="align-checks">
+                            <input type="checkbox" placeholder="Parts..." required />Seats
+                        </div>
+                        <div class="align-checks">
+                            <input type="checkbox" placeholder="Parts..." required />Others
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="fixed-margin">Others (specify): </p>
+                <input class="damage-field" placeholder="Parts..." required />
+
+                <p class="fixed-margin">Describe the damages: </p>
+                <input class="damage-field" placeholder="Type here..." required />
+        
+                <div class="damage-btns-cont">
+                    <button class="damage-button-cancel pointer" (click)="hidedamagePopup()">Cancel</button>
+                    <button class="damage-button pointer" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </p-dialog>
