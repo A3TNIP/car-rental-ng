@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class DocumentUploadComponent implements OnInit{
   @Input("Type") public type : "Document" | "Image" = "Document";
-  @Input("Extra") public extra?: any;
+  @Input("Extra") public extra: any = "";
   @Input("Role") public role: string = "Customer";
   @ViewChild('tFileUploadButton') uploadButton !: FileUpload;
 
@@ -68,5 +68,13 @@ export class DocumentUploadComponent implements OnInit{
     console.log(event)
     this.file = event.currentFiles[0]
     this.fileUrl = URL.createObjectURL(this.file);
+  }
+
+  skipProcess() {
+    if (this.type === 'Document') {
+      this.router.navigateByUrl('/home').then();
+    } else {
+      window.location.reload();
+    }
   }
 }

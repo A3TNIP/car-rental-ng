@@ -25,7 +25,7 @@
         'background-brown': role === 'Customer',
         'background-cyan': role !== 'Customer'
         }"(click)="uploadDocument()">Upload File</div>
-            <div class="select-form-cont">
+            <div class="select-form-cont" *ngIf="type=='Document'">
               <div class="select-form-cont-items">
                 <p-radioButton name="document" value="citizenship" [(ngModel)]="selectedDocument"></p-radioButton>
                 <p>Citizenship</p>
@@ -35,7 +35,7 @@
                 <p>Driver's License</p>
               </div>
             </div>
-            <div class="skip-btn-align">
+            <div *ngIf="type==='Document'" class="skip-btn-align" (click)="skipProcess()">
               <div class="skip-btn">Skip</div>
             </div>
           </div>

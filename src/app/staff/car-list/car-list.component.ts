@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ApiConstants } from 'src/app/common/constants/ApiConstants';
 import { BaseService } from 'src/app/common/service/base.service';
 import { LoaderService } from 'src/app/common/service/loader.service';
+import {DocumentUploadComponent} from "../../common/components/document-upload/document-upload.component";
 
 @Component({
   selector: 'app-car-list',
@@ -16,11 +17,15 @@ export class CarListComponent {
   public carForm!: FormGroup;
   carList: any;
   isUpdate: boolean = false;
+  @ViewChild('uploadComponent') uploadComponent!: DocumentUploadComponent;
+  showDocument: boolean = false;
+  public carId: any;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
   ngOnInit():void{
     this.fetchCars();
     this.carForm = this.fb.group({
+      carId: [''],
       brand: ['', Validators.required],
       model: ['', Validators.required],
       color: ['', Validators.required],
@@ -74,7 +79,7 @@ export class CarListComponent {
 
   public populateForm(car: any) {
     this.carForm.setValue({
-      id:car.id,
+      carId:car.carId,
       brand: car.brand,
       buildYear: car.buildYear,
       model: car.model,
@@ -85,6 +90,7 @@ export class CarListComponent {
       make: car.make,
     });
     this.isUpdate = true;
+    this.showcarPopup();
   }
 
   public resetForm(){
@@ -102,22 +108,47 @@ export class CarListComponent {
 
   public addCar(car: any) {
     LoaderService.show();
-    delete car.id;// remove id field from car object
-    this.service.postRequest(car,`${ApiConstants.CARS_CONTROLLER}`).subscribe({
-      next: (res: any) => {
-        LoaderService.hide();
-        if (res.isSuccess) {
-          this.hidecarPopup();
-          this.service.showToast('Success', 'success', 'Car registered successfully');
-          this.carForm.reset();
-          this.fetchCars();
-        }
-      },
-      error: (err: any) => {
-        console.error('Failed to register admin', err);
-        LoaderService.hide();
-      },
-    });
+    const url = `${ApiConstants.CARS_CONTROLLER}`;
+    if (this.isUpdate) {
+      this.service.putRequest(car,`${ApiConstants.CARS_CONTROLLER}`).subscribe({
+        next: (res: any) => {
+          LoaderService.hide();
+          if (res.isSuccess) {
+            console.log(res)
+            this.carId = res.data.carId;
+            this.hidecarPopup();
+            this.service.showToast('Success', 'success', `Car updated successfully`);
+            this.carForm.reset();
+            this.fetchCars();
+          }
+        },
+        error: (err: any) => {
+          console.error('Failed to register admin', err);
+          LoaderService.hide();
+        },
+      });
+    } else {
+      delete car.id;// remove id field from car object
+      this.service.postRequest(car,`${ApiConstants.CARS_CONTROLLER}`).subscribe({
+        next: (res: any) => {
+          LoaderService.hide();
+          if (res.isSuccess) {
+            console.log(res)
+            this.carId = res.data.carId;
+            this.showDocument = true;
+            this.hidecarPopup();
+            this.service.showToast('Success', 'success', 'Car registered successfully');
+            this.carForm.reset();
+            this.fetchCars();
+          }
+        },
+        error: (err: any) => {
+          console.error('Failed to register admin', err);
+          LoaderService.hide();
+        },
+      });
+    }
+
   }
 
   deleteCar(car: any) {

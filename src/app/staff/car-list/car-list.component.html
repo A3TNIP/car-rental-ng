@@ -68,12 +68,10 @@
         <input class="input-field " type="text" id="BuildYear" formControlName="buildYear" placeholder="Build Year" required />
         <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="Rate" required />
         <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="License Plate" required />
-        <div class="upload-btn-cont">
-          <button class="upload-btn" type="submit">Upload Image</button>
-          <img src="/assets/Images/icons/white/upload.svg" />
-        </div>
-        <button class="popup-button" type="submit" (click)="addCar(carForm.value)">Add Now</button>
+        <button class="popup-button" type="submit" (click)="addCar(carForm.value)">{{isUpdate ? 'Update' : 'Add'}} Now</button>
       </form>
     </div>
   </div>
 </p-dialog>
+
+<app-document-upload [Extra]="carId" *ngIf="showDocument" #uploadComponent Role="Staff" Type="Image"></app-document-upload>

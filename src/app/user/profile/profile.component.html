@@ -1,94 +1,109 @@
 <div class="pagetop-container">
-    <div class="content-title">
-        USER PROFILE
-    </div>
+  <div class="content-title">
+    USER PROFILE
+  </div>
 </div>
 
 <div class="profile-container">
-    <div class="personal-details-cont">
-        <div *ngIf="!isEditMode" class="personal-details">
-            <p>Name: {{userDto?.name}}</p>
-            <p>Address: {{userDto?.address}}</p>
-            <p>Email: {{userDto?.email}}</p>
-            <p>Phone Number: {{userDto?.phoneNumber}}</p>
-        </div>
-
-        <div *ngIf="isEditMode" class="personal-details">
-        <div class="edit-profile-item">
-            <p>Name:</p>
-            <input class="edit-field">
-        </div>
-        <div class="edit-profile-item">
-            <p>Address: </p>
-            <input class="edit-field">
-        </div>
-        <div class="edit-profile-item">
-            <p>Email: </p>
-            <input class="edit-field" disabled>
-        </div>
-        <div class="edit-profile-item">
-            <p>Phone Number: </p>
-            <input class="edit-field">
-        </div>
-        </div>
-
-        <div class="profile-btns">
-        <button *ngIf="!isEditMode" (click)="isEditMode=true">
-            <div class="edit-prof-btn pointer">
-            <img src="/assets/Images/icons/white/user.svg" />
-            <p>Edit Profile</p>
-            </div>
-        </button>
-
-        <button *ngIf="isEditMode" (click)="onSave()">
-            <div class="change-pw-btn pointer">
-            <img src="/assets/Images/icons/white/wrench.svg" />
-            <p>Save</p>
-            </div>
-        </button>
-
-        <button *ngIf="isEditMode" (click)="onCancel()">
-            <div class="edit-prof-btn pointer">
-            <img src="/assets/Images/icons/close.svg" />
-            <p>Cancel</p>
-            </div>
-        </button>
-
-        <button *ngIf="!isEditMode" (click)="showchangepwPopup()">
-            <div class="change-pw-btn pointer">
-            <img src="/assets/Images/icons/white/edit.svg" />
-            <p>Change Password</p>
-            </div>
-        </button>
-        </div>
+  <div class="personal-details-cont">
+    <div *ngIf="!isEditMode" class="personal-details">
+      <p>Name: {{userDto?.name}}</p>
+      <p>Address: {{userDto?.address}}</p>
+      <p>Email: {{userDto?.email}}</p>
+      <p>Phone Number: {{userDto?.phoneNumber}}</p>
+      <div class="verification-section">
+        <p>Verifications:
+          <ng-container *ngIf="userDto.document; else uploadDocument">
+            Verified
+          </ng-container>
+          <ng-template #uploadDocument>
+            <i class="fas fa-times-circle"></i>
+            <button (click)="showDocumentUpload = true" class="updoc-btn pointer">Upload Document</button>
+          </ng-template>
+        </p>
+      </div>
     </div>
 
-    <div class="profile-last-rent" *ngIf="latestRental">
-        <p class="profile-last-rent-title">Last Rented Car:</p>
-        <img src="/assets/Images/lexus-lfa.jpg" class="profile-last-rent-img" />
-        <div class="profile-last-rent-details">
-            <p class="profile-last-rent-sub">{{latestRental.car.brand}}  {{latestRental.car.model}}</p>
-            <p>Returned On: {{latestRental.endDate | date}}</p>
-        </div>
+    <div *ngIf="isEditMode" class="personal-details">
+      <div class="edit-profile-item">
+        <p>Name:</p>
+        <input class="edit-field">
+      </div>
+      <div class="edit-profile-item">
+        <p>Address: </p>
+        <input class="edit-field">
+      </div>
+      <div class="edit-profile-item">
+        <p>Email: </p>
+        <input class="edit-field" disabled>
+      </div>
+      <div class="edit-profile-item">
+        <p>Phone Number: </p>
+        <input class="edit-field">
+      </div>
     </div>
+
+    <div class="profile-btns">
+      <button *ngIf="!isEditMode" (click)="isEditMode=true">
+        <div class="edit-prof-btn pointer">
+          <img src="/assets/Images/icons/white/user.svg"/>
+          <p>Edit Profile</p>
+        </div>
+      </button>
+
+      <button *ngIf="isEditMode" (click)="onSave()">
+        <div class="change-pw-btn pointer">
+          <img src="/assets/Images/icons/white/wrench.svg"/>
+          <p>Save</p>
+        </div>
+      </button>
+
+      <button *ngIf="isEditMode" (click)="onCancel()">
+        <div class="edit-prof-btn pointer">
+          <img src="/assets/Images/icons/close.svg"/>
+          <p>Cancel</p>
+        </div>
+      </button>
+
+      <button *ngIf="!isEditMode" (click)="showchangepwPopup()">
+        <div class="change-pw-btn pointer">
+          <img src="/assets/Images/icons/white/edit.svg"/>
+          <p>Change Password</p>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div class="profile-last-rent" *ngIf="latestRental">
+    <p class="profile-last-rent-title">Last Rented Car:</p>
+    <img src="/assets/Images/lexus-lfa.jpg" class="profile-last-rent-img"/>
+    <div class="profile-last-rent-details">
+      <p class="profile-last-rent-sub">{{latestRental.car.brand}}  {{latestRental.car.model}}</p>
+      <p>Returned On: {{latestRental.endDate | date}}</p>
+    </div>
+  </div>
 </div>
 
 <p-dialog [(visible)]="changepwVisible" [style]="{'width': '400px'}">
-    <div class="popup-container" id="popupchangepw">
-      <div class="popup-child">
-        <p class="popup-title">Change Password</p>
+  <div class="popup-container" id="popupchangepw">
+    <div class="popup-child">
+      <p class="popup-title">Change Password</p>
 
-        <form>
-          <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Current Password" required />
-          <input class="input-field " type="password" id="password" formControlName="Password" placeholder="New Password" required />
-          <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
+      <form>
+        <input class="input-field " type="password" id="password" formControlName="Password"
+               placeholder="Current Password" required/>
+        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="New Password"
+               required/>
+        <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword"
+               placeholder="Repeat Password" required/>
 
-          <div class="changepw-btns-cont">
-            <button class="popup-button-cancel pointer" (click)="hidechangepwPopup()">Cancel</button>
-            <button class="popup-button pointer" type="submit">Confirm</button>
-          </div>
-        </form>
-      </div>
+        <div class="changepw-btns-cont">
+          <button class="popup-button-cancel pointer" (click)="hidechangepwPopup()">Cancel</button>
+          <button class="popup-button pointer" type="submit">Confirm</button>
+        </div>
+      </form>
     </div>
-  </p-dialog>
+  </div>
+</p-dialog>
 
+<app-document-upload Role="Staff" *ngIf="showDocumentUpload"></app-document-upload>
