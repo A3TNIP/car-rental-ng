@@ -61,15 +61,18 @@
       <p class="popup-subhead">Add Cars</p>
 
       <form [formGroup]="carForm">
-        <input class="input-field " type="text" id="model" formControlName="Model" placeholder="Model" required />
-        <input class="input-field " type="text" id="color" formControlName="Color" placeholder="Color" required />
-        <input class="input-field " type="text" id="license" formControlName="License" placeholder="License" required />
-        <input class="input-field " type="text" id="rate" formControlName="Rate" placeholder="Rate" required />
+        <input class="input-field " type="text" id="brand" formControlName="brand" placeholder="Brand" required />
+        <input class="input-field " type="text" id="model" formControlName="model" placeholder="Model" required />
+        <input class="input-field " type="text" id="make" formControlName="make" placeholder="Make" required />
+        <input class="input-field " type="text" id="color" formControlName="color" placeholder="Color" required />
+        <input class="input-field " type="text" id="BuildYear" formControlName="buildYear" placeholder="Build Year" required />
+        <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="Rate" required />
+        <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="License Plate" required />
         <div class="upload-btn-cont">
           <button class="upload-btn" type="submit">Upload Image</button>
           <img src="/assets/Images/icons/white/upload.svg" />
         </div>
-        <button class="popup-button" type="submit">Add Now</button>
+        <button class="popup-button" type="submit" (click)="addCar(carForm.value)">Add Now</button>
       </form>
     </div>
   </div>
