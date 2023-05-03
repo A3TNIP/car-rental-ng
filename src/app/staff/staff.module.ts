@@ -16,7 +16,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { PaymentsComponent } from './payments/payments.component';
 import {ChartModule} from "primeng/chart";
 import { OffersComponent } from './offers/offers.component';
-
+import {CalendarModule} from "primeng/calendar";
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { OffersComponent } from './offers/offers.component';
         TableModule,
         DialogModule,
         ReactiveFormsModule,
-        ChartModule
+        ChartModule,
+        CalendarModule,
     ]
 })
 export class StaffModule { }
