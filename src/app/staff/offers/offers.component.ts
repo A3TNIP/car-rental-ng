@@ -15,58 +15,55 @@ export class OffersComponent {
 
   configurationData: any;
   public offerForm!: FormGroup;
-  formBuilder: any;
-  carList: any;
+  offerList: any;
   isUpdate: boolean = false;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
   ngOnInit():void{
-    this.fetchCars();
+    this.fetchOffers();
     this.offerForm = this.fb.group({
       id: [""],
-      brand: ['', Validators.required],
-      model: ['', Validators.required],
-      color: ['', Validators.required],
-      buildYear: ['', Validators.required],
-      status: ['', Validators.required],
-      licensePlate: ['', Validators.required],
-      rate: ['', Validators.required],
+      offerName: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      discount: ['', Validators.required],
+      type: ['', Validators.required],
+      offerDescription: ['', Validators.required]
     });
   }
-  private fetchCars() {
+  private fetchOffers() {
     LoaderService.show();
-    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}`).subscribe({
+    this.service.getRequest(`${ApiConstants.OFFERS_CONTROLLER}`).subscribe({
       next: (res: any) => {
-        this.carList = res.dataList;
-        console.log(this.carList);
+        this.offerList = res.dataList;
+        console.log(this.offerList);
         LoaderService.hide();
       },
       error: (err: any) => {
-        console.error('Failed to get cars', err);
+        console.error('Failed to get offers', err);
       },
     });
   }
 
-  public deleteCar(car: any) {
-    console.log('url', `${ApiConstants.CONFIG_CONTROLLER}/${car.id}`);
+  public deleteOffer(offer: any) {
     LoaderService.show();
-    this.service.deleteRequest(`${ApiConstants.CARS_CONTROLLER}/${car.id}`).subscribe({
+    this.service.deleteRequest(`${ApiConstants.OFFERS_CONTROLLER}/${offer.id}`).subscribe({
       next: (res: any) => {
-        if (res.message == 'Car deleted successfully') {
+        if (res.message == 'Deleted successfully') {
           this.service.showToast('Deleted successfully');
-          this.fetchCars();
+          this.fetchOffers();
         }
         LoaderService.hide();
       },
       error: (err: any) => {
-        console.error('Failed to delete car', err);
+        console.error('Failed to delete offer', err);
         LoaderService.hide();
       },
     });
   }
 
 
-  public addCar(car: any) {
+  public addOffer(car: any) {
     LoaderService.show();
     delete car.id; // remove id field from config object
     this.service.postRequest(car,`${ApiConstants.CARS_CONTROLLER}`).subscribe({
@@ -76,7 +73,7 @@ export class OffersComponent {
           console.log('Car added successfully');
           this.service.showToast('Success', 'success', 'Configuration added successfully');
           this.offerForm.reset();
-          this.fetchCars();
+          this.fetchOffers();
         }
       },
       error: (err: any) => {
@@ -103,7 +100,7 @@ export class OffersComponent {
           console.log('Configuration updated successfully');
           this.isUpdate = false;
           this.offerForm.reset();
-          this.fetchCars();
+          this.fetchOffers();
           this.service.showToast('Success', 'success', 'Configuration updated successfully');
         }
       },
