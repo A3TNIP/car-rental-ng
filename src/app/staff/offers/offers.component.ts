@@ -66,14 +66,15 @@ export class OffersComponent {
   public addOffer(car: any) {
     LoaderService.show();
     delete car.id; // remove id field from config object
-    this.service.postRequest(car,`${ApiConstants.CARS_CONTROLLER}`).subscribe({
+    this.service.postRequest(car,`${ApiConstants.OFFERS_CONTROLLER}`).subscribe({
       next: (res: any) => {
         LoaderService.hide();
         if (res.isSuccess) {
           console.log('Car added successfully');
-          this.service.showToast('Success', 'success', 'Configuration added successfully');
+          this.service.showToast('Success', 'success', 'Offer added successfully');
           this.offerForm.reset();
           this.fetchOffers();
+          this.hideofferPopup();
         }
       },
       error: (err: any) => {
@@ -87,21 +88,16 @@ export class OffersComponent {
   public updateCar(config: any) {
     LoaderService.show();
     console.log(config);
-    const updatedconfig = {
-      ...config,
-      key: this.offerForm.get('key')!.value,
-      value: this.offerForm.get('value')!.value,
-      code: this.offerForm.get('code')!.value
-    };
-    this.service.putRequest(updatedconfig,`${ApiConstants.CONFIG_CONTROLLER}`).subscribe({
+    this.service.putRequest(config,`${ApiConstants.OFFERS_CONTROLLER}`).subscribe({
       next: (res: any) => {
         LoaderService.hide();
         if (res && res.isSuccess) {
-          console.log('Configuration updated successfully');
+          console.log('Offer updated successfully');
           this.isUpdate = false;
           this.offerForm.reset();
           this.fetchOffers();
           this.service.showToast('Success', 'success', 'Configuration updated successfully');
+          this.hideofferPopup();
         }
       },
       error: (err: any) => {
@@ -113,16 +109,16 @@ export class OffersComponent {
 
   public populateForm(car: any) {
     this.offerForm.setValue({
-      id:car.id,
-      brand: car.brand,
-      buildYear: car.buildYear,
-      model: car.model,
-      rate: car.rate,
-      color: car.color,
-      status: car.status,
-      licensePlate: car.licensePlate,
+      id: car.id,
+      offerName: car.offerName,
+      startDate: car.startDate,
+      endDate: car.endDate,
+      discount: car.discount,
+      type: car.type,
+      offerDescription: car.offerDescription
     });
     this.isUpdate = true;
+    this.showofferPopup();
   }
 
   public resetForm(){
@@ -136,5 +132,13 @@ export class OffersComponent {
 
   hideofferPopup() {
     this.offerVisible = false;
+  }
+
+  doAction() {
+    if (this.isUpdate) {
+      this.updateCar(this.offerForm.value);
+    } else {
+      this.addOffer(this.offerForm.value);
+    }
   }
 }

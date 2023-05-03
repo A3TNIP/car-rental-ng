@@ -19,17 +19,16 @@
             <th>End Date</th>
             <th>Discount</th>
             <th>Type</th>
-            <th>Description</th>
+            <th>Actions</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-offer let-index="index">
           <tr class="table-data-format">
             <td>{{ offer.offerName }}</td>
-            <td>{{ offer.startDate }}</td>
-            <td>{{ offer.endDate }}</td>
+            <td>{{ offer.startDate | date}}</td>
+            <td>{{ offer.endDate  | date}}</td>
             <td>{{ offer.discount }}</td>
             <td>{{ offer.type }}</td>
-            <td>{{ offer.description }}</td>
             <td>
               <button (click)="populateForm(offer)">
                 <div class="add-config-btn pointer">
@@ -55,10 +54,10 @@
         <img src="/assets/Images/icons/close.svg">
       </button>
       <p class="popup-subhead">Add Cars</p>
-      <form [formGroup]="offerForm">
+      <form [formGroup]="offerForm" (submit)="doAction()">
         <input class="input-field " type="text" formControlName="offerName" placeholder="Offer Name" required />
-        <p>Start Date: <p-calendar></p-calendar></p>
-        <p>End Date: <p-calendar></p-calendar></p>
+        <p-calendar formControlName="startDate" placeholder="Start Date" styleClass="input-field"></p-calendar>
+        <p-calendar formControlName="endDate" placeholder="End Date" styleClass="input-field"></p-calendar>
         <input class="input-field " type="text" formControlName="discount" placeholder="Discount" required />
         <input class="input-field " type="text" formControlName="type" placeholder="Type" required />
         <div class="upload-btn-cont">

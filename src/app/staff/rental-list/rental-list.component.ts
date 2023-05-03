@@ -1,37 +1,51 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { ApiConstants } from 'src/app/common/constants/ApiConstants';
-import { BaseService } from 'src/app/common/service/base.service';
-import { LoaderService } from 'src/app/common/service/loader.service';
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ApiConstants} from 'src/app/common/constants/ApiConstants';
+import {BaseService} from 'src/app/common/service/base.service';
+import {LoaderService} from 'src/app/common/service/loader.service';
 
 @Component({
   selector: 'app-rental-list',
   templateUrl: './rental-list.component.html',
   styleUrls: ['./rental-list.component.css']
 })
-export class RentalListComponent {
+export class RentalListComponent implements OnInit {
   configurationData: any;
+  rentalStatus: any = ["Waiting", "Approved", "Rejected", "Cancelled", "Completed"];
+  selectedStatus: any = {};
 
-  constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
-  
-  private fetchConfigList() {
+  constructor(private service: BaseService, private http: HttpClient, private fb: FormBuilder) {
+  }
+
+  private fetchRentalList() {
     LoaderService.show();
-    this.service.getRequest(`${ApiConstants.CONFIG_CONTROLLER}`)
+    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}`)
       .subscribe({
         next: (res: any) => {
           LoaderService.hide();
           if (res && res.dataList) {
-            this.configurationData = res.dataList.map((config: any) => {
-              return {
-                id: config.id,
-                key: config.key,
-                value: config.value,
-                code: config.code,
-              }
-            })
+            this.configurationData = res.dataList;
           }
         }
       });
+
   }
+
+  ngOnInit() {
+    this.fetchRentalList();
+    this.rentalForm = this.fb.group({
+      id: [''],
+      status: [''],
+      requestedBy: [''],
+      carId: [''],
+      approvedBy: [''],
+      startDate: [''],
+      endDate: [''],
+      offerId: [''],
+      discount: [''],
+      totalPrice: ['']
+    })
+  }
+  rentalForm!: FormGroup;
 }

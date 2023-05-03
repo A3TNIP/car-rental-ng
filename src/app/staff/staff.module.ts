@@ -12,11 +12,12 @@ import { StaffComponent } from './staff.component';
 import {CustomCommonModule} from "../common/custom-common.module";
 import {TableModule} from "primeng/table";
 import {DialogModule} from "primeng/dialog";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PaymentsComponent } from './payments/payments.component';
 import {ChartModule} from "primeng/chart";
 import { OffersComponent } from './offers/offers.component';
 import {CalendarModule} from "primeng/calendar";
+import {MultiSelectModule} from "primeng/multiselect";
 
 @NgModule({
   declarations: [
@@ -30,15 +31,17 @@ import {CalendarModule} from "primeng/calendar";
     PaymentsComponent,
     OffersComponent
   ],
-    imports: [
-        CommonModule,
-        StaffRoutingModule,
-        CustomCommonModule,
-        TableModule,
-        DialogModule,
-        ReactiveFormsModule,
-        ChartModule,
-        CalendarModule,
-    ]
+  imports: [
+    CommonModule,
+    StaffRoutingModule,
+    CustomCommonModule,
+    TableModule,
+    DialogModule,
+    ReactiveFormsModule,
+    ChartModule,
+    CalendarModule,
+    MultiSelectModule,
+    FormsModule,
+  ]
 })
 export class StaffModule { }

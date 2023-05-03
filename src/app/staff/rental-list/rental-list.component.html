@@ -19,19 +19,13 @@
         </ng-template>
         <ng-template pTemplate="body" let-config let-index="index">
           <tr class="table-data-format">
-            <td>{{ config.code }}</td>
-            <td>{{ config.key }}</td>
-            <td>{{ config.value }}</td>
-            <td>{{ config.value }}</td>
-            <td>
+            <td>{{ config.requestedBy }}</td>
+            <td>{{ config.carId }}</td>
+            <td>{{ config.startDate }}</td>
+            <td>{{ config.endDate }}</td>
+            <td [formGroup]="rentalForm">
                 <div class="add-config-btn pointer">
-                    <select>
-                        <option>Waiting</option>
-                        <option>Approved</option>
-                        <option>Rejected</option>
-                        <option>Cancelled</option>
-                        <option>Completed</option>
-                    </select>
+                  <p-multiSelect [options]="rentalStatus" [selectionLimit]="1" [(ngModel)]="selectedStatus[config.requestedBy]" display="chip"></p-multiSelect>
                 </div>
             </td>
             <td>

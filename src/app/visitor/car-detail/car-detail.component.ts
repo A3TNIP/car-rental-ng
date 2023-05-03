@@ -30,7 +30,8 @@ export class CarDetailComponent implements OnInit {
 
   private getCar() {
     this.car = JSON.parse(localStorage.getItem("viewingCar")!);
-    this.disabledDates = this.car.rentedDates.map((x: string) => new Date(x));
+    if (this.car.rentedDates) this.disabledDates = this.car.rentedDates.map((x: string) => new Date(x));
+    else this.disabledDates = [];
     console.log(this.car)
   }
 
