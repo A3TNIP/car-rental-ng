@@ -12,7 +12,7 @@
 
 <div class="tables-container">
     <div class="table-style">
-      <p-table [value]="adminData" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table [value]="adminData" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10" [paginator]="true">
         <ng-template pTemplate="header">
           <tr class="table-data-format">
             <th>Name</th>

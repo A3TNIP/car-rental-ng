@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ApiConstants } from 'src/app/common/constants/ApiConstants';
 import { BaseService } from 'src/app/common/service/base.service';
@@ -10,24 +10,29 @@ import { LoaderService } from 'src/app/common/service/loader.service';
   templateUrl: './client-list.component.html',
   styleUrls: ['./client-list.component.css']
 })
-export class ClientListComponent {
-  configurationData: any;
+export class ClientListComponent implements OnInit{
+  clientData!: any;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
-  
-  private fetchConfigList() {
+
+  ngOnInit():void{
+    this.fetchClients();
+  }
+  private fetchClients() {
     LoaderService.show();
-    this.service.getRequest(`${ApiConstants.CONFIG_CONTROLLER}`)
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.CUSTOMER}`)
       .subscribe({
         next: (res: any) => {
           LoaderService.hide();
           if (res && res.dataList) {
-            this.configurationData = res.dataList.map((config: any) => {
+            this.clientData = res.dataList.map((client: any) => {
               return {
-                id: config.id,
-                key: config.key,
-                value: config.value,
-                code: config.code,
+                id: client.id,
+                name: client.name,
+                email: client.email,
+                address: client.address,
+                phoneNumber: client.phoneNumber,
+                document: client.document,
               }
             })
           }
