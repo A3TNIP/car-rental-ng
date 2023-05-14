@@ -49,6 +49,12 @@ export class BillingListComponent {
 
   public approveBill(bill: any) {
     console.log('yo bill garna parne approve', bill)
+    this.service.postRequest(bill,`${ApiConstants.PAYMENT_CONTROLLER}`)
+      .subscribe({
+        next: (res: any) => {
+          this.fetchBills();
+        }
+      })
   }
 
   public populateForm(car: any) {

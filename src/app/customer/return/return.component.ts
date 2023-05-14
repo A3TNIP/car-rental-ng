@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BaseService} from "../../common/service/base.service";
 import {ApiConstants} from "../../common/constants/ApiConstants";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
 @Component({
@@ -18,12 +18,14 @@ export class ReturnComponent implements OnInit {
   public rentalObj!: any;
   public rentDays!: number;
   public carObj!: any;
+  public hasDamages: boolean = false;
   billingVisible: boolean = false;
   showPayment: boolean = false;
   paymentStep: "PIN" | "OTP" = "PIN";
 
   public paymentInitiationForm!: FormGroup;
-  paymentOtpForm!: FormGroup;
+  public paymentOtpForm!: FormGroup;
+  public damagesForm!: FormGroup;
   damageVisible: boolean = false;
   constructor(private service: BaseService, private fb: FormBuilder, private router: Router) {
   }
@@ -42,6 +44,19 @@ export class ReturnComponent implements OnInit {
       confirmationCode: ['', Validators.required],
       transactionPin: ['', Validators.required],
     })
+
+    this.damagesForm = this.fb.group({
+      tires: new FormControl(false),
+      mirrors: new FormControl(false),
+      windscreen: new FormControl(false),
+      hood: new FormControl(false),
+      trunk: new FormControl(false),
+      engine: new FormControl(false),
+      seats: new FormControl(false),
+      others: new FormControl(false),
+      othersDetail: [''],
+      description: ['', Validators.required],
+    });
   }
 
   private getLatestRental() {
@@ -60,6 +75,13 @@ export class ReturnComponent implements OnInit {
 
   public getBillingInfo() {
     console.log(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.RENT}/${this.rentalId}`);
+    this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}/Rent/${this.rentalId}`)
+      .subscribe({
+        next: (resp) => {
+          this.hasDamages = !resp.isSuccess;
+          console.log(resp.isSuccess)
+        }
+      })
     this.service.getRequest(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.RENT}/${this.rentalId}`, true)
       .subscribe({
         next: (resp) => {
@@ -169,4 +191,30 @@ export class ReturnComponent implements OnInit {
         }
       })
   }
+
+  public submitDamageRequest() {
+    let payload: any = {};
+    const form = this.damagesForm.getRawValue();
+    payload["rentalId"] = this.rentalId;
+    payload["date"] = new Date();
+    payload["description"] = this.damagesForm.get('description')!.value;
+    delete form["description"];
+    let damagedParts = [];
+    for (const formKey in form) {
+      if (form[formKey]) {
+        damagedParts.push(formKey);
+      }
+    }
+    payload["damagedParts"] = damagedParts.join(",");
+    console.log(payload);
+    this.service.postRequest(payload, `${ApiConstants.DAMAGE_CONTROLLER}`)
+      .subscribe({
+        next: (resp) => {
+          console.log(resp.data);
+          this.service.showToast("Success", "success", "Damage request has been submitted successfully");
+          this.hidedamagePopup();
+        }
+      })
+  }
+
 }

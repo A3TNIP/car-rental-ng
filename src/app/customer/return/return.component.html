@@ -29,7 +29,7 @@
             </div>
 
             <div class="return-card-btn" *ngIf="!billPaid">
-                <button (click)="showdamagePopup()">
+                <button (click)="showdamagePopup()" *ngIf="!hasDamages">
                     <div class="report-dmg-btn">
                         <p>Report Damage</p>
                         <img src="/assets/Images/icons/white/car-damage.svg" />
@@ -107,56 +107,54 @@
 </p-dialog>
 
 <p-dialog [(visible)]="damageVisible" [style]="{'width': '400px'}">
-    <div class="damage-container" id="damagedamage">
+    <div class="damage-container" id="damagedamage" *ngIf="carObj">
         <div class="damage-child">
             <p class="damage-title">Report Damage</p>
 
             <img src="/assets/Images/lexus-lfa.jpg" class="damage-card-img" />
-            <form>
-                <p class="damage-subhead">Lexus LFA</p>
-                <p class="fixed-margin">Name: </p>
-                <p class="fixed-margin">Date: </p>
+            <form [formGroup]="damagesForm">
+                <p class="damage-subhead">{{carObj.brand}} {{carObj.model}}</p>
                 <div class="damages-multi">
                     <p class="fixed-margin">Damages: </p>
                     <div class="dmg-multi-choices">
                         <div class="align-checks">
-                            <input type="checkbox" placeholder="Parts..." required />Tires
+                            <input type="checkbox" formControlName="tires" placeholder="Parts..." required />Tires
                         </div>
                         <div class="align-checks">
-                            <input type="checkbox" placeholder="Parts..." required />Side Mirrors
+                            <input type="checkbox" formControlName="mirrors" placeholder="Parts..." required />Side Mirrors
                         </div>
                         <div class="align-checks">
-                            <input type="checkbox" placeholder="Parts..." required />Windscreen
+                            <input type="checkbox" formControlName="windscreen" placeholder="Parts..." required />Windscreen
                         </div>
                         <div class="align-checks">
-                            <input type="checkbox" placeholder="Parts..." required />Hood
+                            <input type="checkbox" formControlName="hood" placeholder="Parts..." required />Hood
                         </div>
                     </div>
                     <div class="dmg-multi-choices">
                         <div class="align-checks">
-                            <input type="checkbox" placeholder="Parts..." required />Trunk
+                            <input type="checkbox" formControlName="trunk" placeholder="Parts..." required />Trunk
                         </div>
                         <div class="align-checks">
-                            <input type="checkbox" placeholder="Parts..." required />Engine
+                            <input type="checkbox" formControlName="engine" placeholder="Parts..." required />Engine
                         </div>
                         <div class="align-checks">
-                            <input type="checkbox" placeholder="Parts..." required />Seats
+                            <input type="checkbox" formControlName="seats" placeholder="Parts..." required />Seats
                         </div>
                         <div class="align-checks">
-                            <input type="checkbox" placeholder="Parts..." required />Others
+                            <input type="checkbox" formControlName="others" placeholder="Parts..." required />Others
                         </div>
                     </div>
                 </div>
 
                 <p class="fixed-margin">Others (specify): </p>
-                <input class="damage-field" placeholder="Parts..." required />
+                <input class="damage-field" formControlName="othersDetail" placeholder="Parts..." required />
 
                 <p class="fixed-margin">Describe the damages: </p>
-                <input class="damage-field" placeholder="Type here..." required />
+                <input class="damage-field" formControlName="description" placeholder="Type here..." required />
 
                 <div class="damage-btns-cont">
                     <button class="damage-button-cancel pointer" (click)="hidedamagePopup()">Cancel</button>
-                    <button class="damage-button pointer" type="submit">Submit</button>
+                    <button class="damage-button pointer" (click)="submitDamageRequest()" type="submit">Submit</button>
                 </div>
             </form>
         </div>

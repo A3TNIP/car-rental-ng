@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiConstants } from 'src/app/common/constants/ApiConstants';
 import { BaseService } from 'src/app/common/service/base.service';
@@ -10,29 +10,24 @@ import { LoaderService } from 'src/app/common/service/loader.service';
   templateUrl: './damages.component.html',
   styleUrls: ['./damages.component.css']
 })
-export class DamagesComponent {
+export class DamagesComponent implements OnInit{
   configurationData: any;
   addCostVisible: boolean = false;
   staffForm: any;
+  private damageModel!: any;
   formBuilder: any;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
 
-  private fetchConfigList() {
+  private fetchDamages() {
     LoaderService.show();
-    this.service.getRequest(`${ApiConstants.CONFIG_CONTROLLER}`)
+    this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}`)
       .subscribe({
         next: (res: any) => {
           LoaderService.hide();
           if (res && res.dataList) {
-            this.configurationData = res.dataList.map((config: any) => {
-              return {
-                id: config.id,
-                key: config.key,
-                value: config.value,
-                code: config.code,
-              }
-            })
+            this.configurationData = res.dataList.filter((item: any) => item.repairCost == null);
+            console.log(res.dataList)
           }
         }
       });
@@ -40,20 +35,37 @@ export class DamagesComponent {
 
   ngOnInit(): void {
     this.staffForm = this.fb.group({
-      DamageID: ['', Validators.required],
-      RentalID: ['', Validators.required],
-      Description: ['', Validators.required],
-      Damages: ['', Validators.required],
-      CustomerName: ['', Validators.required],
       Cost: ['', Validators.required],
     })
+    this.fetchDamages();
   }
 
-  showaddCostPopup() {
+  showaddCostPopup(damage: any) {
     this.addCostVisible = true;
+    this.damageModel = damage;
   }
 
   hideaddCostPopup() {
     this.addCostVisible = false;
+  }
+
+  completeDamage() {
+    this.damageModel = {
+      ...this.damageModel,
+      repairCost: this.staffForm.get('Cost').value
+    }
+
+    console.log(this.damageModel)
+    return;
+    this.service.putRequest(this.damageModel, `${ApiConstants.DAMAGE_CONTROLLER}/complete`)
+      .subscribe({
+        next: (res: any) => {
+          if (res) {
+            this.service.showToast("Success", "success", "Damage Cost Added Successfully")
+            this.hideaddCostPopup();
+            this.fetchDamages();
+          }
+        }
+      })
   }
 }

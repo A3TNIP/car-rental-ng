@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SalesHistoryComponent implements OnInit {
   filterForm!: FormGroup;
   salesList!:any;
+  totalSales!:number;
   constructor(private service:BaseService, private fb : FormBuilder) { }
 
   ngOnInit(): void {
@@ -27,7 +28,11 @@ export class SalesHistoryComponent implements OnInit {
     LoaderService.show();
     this.service.getRequest(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.SALES}`).subscribe({
       next: (res: any) => {
+        this.totalSales = 0;
         this.salesList = res.dataList;
+        res.dataList.map((x: any) => x.total).forEach((x: any) => {
+          this.totalSales += x;
+        });
         console.log(this.salesList);
         LoaderService.hide();
       },
@@ -42,11 +47,14 @@ export class SalesHistoryComponent implements OnInit {
     this.getSales();
   }
   filter(){
-    // TODO make post request to filter the sales using the requestedBy , approvedBy , startDate , endDate
-    const payload = this.filterForm.getRawValue();    
+    const payload = this.filterForm.getRawValue();
     this.service.postRequest(payload,`${ApiConstants.BILL_CONTROLLER}${ApiConstants.SALES_FILTERED_LIST}`).subscribe({
       next: (res: any) => {
+        this.totalSales = 0;
         this.salesList = res.dataList;
+        res.dataList.map((x: any) => x.total).forEach((x: any) => {
+          this.totalSales += x;
+        });
         console.log(this.salesList);
       },
       error: (err: any) => {

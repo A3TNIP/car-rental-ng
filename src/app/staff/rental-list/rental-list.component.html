@@ -17,14 +17,14 @@
             <th>Action:</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-config let-index="index">
+        <ng-template pTemplate="body" let-rent let-index="index">
           <tr class="table-data-format">
-            <td>{{ config.requestedBy }}</td>
-            <td>{{ config.carName }}</td>
-            <td>{{ config.startDate | date}}</td>
-            <td>{{ config.endDate | date}}</td>
+            <td>{{ rent.requestedBy }}</td>
+            <td>{{ rent.carName }}</td>
+            <td>{{ rent.startDate | date}}</td>
+            <td>{{ rent.endDate | date}}</td>
             <td [formGroup]="rentalForm">
-                <p-dropdown [options]="rentalStatus" [(ngModel)]="selectedStatus[config.requestedBy]" placeholder="Select status" styleClass="dropdowns"></p-dropdown>
+                <p-dropdown (onChange)="changeStatus($event, rent)" [options]="rentalStatus" [(ngModel)]="selectedStatus[rent.id]" [ngModelOptions]="{standalone: true}" placeholder="Select status" styleClass="dropdowns"></p-dropdown>
             </td>
             <td>
                 <button>

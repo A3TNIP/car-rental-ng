@@ -27,7 +27,10 @@ export class RentalListComponent implements OnInit {
         next: (res: any) => {
           LoaderService.hide();
           if (res && res.dataList) {
-            this.configurationData = res.dataList;
+            this.configurationData = res.dataList.filter((rent: any) => rent.status != 'Cancelled'
+              && rent.status != 'Completed'
+              && rent.status != 'Rejected'
+              && rent.status != 'Approved'); //filtering out the cancelled and completed rentals
           }
         }
       });
@@ -41,6 +44,7 @@ export class RentalListComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           LoaderService.hide();
+          this.fetchRentalList();
           if (res.message == 'Bill already exists') {
             this.service.showToast('Bill already exists');
           }
@@ -67,4 +71,21 @@ export class RentalListComponent implements OnInit {
     })
   }
   rentalForm!: FormGroup;
+
+  changeStatus(event: any, rent: any) {
+    const payload = {
+      ...rent,
+      status: event.value
+    }
+
+    this.service.postRequest(payload, `${ApiConstants.RENTAL_CONTROLLER}/ChangeStatus`)
+      .subscribe({
+        next: () => {
+          this.service.showToast('Status Updated');
+          if (event.value == 'Completed') {
+            this.generateBill(rent);
+          }
+        }
+      })
+  }
 }

@@ -13,19 +13,17 @@
             <th>Rental ID</th>
             <th>Description</th>
             <th>Damaged Parts</th>
-            <th>Customer Name</th>
             <th>Repair Cost</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-config let-index="index">
+        <ng-template pTemplate="body" let-damage let-index="index">
           <tr class="table-data-format">
-            <td>{{ config.code }}</td>
-            <td>{{ config.key }}</td>
-            <td>{{ config.value }}</td>
-            <td>{{ config.value }}</td>
-            <td>{{ config.value }}</td>
+            <td>{{ damage.damageId }}</td>
+            <td>{{ damage.rentalId }}</td>
+            <td>{{ damage.description }}</td>
+            <td>{{ damage.damagedParts }}</td>
             <td>
-              <button (click)="showaddCostPopup()">
+              <button (click)="showaddCostPopup(damage)">
                 <div class="add-config-btn pointer">
                   Add Cost
                 </div>
@@ -46,14 +44,9 @@
       <p class="popup-subhead">Damage Details</p>
 
       <form [formGroup]="staffForm">
-        <input class="input-field" type="text" formControlName="DamageID" placeholder="Damage ID" required />
-        <input class="input-field" type="text" formControlName="RentalID" placeholder="Rental ID" required />
-        <input class="input-field" type="text" formControlName="Description" placeholder="Description" required />
-        <input class="input-field" type="text" formControlName="Damages" placeholder="Damaged Parts" required />
-        <input class="input-field" type="text" formControlName="CustomerName" placeholder="Customer Name" required />
         <input class="input-field" type="text" formControlName="Cost" placeholder="Repair cost" required />
 
-        <button class="popup-button" type="submit">Add Cost</button>
+        <button class="popup-button" type="submit" (click)="completeDamage()">Add Cost</button>
       </form>
     </div>
   </div>

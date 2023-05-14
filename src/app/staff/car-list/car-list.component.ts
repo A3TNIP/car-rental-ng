@@ -116,6 +116,7 @@ export class CarListComponent {
           if (res.isSuccess) {
             console.log(res)
             this.carId = res.data.carId;
+            this.showDocument = true;
             this.hidecarPopup();
             this.service.showToast('Success', 'success', `Car updated successfully`);
             this.carForm.reset();
