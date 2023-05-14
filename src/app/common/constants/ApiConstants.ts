@@ -39,7 +39,7 @@ export class ApiConstants {
     public static readonly CHANGE_PASSWORD = '/Change-Password'
     public static readonly RENT = '/Rent'
     public static readonly REGISTER ='/Register';
-
+    public static readonly GENERATE ='/Generate';
     // Count Actions
     public static readonly CARS_AVAILABLE_COUNT = '/CarsAvailableCount'
     public static readonly CARS_ON_RENT_COUNT = '/CarsOnRentCount'
@@ -49,6 +49,7 @@ export class ApiConstants {
     public static readonly REGULAR_CUSTOMER_COUNT = '/GetRegularCustomerCount'
     public static readonly DAMAGE_COUNT = '/DamageCount'
     public static readonly GET_DTO = '/GetDto'
+    public static readonly GET_MOST_RENTED_CAR = '/GetMostRentedCar'
     public static readonly MOST_RENTED_CAR = '/MostRentedCar'
     public static readonly LEAST_RENTED_CAR = '/LeastRentedCar'
 }

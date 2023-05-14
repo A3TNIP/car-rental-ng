@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "../service/authentication.service";
 import {UserService} from "../service/user.service";
 import {LoaderService} from "../service/loader.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-redirect',
@@ -12,7 +13,7 @@ import {LoaderService} from "../service/loader.service";
 export class RedirectComponent implements OnInit{
 
   private role!: string;
-  constructor(private authService: AuthenticationService, private router: Router, private userService: UserService) {
+  constructor(private authService: AuthenticationService, private router: Router, private userService: UserService, private messageService: MessageService) {
   }
 
    ngOnInit(): void {
@@ -21,13 +22,22 @@ export class RedirectComponent implements OnInit{
 
   private redirect() {
     let role = this.role
+    let hour = new Date().getHours();
     switch (role) {
       case "Admin":
+        if (hour < 9 || hour > 17) {
+          this.messageService.add({severity:'error', summary:'Error', detail:'You are not allowed to login at this time.'});
+          this.authService.logout();
+        }
         this.router.navigateByUrl('/dashboard').then(
           () => LoaderService.hide()
         );
         break;
       case "Staff":
+        if (hour < 9 || hour > 17) {
+          this.messageService.add({severity:'error', summary:'Error', detail:'You are not allowed to login at this time.'});
+          this.authService.logout();
+        }
         this.router.navigateByUrl('/dashboard').then(
           () => LoaderService.hide()
         );

@@ -29,7 +29,24 @@ export class RentalListComponent implements OnInit {
           }
         }
       });
-
+  }
+  generateBill(config:any) {
+    LoaderService.show();
+    const payload = {
+      RentalId: config.id
+    }
+    this.service.postRequest(payload,`${ApiConstants.BILL_CONTROLLER}${ApiConstants.GENERATE}`)
+      .subscribe({
+        next: (res: any) => {
+          LoaderService.hide();
+          if (res.message == 'Bill already exists') {
+            this.service.showToast('Bill already exists');
+          }
+          else{
+            this.service.showToast('Bill Generated');
+          }
+        }
+      });
   }
 
   ngOnInit() {

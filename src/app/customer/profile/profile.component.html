@@ -12,7 +12,7 @@
             <div class="verification-section">
               <p>Verifications:
               <ng-container *ngIf="userDto.document; else uploadDocument">
-                Verified
+                <a href="{{userDto.document.fileURL}}" target="_blank">Verified</a>
               </ng-container>
               <ng-template #uploadDocument>
                 <i class="fas fa-times-circle"></i>

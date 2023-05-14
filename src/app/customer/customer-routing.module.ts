@@ -7,6 +7,7 @@ import {ReturnComponent} from "./return/return.component";
 import {HistoryComponent} from "./history/history.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {DamagesComponent} from "./damages/damages.component";
+import {CarDetailComponent} from "../visitor/car-detail/car-detail.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
       {path: 'return', component: ReturnComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}},
       {path: 'history', component: HistoryComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}},
       {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}},
-      {path: 'damages', component: DamagesComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}}
+      {path: 'damages', component: DamagesComponent, canActivate: [AuthGuard], data: {roles: ['Customer']}},
     ]
   },
 ];

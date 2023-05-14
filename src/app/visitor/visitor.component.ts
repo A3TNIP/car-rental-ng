@@ -14,12 +14,9 @@ export class VisitorComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationStart)
-    ).subscribe({
+    this.router.events.subscribe({
       next: (next) => {
-        this.noNav = this.noNavRoutes.includes((next as NavigationStart).url);
+        this.noNav = this.noNavRoutes.includes(this.router.url);
       }
     })
   }

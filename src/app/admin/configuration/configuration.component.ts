@@ -50,8 +50,8 @@ export class ConfigurationComponent implements OnInit {
     LoaderService.show();
     this.service.deleteRequest(`${ApiConstants.CONFIG_CONTROLLER}/${config.id}`).subscribe({
       next: (res: any) => {
-        if (res.message == 'Configuration deleted successfully') {
-          this.service.showToast('Deleted successfully');
+        if (res.message == 'Deleted successfully') {
+          this.service.showToast('Success', 'success','Configuration deleted successfully');
           // Remove the deleted config from the configurationData array
           this.fetchConfigList();
         }

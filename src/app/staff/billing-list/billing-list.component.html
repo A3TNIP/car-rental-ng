@@ -6,7 +6,7 @@
 
 <div class="tables-container">
   <div class="table-style">
-    <p-table [value]="carList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10" [paginator]="true">
+    <p-table [value]="billList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10" [paginator]="true">
       <ng-template pTemplate="header">
         <tr class="table-data-format">
           <th>Rent ID</th>
@@ -16,15 +16,15 @@
           <th>Actions</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-car let-index="index">
+      <ng-template pTemplate="body" let-bill let-index="index">
         <tr class="table-data-format">
-          <td>{{ car.brand }}</td>
-          <td>{{ car.model }}</td>
-          <td>{{ car.color }}</td>
-          <td>{{ car.buildYear }}</td>
+          <td>{{ bill.rentalId }}</td>
+          <td>{{ bill.generatedDate }}</td>
+          <td>{{ bill.totalAmount }}</td>
+          <td>{{ bill.billFor }}</td>
           <td>
             <button>
-              <div class="add-config-btn pointer">
+              <div class="add-config-btn pointer" style="cursor: pointer" (click)="approveBill(bill)">
                 Approve
               </div>
             </button>

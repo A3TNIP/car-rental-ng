@@ -16,12 +16,12 @@ export class BillingListComponent {
   configurationData: any;
   public offerForm!: FormGroup;
   formBuilder: any;
-  carList: any;
+  billList: any;
   isUpdate: boolean = false;
 
   constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
   ngOnInit():void{
-    this.fetchCars();
+    this.fetchBills();
     this.offerForm = this.fb.group({
       id: [""],
       brand: ['', Validators.required],
@@ -33,12 +33,12 @@ export class BillingListComponent {
       rate: ['', Validators.required],
     });
   }
-  private fetchCars() {
+  private fetchBills() {
     LoaderService.show();
-    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}`).subscribe({
+    this.service.getRequest(`${ApiConstants.BILL_CONTROLLER}`).subscribe({
       next: (res: any) => {
-        this.carList = res.dataList;
-        console.log(this.carList);
+        this.billList = res.dataList;
+        console.log(res);
         LoaderService.hide();
       },
       error: (err: any) => {
@@ -47,71 +47,8 @@ export class BillingListComponent {
     });
   }
 
-  public deleteCar(car: any) {
-    console.log('url', `${ApiConstants.CONFIG_CONTROLLER}/${car.id}`);
-    LoaderService.show();
-    this.service.deleteRequest(`${ApiConstants.CARS_CONTROLLER}/${car.id}`).subscribe({
-      next: (res: any) => {
-        if (res.message == 'Car deleted successfully') {
-          this.service.showToast('Deleted successfully');
-          this.fetchCars();
-        }
-        LoaderService.hide();
-      },
-      error: (err: any) => {
-        console.error('Failed to delete car', err);
-        LoaderService.hide();
-      },
-    });
-  }
-
-
-  public addCar(car: any) {
-    LoaderService.show();
-    delete car.id; // remove id field from config object
-    this.service.postRequest(car,`${ApiConstants.CARS_CONTROLLER}`).subscribe({
-      next: (res: any) => {
-        LoaderService.hide();
-        if (res.isSuccess) {
-          console.log('Car added successfully');
-          this.service.showToast('Success', 'success', 'Configuration added successfully');
-          this.offerForm.reset();
-          this.fetchCars();
-        }
-      },
-      error: (err: any) => {
-        console.error('Failed to add configuration', err);
-        LoaderService.hide();
-      },
-    });
-  }
-
-
-  public updateCar(config: any) {
-    LoaderService.show();
-    console.log(config);
-    const updatedconfig = {
-      ...config,
-      key: this.offerForm.get('key')!.value,
-      value: this.offerForm.get('value')!.value,
-      code: this.offerForm.get('code')!.value
-    };
-    this.service.putRequest(updatedconfig,`${ApiConstants.CONFIG_CONTROLLER}`).subscribe({
-      next: (res: any) => {
-        LoaderService.hide();
-        if (res && res.isSuccess) {
-          console.log('Configuration updated successfully');
-          this.isUpdate = false;
-          this.offerForm.reset();
-          this.fetchCars();
-          this.service.showToast('Success', 'success', 'Configuration updated successfully');
-        }
-      },
-      error: (err: any) => {
-        console.error('Failed to update configuration', err);
-        LoaderService.hide();
-      },
-    });
+  public approveBill(bill: any) {
+    console.log('yo bill garna parne approve', bill)
   }
 
   public populateForm(car: any) {

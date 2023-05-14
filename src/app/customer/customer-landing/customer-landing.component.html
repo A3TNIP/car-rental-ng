@@ -20,9 +20,11 @@
             <p class="cust-lower-titles">Rent a car now</p>
             <div class="rent-card-comp">
                 <img src="/assets/Images/lexus-lfa.jpg" class="rent-card-img" />
-                <p class="rent-card-title">Lexus LFA</p>
-                <p class="rent-card-detail">Rate: </p>
-                <div class="rent-now-redirect">Rent Now >></div>
+                <p class="rent-card-title">{{mostRentedCar.brand}} {{mostRentedCar.model}}</p>
+                <p class="rent-card-detail">Rate: {{mostRentedCar.rate}}</p>
+                <p class="rent-card-detail">Color: {{mostRentedCar.color}}</p>
+                <p class="rent-card-detail">Build Year: {{mostRentedCar.buildYear}}</p>
+                <div class="rent-now-redirect" (click)="viewCar()">Rent Now >></div>
             </div>
             <div class="view-more-cars">View More Cars</div>
         </div>
