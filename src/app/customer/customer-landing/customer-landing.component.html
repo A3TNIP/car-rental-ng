@@ -3,18 +3,12 @@
     <div class="offer-tab">
         <p class="offer-title">Special Offers This Month</p>
         <div class="offer-content">
-            <div class="offer-card">
-                <div class="ofrcrd-main">For the month of May,</div>
-                <div class="ofrcrd-sub">Get 20% off on your rent bill  when you rent any car from Hajur ko Car Rental</div>
-            </div>
-
-            <div class="offer-card">
-                <div class="ofrcrd-main">Free Pen with every rent</div>
-                <div class="ofrcrd-sub">Get an exclusive pen free with every rent from Hajur ko Car Rental</div>
+            <div class="offer-card" *ngFor="let offer of offers">
+                <div class="ofrcrd-main">{{offer.offerName}}</div>
+                <div class="ofrcrd-sub">{{offer.offerDescription}}</div>
             </div>
         </div>
     </div>
-
     <div class="cust-land-lower">
         <div class="cust-land-lower-left">
             <p class="cust-lower-titles">Rent a car now</p>
@@ -26,7 +20,6 @@
                 <p class="rent-card-detail">Build Year: {{mostRentedCar.buildYear}}</p>
                 <div class="rent-now-redirect" (click)="viewCar()">Rent Now >></div>
             </div>
-            <div class="view-more-cars">View More Cars</div>
         </div>
 
         <div class="cust-land-lower-right">

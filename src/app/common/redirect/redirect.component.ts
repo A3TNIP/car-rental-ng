@@ -25,7 +25,7 @@ export class RedirectComponent implements OnInit{
     let hour = new Date().getHours();
     switch (role) {
       case "Admin":
-        if (hour < 9 || hour > 17) {
+        if (hour < 9 || hour > 24) {
           this.messageService.add({severity:'error', summary:'Error', detail:'You are not allowed to login at this time.'});
           this.authService.logout();
         }

@@ -2,7 +2,7 @@ export class BaseResponseModel<T> {
     data!: T;
     dataList!: T[];
     message!: string;
-    success!: boolean;
+    isSuccess!: boolean;
     totalCount!: number;
     pages!: number;
     currentPage!: number;

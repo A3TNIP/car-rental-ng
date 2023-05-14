@@ -66,7 +66,7 @@ export class OffersComponent {
   public addOffer(car: any) {
     LoaderService.show();
     delete car.id; // remove id field from config object
-    this.service.postRequest(car,`${ApiConstants.OFFERS_CONTROLLER}`).subscribe({
+    this.service.postRequest(car,`${ApiConstants.OFFERS_CONTROLLER}/Create`).subscribe({
       next: (res: any) => {
         LoaderService.hide();
         if (res.isSuccess) {

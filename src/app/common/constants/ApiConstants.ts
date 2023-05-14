@@ -17,7 +17,6 @@ export class ApiConstants {
     public static readonly PAYMENT_CONTROLLER = ApiConstants.API_URL + '/Payment';
     public static readonly DAMAGE_CONTROLLER = ApiConstants.API_URL + '/Damage';
 
-
     //Actions
     public static readonly ATTACHMENTS ='/Attachments';
     public static readonly AUTHENTICATION ='/Authentication';
@@ -26,6 +25,8 @@ export class ApiConstants {
     public static readonly CONFIG ='/Config';
     public static readonly OFFERS ='/Offers';
     public static readonly RENTAL ='/Rental';
+    public static readonly SALES = '/Sales';
+    public static readonly SALES_FILTERED_LIST = '/SalesFilteredList';
 
     // Actions
     public static readonly STAFF = '/Staff'

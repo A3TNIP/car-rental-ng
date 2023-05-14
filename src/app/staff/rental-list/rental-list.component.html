@@ -20,9 +20,9 @@
         <ng-template pTemplate="body" let-config let-index="index">
           <tr class="table-data-format">
             <td>{{ config.requestedBy }}</td>
-            <td>{{ config.carId }}</td>
-            <td>{{ config.startDate }}</td>
-            <td>{{ config.endDate }}</td>
+            <td>{{ config.carName }}</td>
+            <td>{{ config.startDate | date}}</td>
+            <td>{{ config.endDate | date}}</td>
             <td [formGroup]="rentalForm">
                 <p-dropdown [options]="rentalStatus" [(ngModel)]="selectedStatus[config.requestedBy]" placeholder="Select status" styleClass="dropdowns"></p-dropdown>
             </td>

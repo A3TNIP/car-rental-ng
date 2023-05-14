@@ -11,12 +11,29 @@ import {Router} from "@angular/router";
 })
 export class CustomerLandingComponent implements OnInit {
   public mostRentedCar!: any;
-
+  public offers!:any;
   constructor(private service: BaseService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.getMostRentedCar();
+    this.getOffer();
+  }
+
+  private getOffer(){
+    LoaderService.show();
+    this.service.getRequest(`${ApiConstants.OFFERS_CONTROLLER}`).subscribe({
+      next: (res: any) => {
+        LoaderService.hide();
+        this.offers = res.dataList.sort((a: any, b: any) => a.endDate - b.endDate).splice(0, 2);
+        console.log(this.offers);
+
+      },
+      error: (err: any) => {
+        LoaderService.hide();
+        console.error(err);
+      },
+    });
   }
 
   private getMostRentedCar() {

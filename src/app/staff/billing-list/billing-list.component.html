@@ -19,7 +19,7 @@
       <ng-template pTemplate="body" let-bill let-index="index">
         <tr class="table-data-format">
           <td>{{ bill.rentalId }}</td>
-          <td>{{ bill.generatedDate }}</td>
+          <td>{{ bill.generatedDate | date}}</td>
           <td>{{ bill.totalAmount }}</td>
           <td>{{ bill.billFor }}</td>
           <td>
