@@ -3,13 +3,15 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiConstants} from 'src/app/common/constants/ApiConstants';
 import {BaseService} from 'src/app/common/service/base.service';
 import {LoaderService} from 'src/app/common/service/loader.service';
+import {BaseComponent} from "../../base/base.component";
+import {forkJoin, Observable, tap} from "rxjs";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent extends BaseComponent implements OnInit {
   adminForm!: FormGroup;
   public staffForm!: FormGroup;
   public carForm!: FormGroup;
@@ -29,7 +31,10 @@ export class DashboardComponent implements OnInit {
   customerList!:any;
   offerVisible: boolean = false;
   isUpdate: boolean = false;
-  constructor(private formBuilder: FormBuilder,private service:BaseService) {}
+  public loaded: boolean = false;
+  constructor(private formBuilder: FormBuilder,public override service:BaseService) {
+    super(service);
+  }
   public chartOptions!: any;
   public data!: any;
 
@@ -85,149 +90,196 @@ export class DashboardComponent implements OnInit {
       }
     };
 
+    const req$: Observable<any>[] = [];
 
-    this.service.getRequest(`${ApiConstants.PAYMENT_CONTROLLER}/PaymentsByDate`)
-      .subscribe({
-        next: (res) => {
-          const length = res.dataList.length;
-          // subtract length no of days from today;
-          const date = new Date();
-          date.setDate(date.getDate() - length);
 
-          const labels = [];
-          for (let i = 0; i < length; i++) {
-            labels.push(date.toDateString());
-            date.setDate(date.getDate() + 1);
+    req$.push(this.service.getRequest(`${ApiConstants.PAYMENT_CONTROLLER}/PaymentsByDate`)
+      .pipe(
+        tap({
+          next: (res) => {
+            const length = res.dataList.length;
+            // subtract length no of days from today;
+            const date = new Date();
+            date.setDate(date.getDate() - length);
+
+            const labels = [];
+            for (let i = 0; i < length; i++) {
+              labels.push(date.toDateString());
+              date.setDate(date.getDate() + 1);
+            }
+            this.data = {
+              labels: labels,
+              datasets: [
+                {
+                  label: 'Payments',
+                  data: res.dataList,
+                  fill: false,
+                  tension: 0.1,
+                  borderColor: documentStyle.getPropertyValue('--blue-500')
+                }
+              ]
+            }
+
           }
-          this.data = {
-            labels: labels,
-            datasets: [
-              {
-                label: 'Payments',
-                data: res.dataList,
-                fill: false,
-                tension: 0.1,
-                borderColor: documentStyle.getPropertyValue('--blue-500')
-              }
-            ]
-          }
-
-        }
-      })
+        })
+      ));
 
 
     //TOTAL CARS COUNT
-
-    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CAR_COUNT}`).subscribe({
-      next: (res: any) => {
-        this.totalCarCount = res.data;
-      },
-      error: (err: any) => {
-        console.error(err);
-      },
-    });
+    req$.push(
+    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CAR_COUNT}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.totalCarCount = res.data;
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        }
+      )));
 
     //TOTAL CARS ON RENT COUNT
 
-    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
-      next: (res: any) => {
-        this.totalCarsOnRentCount = res.data;
-      },
-      error: (err: any) => {
-        console.error(err);
-      },
-    });
+    req$.push(this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.totalCarsOnRentCount = res.data;
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        }
+      )));
 
     //TOTAL STAFF COUNT
 
-    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.STAFF_COUNT}`).subscribe({
-      next: (res: any) => {
-        this.totalStaffCount = res.data;
-      },
-      error: (err: any) => {
-        console.error(err);
-      },
-    });
+    req$.push(
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.STAFF_COUNT}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.totalStaffCount = res.data;
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        })
+      ));
 
     //Total User Count
-
-    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.ALL_CUSTOMER_COUNT}`).subscribe({
-      next: (res: any) => {
-        this.totalUserCount = res.data;
-      },
-      error: (err: any) => {
-        console.error('Failed to get total user count', err);
-      },
-    });
+    req$.push(
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.ALL_CUSTOMER_COUNT}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.totalUserCount = res.data;
+          },
+          error: (err: any) => {
+            console.error('Failed to get total user count', err);
+          },
+        })
+      ));
 
     //Total Active User Count
 
-    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.REGULAR_CUSTOMER_COUNT}`).subscribe({
-      next: (res: any) => {
-        this.totalRegularUserCount = res.data;
-      },
-      error: (err: any) => {
-        console.error('Failed to get total active count', err);
-      },
-    });
+    req$.push(
+    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.REGULAR_CUSTOMER_COUNT}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.totalRegularUserCount = res.data;
+          },
+          error: (err: any) => {
+            console.error('Failed to get total active count', err);
+          },
+        })
+      ));
 
 
     //Total Rented Car Count
 
-    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`).subscribe({
-      next: (res: any) => {
-        this.totalCarsOnRentCount = res.data;
-      },
-      error: (err: any) => {
-        console.error('Failed to get total rent car count', err);
-      },
-    });
+    req$.push(
+    this.service.getRequest(`${ApiConstants.CARS_CONTROLLER}${ApiConstants.CARS_ON_RENT_COUNT}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.totalCarsOnRentCount = res.data;
+          },
+          error: (err: any) => {
+            console.error('Failed to get total rent car count', err);
+          },
+        })
+      ));
 
     //Total Rented Car Count
 
-    this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}${ApiConstants.DAMAGE_COUNT}`).subscribe({
-      next: (res: any) => {
-        this.totalDamageCount = res.data;
-      },
-      error: (err: any) => {
-        console.error('Failed to get total rented car count', err);
-      },
-    });
+    req$.push(
+    this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}${ApiConstants.DAMAGE_COUNT}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.totalDamageCount = res.data;
+          },
+          error: (err: any) => {
+            console.error('Failed to get total rented car count', err);
+          },
+        })
+      ));
 
     //Frequently Rented Car
 
-    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.MOST_RENTED_CAR}`).subscribe({
-      next: (res: any) => {
-        this.mostRentedCar = res.data;
-      },
-      error: (err: any) => {
-        console.error('Failed to get Frequently Rented Car', err);
-      },
-    });
+    req$.push(
+    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.MOST_RENTED_CAR}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.mostRentedCar = res.data;
+          },
+          error: (err: any) => {
+            console.error('Failed to get Frequently Rented Car', err);
+          },
+        })
+      ));
 
 
     //Least Rented Car
 
-    this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.LEAST_RENTED_CAR}`).subscribe({
-      next: (res: any) => {
-        this.leastRentedCar = res.data;
-      },
-      error: (err: any) => {
-        console.error('Failed to get Least Rented Car', err);
-      },
-    });
+    req$.push(this.service.getRequest(`${ApiConstants.RENTAL_CONTROLLER}${ApiConstants.LEAST_RENTED_CAR}`)
+      .pipe(
+        tap(
+          {
+            next: (res: any) => {
+              this.leastRentedCar = res.data;
+            },
+            error: (err: any) => {
+              console.error('Failed to get Least Rented Car', err);
+            },
+          }
+        )
+      ));
 
     //GET customer list
-    this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.CUSTOMER}`).subscribe({
-      next: (res: any) => {
-        this.customerList = res.dataList;
-      },
-      error: (err: any) => {
-        console.error('Failed to get users', err);
-      },
-    });
+    req$.push(this.service.getRequest(`${ApiConstants.USER_CONTROLLER}${ApiConstants.CUSTOMER}`)
+      .pipe(
+        tap({
+          next: (res: any) => {
+            this.customerList = res.dataList;
+          },
+          error: (err: any) => {
+            console.error('Failed to get users', err);
+          },
+        })
+      ));
 
-    LoaderService.hide();
+    forkJoin(req$).subscribe({
+      next: () => {
+        LoaderService.hide();
+        this.loaded = true;
+      }
+    })
+
     this.adminForm = this.formBuilder.group({
       Email: ['', Validators.required],
       Password: ['', Validators.required],

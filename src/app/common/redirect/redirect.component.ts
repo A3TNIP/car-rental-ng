@@ -34,10 +34,10 @@ export class RedirectComponent implements OnInit{
         );
         break;
       case "Staff":
-        if (hour < 9 || hour > 17) {
-          this.messageService.add({severity:'error', summary:'Error', detail:'You are not allowed to login at this time.'});
-          this.authService.logout();
-        }
+        // if (hour < 9 || hour > 17) {
+        //   this.messageService.add({severity:'error', summary:'Error', detail:'You are not allowed to login at this time.'});
+        //   this.authService.logout();
+        // }
         this.router.navigateByUrl('/dashboard').then(
           () => LoaderService.hide()
         );

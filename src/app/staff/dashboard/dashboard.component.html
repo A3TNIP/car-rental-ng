@@ -1,278 +1,281 @@
-<div class="pagetop-container">
+<ng-container *ngIf="loaded">
+  <div class="pagetop-container">
     <div class="content-title">
-        DASHBOARD
-    </div>
-</div>
-
-<div class="stats-container">
-  <div class="stc-container">
-    <div class="stc-left">
-      <div class="stc-titles">Total Cars</div>
-      <div class="stc-data">{{totalCarCount}}</div>
-    </div>
-    <div class="stc-right">
-      <img src="/assets/Images/icons/white/ttlcars.svg" />
+      DASHBOARD
     </div>
   </div>
 
-
-  <div class="stc-container">
-    <div class="stc-left">
-      <div class="stc-titles">Total Cars on Rent</div>
-      <div class="stc-data">{{totalCarsOnRentCount}}</div>
+  <div class="stats-container">
+    <div class="stc-container">
+      <div class="stc-left">
+        <div class="stc-titles">Total Cars</div>
+        <div class="stc-data">{{totalCarCount}}</div>
+      </div>
+      <div class="stc-right">
+        <img src="/assets/Images/icons/white/ttlcars.svg" />
+      </div>
     </div>
-    <div class="stc-right">
-      <img src="/assets/Images/icons/white/ttlcorent.svg" />
+
+
+    <div class="stc-container">
+      <div class="stc-left">
+        <div class="stc-titles">Total Cars on Rent</div>
+        <div class="stc-data">{{totalCarsOnRentCount}}</div>
+      </div>
+      <div class="stc-right">
+        <img src="/assets/Images/icons/white/ttlcorent.svg" />
+      </div>
+    </div>
+
+    <div class="stc-container">
+      <div class="stc-left">
+        <div class="stc-titles">Total Staff</div>
+        <div class="stc-data">{{totalStaffCount}}</div>
+      </div>
+      <div class="stc-right">
+        <img src="/assets/Images/icons/white/ttlstaff.svg" />
+      </div>
     </div>
   </div>
 
-  <div class="stc-container">
-    <div class="stc-left">
-      <div class="stc-titles">Total Staff</div>
-      <div class="stc-data">{{totalStaffCount}}</div>
-    </div>
-    <div class="stc-right">
-      <img src="/assets/Images/icons/white/ttlstaff.svg" />
-    </div>
-  </div>
-</div>
-
-<div class="detail-stats">
-  <div class="active-user">
-    <p class="stc-data">Active Users</p>
-    <div class="actvu-subhead">
-      <!-- <p class="actvu-data">(+23)&nbsp;</p> that last week -->
-    </div>
-    <div class="actvu-items">
-      <div class="au-itm-top">
-        <div class="au-itm-top-cont">
-          <div class="au-itm-cont-box">
-            <img src="/assets/Images/icons/white/wallet.svg" />
+  <div class="detail-stats">
+    <div class="active-user">
+      <p class="stc-data">Active Users</p>
+      <div class="actvu-subhead">
+        <!-- <p class="actvu-data">(+23)&nbsp;</p> that last week -->
+      </div>
+      <div class="actvu-items">
+        <div class="au-itm-top">
+          <div class="au-itm-top-cont">
+            <div class="au-itm-cont-box">
+              <img src="/assets/Images/icons/white/wallet.svg" />
+            </div>
+            <p class="au-itm-cont-p">Users</p>
           </div>
-          <p class="au-itm-cont-p">Users</p>
+          <div class="au-itm-num">{{totalUserCount}}</div>
+          <div class="au-itm-under"></div>
         </div>
-        <div class="au-itm-num">{{totalUserCount}}</div>
-        <div class="au-itm-under"></div>
-      </div>
 
-      <div class="au-itm-top">
-        <div class="au-itm-top-cont">
-          <div class="au-itm-cont-box">
-            <img src="/assets/Images/icons/white/crown.svg" />
+        <div class="au-itm-top">
+          <div class="au-itm-top-cont">
+            <div class="au-itm-cont-box">
+              <img src="/assets/Images/icons/white/crown.svg" />
+            </div>
+            <p class="au-itm-cont-p">Regular Users</p>
           </div>
-          <p class="au-itm-cont-p">Regular Users</p>
+          <div class="au-itm-num">{{totalRegularUserCount}}</div>
+          <div class="au-itm-under"></div>
         </div>
-        <div class="au-itm-num">{{totalRegularUserCount}}</div>
-        <div class="au-itm-under"></div>
-      </div>
 
-      <div class="au-itm-top">
-        <div class="au-itm-top-cont">
-          <div class="au-itm-cont-box">
-            <img src="/assets/Images/icons/white/cart.svg" />
+        <div class="au-itm-top">
+          <div class="au-itm-top-cont">
+            <div class="au-itm-cont-box">
+              <img src="/assets/Images/icons/white/cart.svg" />
+            </div>
+            <p class="au-itm-cont-p">Rents</p>
           </div>
-          <p class="au-itm-cont-p">Rents</p>
+          <div class="au-itm-num">{{totalCarsOnRentCount}}</div>
+          <div class="au-itm-under"></div>
         </div>
-        <div class="au-itm-num">{{totalCarsOnRentCount}}</div>
-        <div class="au-itm-under"></div>
-      </div>
 
-      <div class="au-itm-top">
-        <div class="au-itm-top-cont">
-          <div class="au-itm-cont-box">
-            <img src="/assets/Images/icons/white/wrench.svg" />
+        <div class="au-itm-top">
+          <div class="au-itm-top-cont">
+            <div class="au-itm-cont-box">
+              <img src="/assets/Images/icons/white/wrench.svg" />
+            </div>
+            <p class="au-itm-cont-p">Damages</p>
           </div>
-          <p class="au-itm-cont-p">Damages</p>
-        </div>
-        <div class="au-itm-num">{{totalDamageCount}}</div>
-        <div class="au-itm-under"></div>
-      </div>
-    </div>
-  </div>
-  <div class="sales-ovrv">
-    <p class="salesov-title">Sales Overview</p>
-    <div class="salesov-subhead">
-      <!-- <p class="salesov-data">(+5) more&nbsp;</p>in 2021 -->
-    </div>
-    <p-chart type="line" [options]="chartOptions" [data]="data"></p-chart>
-  </div>
-</div>
-
-<div class="pagebtm-container">
-  <div class="tables-container">
-    <div class="table-style">
-      <p-table [value]="customerList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="8" [paginator]="true">
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Documents</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-user>
-          <tr>
-            <td>{{ user.name }}</td>
-            <td>{{ user.address }}</td>
-            <td>{{ user.phoneNumber }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.document ? 'YES' : 'NO' }}</td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
-    <div class="least-freq-cont">
-      <div class="least-freq-item">
-        <p class="least-freq-title">Frequently Rented Car:</p>
-        <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
-        <div class="least-freq-size">
-          <p class="least-freq-sub">{{mostRentedCar.brand}} {{mostRentedCar.model}}</p>
-        </div>
-      </div>
-
-      <div class="least-freq-item">
-        <p class="least-freq-title">Least Rented Car:</p>
-        <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
-        <div class="least-freq-size">
-          <p class="least-freq-sub">{{leastRentedCar.brand}} {{leastRentedCar.model}}</p>
+          <div class="au-itm-num">{{totalDamageCount}}</div>
+          <div class="au-itm-under"></div>
         </div>
       </div>
     </div>
+    <div class="sales-ovrv">
+      <p class="salesov-title">Sales Overview</p>
+      <div class="salesov-subhead">
+        <!-- <p class="salesov-data">(+5) more&nbsp;</p>in 2021 -->
+      </div>
+      <p-chart type="line" [options]="chartOptions" [data]="data"></p-chart>
+    </div>
   </div>
 
-  <div class="add-items">
-    <button (click)="showstaffPopup()" class="add-item-button">
-      <div class="add-item-container">
-        <p class="additm-p">Add Staff</p>
-        <div class="additm-icon-cont">
-          <img src="/assets/Images/icons/white/addstaff.svg" />
+  <div class="pagebtm-container">
+    <div class="tables-container">
+      <div class="table-style">
+        <p-table [value]="customerList" [tableStyle]="{ 'min-width': '50rem' }" [rows]="8" [paginator]="true">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Documents</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-user>
+            <tr>
+              <td>{{ user.name }}</td>
+              <td>{{ user.address }}</td>
+              <td>{{ user.phoneNumber }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.document ? 'YES' : 'NO' }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="least-freq-cont">
+        <div class="least-freq-item">
+          <p class="least-freq-title">Frequently Rented Car:</p>
+          <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
+          <div class="least-freq-size">
+            <p class="least-freq-sub">{{mostRentedCar.brand}} {{mostRentedCar.model}}</p>
+          </div>
+        </div>
+
+        <div class="least-freq-item">
+          <p class="least-freq-title">Least Rented Car:</p>
+          <img src="/assets/Images/lexus-lfa.jpg" class="least-freq-img" />
+          <div class="least-freq-size">
+            <p class="least-freq-sub">{{leastRentedCar.brand}} {{leastRentedCar.model}}</p>
+          </div>
         </div>
       </div>
-    </button>
+    </div>
 
-    <button (click)="showadminPopup()" class="add-item-button">
-      <div class="add-item-container">
-        <p class="additm-p">Add Admin</p>
-        <div class="additm-icon-cont">
-          <img src="/assets/Images/icons/white/addadmin.svg" />
+    <div class="add-items" *ngIf="is.admin">
+      <button (click)="showstaffPopup()" class="add-item-button">
+        <div class="add-item-container">
+          <p class="additm-p">Add Staff</p>
+          <div class="additm-icon-cont">
+            <img src="/assets/Images/icons/white/addstaff.svg" />
+          </div>
         </div>
-      </div>
-    </button>
-
-    <button (click)="showcarPopup()" class="add-item-button">
-      <div class="add-item-container">
-        <p class="additm-p">Add Car</p>
-        <div class="additm-icon-cont">
-          <img src="/assets/Images/icons/white/car-med.svg" />
-        </div>
-      </div>
-    </button>
-
-    <button (click)="showofferPopup()" class="add-item-button">
-      <div class="add-item-container">
-        <p class="additm-p">Add Offer</p>
-        <div class="additm-icon-cont">
-          <img src="/assets/Images/icons/white/percent.svg" />
-        </div>
-      </div>
-    </button>
-  </div>
-</div>
-
-<p-dialog [(visible)]="adminVisible" [style]="{'width': '400px'}">
-  <div class="popup-container" id="popupadmin">
-    <div class="popup-child">
-      <button (click)="hideadminPopup()" class="popup-close">
-        <img src="/assets/Images/icons/close.svg">
       </button>
-      <p class="popup-title">Hajur ko Car Rental</p>
-      <p class="popup-subhead">Sign Up Admin</p>
 
-      <form [formGroup]="adminForm">
-        <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
-        <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone Number" required />
-        <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
-        <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
-        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
-        <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
-
-        <button class="popup-button" type="submit" (click)="registerAdmin()">Register Now</button>
-      </form>
-    </div>
-  </div>
-</p-dialog>
-
-<p-dialog [(visible)]="staffVisible" [style]="{'width': '400px'}">
-  <div class="popup-container" id="popupstaff">
-    <div class="popup-child">
-      <button (click)="hidestaffPopup()" class="popup-close">
-        <img src="/assets/Images/icons/close.svg">
-      </button>
-      <p class="popup-title">Hajur ko Car Rental</p>
-      <p class="popup-subhead">Sign Up Staff</p>
-
-      <form [formGroup]="staffForm">
-        <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
-        <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone Number" required />
-        <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
-        <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
-        <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
-        <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
-
-        <button class="popup-button" type="submit" (click)="registerStaff()">Register Now</button>
-      </form>
-    </div>
-  </div>
-</p-dialog>
-
-<p-dialog [(visible)]="carVisible" [style]="{'width': '400px'}">
-  <div class="popup-container" id="popupcar">
-    <div class="popup-child">
-      <button (click)="hidecarPopup()" class="popup-close">
-        <img src="/assets/Images/icons/close.svg">
-      </button>
-      <p class="popup-title">Hajur ko Car Rental</p>
-      <p class="popup-subhead">Add Cars</p>
-
-      <form [formGroup]="carForm">
-        <input class="input-field " type="text" id="model" formControlName="model" placeholder="Model" required />
-        <input class="input-field " type="text" id="make" formControlName="make" placeholder="Make" required />
-        <input class="input-field " type="text" id="color" formControlName="color" placeholder="Color" required />
-        <input class="input-field " type="text" id="buildYear" formControlName="buildYear" placeholder="Build Year" required />
-        <input class="input-field " type="text" id="brand" formControlName="brand" placeholder="Brand" required />
-        <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="Rate" required />
-        <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="License No." required />
-        <div class="upload-btn-cont">
-          <button class="upload-btn" type="submit">Upload Documents</button>
-          <img src="/assets/Images/icons/white/upload.svg" />
+      <button (click)="showadminPopup()" class="add-item-button">
+        <div class="add-item-container">
+          <p class="additm-p">Add Admin</p>
+          <div class="additm-icon-cont">
+            <img src="/assets/Images/icons/white/addadmin.svg" />
+          </div>
         </div>
-        <button class="popup-button" type="submit" (click)="registerCar()">Add Now</button>
-      </form>
-    </div>
-  </div>
-</p-dialog>
-
-<p-dialog [(visible)]="offerVisible" [style]="{'width': '400px'}">
-  <div class="popup-container" id="popupoffer">
-    <div class="popup-child">
-      <button (click)="hideofferPopup()" class="popup-close">
-        <img src="/assets/Images/icons/close.svg">
       </button>
-      <p class="popup-title">Hajur ko Car Rental</p>
-      <p class="popup-subhead">Add Offers</p>
-      <form [formGroup]="offerForm" (submit)="doAction()">
-        <input class="offer-field " type="text" formControlName="offerName" placeholder="Offer Name" required />
-        <p-calendar formControlName="startDate" placeholder="Start Date" styleClass="offer-field"></p-calendar>
-        <p-calendar formControlName="endDate" placeholder="End Date" styleClass="offer-field"></p-calendar>
-        <input class="offer-field " type="text" formControlName="discount" placeholder="Discount" required />
-        <input class="offer-field " type="text" formControlName="type" placeholder="Type" required />
-        <div class="upload-btn-cont">
-          <button class="upload-btn" type="submit">Upload Image</button>
-          <img src="/assets/Images/icons/white/upload.svg" />
+
+      <button (click)="showcarPopup()" class="add-item-button">
+        <div class="add-item-container">
+          <p class="additm-p">Add Car</p>
+          <div class="additm-icon-cont">
+            <img src="/assets/Images/icons/white/car-med.svg" />
+          </div>
         </div>
-        <button class="popup-button" type="submit">Add Now</button>
-      </form>
+      </button>
+
+      <button (click)="showofferPopup()" class="add-item-button">
+        <div class="add-item-container">
+          <p class="additm-p">Add Offer</p>
+          <div class="additm-icon-cont">
+            <img src="/assets/Images/icons/white/percent.svg" />
+          </div>
+        </div>
+      </button>
     </div>
   </div>
-</p-dialog>
+
+  <p-dialog [(visible)]="adminVisible" [style]="{'width': '400px'}">
+    <div class="popup-container" id="popupadmin">
+      <div class="popup-child">
+        <button (click)="hideadminPopup()" class="popup-close">
+          <img src="/assets/Images/icons/close.svg">
+        </button>
+        <p class="popup-title">Hajur ko Car Rental</p>
+        <p class="popup-subhead">Sign Up Admin</p>
+
+        <form [formGroup]="adminForm">
+          <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
+          <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone Number" required />
+          <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
+          <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
+          <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
+          <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
+
+          <button class="popup-button" type="submit" (click)="registerAdmin()">Register Now</button>
+        </form>
+      </div>
+    </div>
+  </p-dialog>
+
+  <p-dialog [(visible)]="staffVisible" [style]="{'width': '400px'}">
+    <div class="popup-container" id="popupstaff">
+      <div class="popup-child">
+        <button (click)="hidestaffPopup()" class="popup-close">
+          <img src="/assets/Images/icons/close.svg">
+        </button>
+        <p class="popup-title">Hajur ko Car Rental</p>
+        <p class="popup-subhead">Sign Up Staff</p>
+
+        <form [formGroup]="staffForm">
+          <input class="input-field " type="text" id="name" formControlName="Name" placeholder="Name" required />
+          <input class="input-field " type="text" id="phone" formControlName="PhoneNumber" placeholder="Phone Number" required />
+          <input class="input-field " type="text" id="address" formControlName="Address" placeholder="Address" required />
+          <input class="input-field " type="text" id="email" formControlName="Email" placeholder="Email" required />
+          <input class="input-field " type="password" id="password" formControlName="Password" placeholder="Enter Password" required />
+          <input class="input-field " type="password" id="confirmpassword" formControlName="ConfirmPassword" placeholder="Repeat Password" required />
+
+          <button class="popup-button" type="submit" (click)="registerStaff()">Register Now</button>
+        </form>
+      </div>
+    </div>
+  </p-dialog>
+
+  <p-dialog [(visible)]="carVisible" [style]="{'width': '400px'}">
+    <div class="popup-container" id="popupcar">
+      <div class="popup-child">
+        <button (click)="hidecarPopup()" class="popup-close">
+          <img src="/assets/Images/icons/close.svg">
+        </button>
+        <p class="popup-title">Hajur ko Car Rental</p>
+        <p class="popup-subhead">Add Cars</p>
+
+        <form [formGroup]="carForm">
+          <input class="input-field " type="text" id="model" formControlName="model" placeholder="Model" required />
+          <input class="input-field " type="text" id="make" formControlName="make" placeholder="Make" required />
+          <input class="input-field " type="text" id="color" formControlName="color" placeholder="Color" required />
+          <input class="input-field " type="text" id="buildYear" formControlName="buildYear" placeholder="Build Year" required />
+          <input class="input-field " type="text" id="brand" formControlName="brand" placeholder="Brand" required />
+          <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="Rate" required />
+          <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="License No." required />
+          <div class="upload-btn-cont">
+            <button class="upload-btn" type="submit">Upload Documents</button>
+            <img src="/assets/Images/icons/white/upload.svg" />
+          </div>
+          <button class="popup-button" type="submit" (click)="registerCar()">Add Now</button>
+        </form>
+      </div>
+    </div>
+  </p-dialog>
+
+  <p-dialog [(visible)]="offerVisible" [style]="{'width': '400px'}">
+    <div class="popup-container" id="popupoffer">
+      <div class="popup-child">
+        <button (click)="hideofferPopup()" class="popup-close">
+          <img src="/assets/Images/icons/close.svg">
+        </button>
+        <p class="popup-title">Hajur ko Car Rental</p>
+        <p class="popup-subhead">Add Offers</p>
+        <form [formGroup]="offerForm" (submit)="doAction()">
+          <input class="offer-field " type="text" formControlName="offerName" placeholder="Offer Name" required />
+          <p-calendar formControlName="startDate" placeholder="Start Date" styleClass="offer-field"></p-calendar>
+          <p-calendar formControlName="endDate" placeholder="End Date" styleClass="offer-field"></p-calendar>
+          <input class="offer-field " type="text" formControlName="discount" placeholder="Discount" required />
+          <input class="offer-field " type="text" formControlName="type" placeholder="Type" required />
+          <div class="upload-btn-cont">
+            <button class="upload-btn" type="submit">Upload Image</button>
+            <img src="/assets/Images/icons/white/upload.svg" />
+          </div>
+          <button class="popup-button" type="submit">Add Now</button>
+        </form>
+      </div>
+    </div>
+  </p-dialog>
+</ng-container>
+

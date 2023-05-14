@@ -6,7 +6,6 @@ export class BaseComponent {
 
   constructor(public service: AuthenticationService) {
     this.is = service.getRoleBoolean();
-    console.log(this.is)
   }
 
 }

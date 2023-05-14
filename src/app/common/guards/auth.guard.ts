@@ -38,10 +38,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private hasRole(datum: string[]) {
-    let hasRole = false;
     let roles: string = UserService.getCurrentUser().roleName;
-    console.log(datum);
-    console.log(roles);
     return datum.includes(roles);
   }
 
