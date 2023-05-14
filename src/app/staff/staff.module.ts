@@ -18,6 +18,7 @@ import {ChartModule} from "primeng/chart";
 import { OffersComponent } from './offers/offers.component';
 import {CalendarModule} from "primeng/calendar";
 import {MultiSelectModule} from "primeng/multiselect";
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {MultiSelectModule} from "primeng/multiselect";
     CalendarModule,
     MultiSelectModule,
     FormsModule,
+    DropdownModule
   ]
 })
 export class StaffModule { }

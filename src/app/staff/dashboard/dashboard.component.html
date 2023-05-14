@@ -180,6 +180,15 @@
         </div>
       </div>
     </button>
+
+    <button (click)="showofferPopup()" class="add-item-button">
+      <div class="add-item-container">
+        <p class="additm-p">Add Offer</p>
+        <div class="additm-icon-cont">
+          <img src="/assets/Images/icons/white/percent.svg" />
+        </div>
+      </div>
+    </button>
   </div>
 </div>
 
@@ -240,17 +249,41 @@
 
       <form [formGroup]="carForm">
         <input class="input-field " type="text" id="model" formControlName="model" placeholder="Model" required />
-        <input class="input-field " type="text" id="make" formControlName="make" placeholder="Maker" required />
-        <input class="input-field " type="text" id="color" formControlName="color" placeholder="color" required />
-        <input class="input-field " type="text" id="buildYear" formControlName="buildYear" placeholder="buildYear" required />
-        <input class="input-field " type="text" id="brand" formControlName="brand" placeholder="brand" required />
-        <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="rate" required />
-        <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="licensePlate" required />
+        <input class="input-field " type="text" id="make" formControlName="make" placeholder="Make" required />
+        <input class="input-field " type="text" id="color" formControlName="color" placeholder="Color" required />
+        <input class="input-field " type="text" id="buildYear" formControlName="buildYear" placeholder="Build Year" required />
+        <input class="input-field " type="text" id="brand" formControlName="brand" placeholder="Brand" required />
+        <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="Rate" required />
+        <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="License No." required />
         <div class="upload-btn-cont">
           <button class="upload-btn" type="submit">Upload Documents</button>
           <img src="/assets/Images/icons/white/upload.svg" />
         </div>
         <button class="popup-button" type="submit" (click)="registerCar()">Add Now</button>
+      </form>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog [(visible)]="offerVisible" [style]="{'width': '400px'}">
+  <div class="popup-container" id="popupoffer">
+    <div class="popup-child">
+      <button (click)="hideofferPopup()" class="popup-close">
+        <img src="/assets/Images/icons/close.svg">
+      </button>
+      <p class="popup-title">Hajur ko Car Rental</p>
+      <p class="popup-subhead">Add Offers</p>
+      <form [formGroup]="offerForm" (submit)="doAction()">
+        <input class="offer-field " type="text" formControlName="offerName" placeholder="Offer Name" required />
+        <p-calendar formControlName="startDate" placeholder="Start Date" styleClass="offer-field"></p-calendar>
+        <p-calendar formControlName="endDate" placeholder="End Date" styleClass="offer-field"></p-calendar>
+        <input class="offer-field " type="text" formControlName="discount" placeholder="Discount" required />
+        <input class="offer-field " type="text" formControlName="type" placeholder="Type" required />
+        <div class="upload-btn-cont">
+          <button class="upload-btn" type="submit">Upload Image</button>
+          <img src="/assets/Images/icons/white/upload.svg" />
+        </div>
+        <button class="popup-button" type="submit">Add Now</button>
       </form>
     </div>
   </div>

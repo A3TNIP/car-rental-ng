@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ApiConstants} from 'src/app/common/constants/ApiConstants';
 import {BaseService} from 'src/app/common/service/base.service';
 import {LoaderService} from 'src/app/common/service/loader.service';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-rental-list',
@@ -14,6 +15,7 @@ export class RentalListComponent implements OnInit {
   configurationData: any;
   rentalStatus: any = ["Waiting", "Approved", "Rejected", "Cancelled", "Completed"];
   selectedStatus: any = {};
+  config: any = {};
 
   constructor(private service: BaseService, private http: HttpClient, private fb: FormBuilder) {
   }

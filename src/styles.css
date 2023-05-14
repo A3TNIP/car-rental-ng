@@ -6,6 +6,27 @@ body{
   cursor: pointer
 }
 
+.dropdowns{
+  background-color: #4FD1C5;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif !important;
+  color: #ffffff;
+}
+
+.placehold-white{
+  color: #ffffff;
+}
+
+.offer-field {
+  padding: 12px;
+  padding-left: 12px;
+  border-radius: 10px;
+  margin: 3% 0% 4% 0%;
+  width: 100%;
+  border: 1.5px solid #E0E2E9;
+  font-family: 'Poppins', sans-serif;
+}
+
 .input-field {
   padding: 9px 9px 9px 45px;
   border-radius: 10px;
@@ -71,6 +92,12 @@ body{
 
   .input-field#rate {
     background-image: url("/assets/Images/icons/coin.svg");
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+  }
+
+  .input-field#setting {
+    background-image: url("/assets/Images/icons/settings.svg");
     background-repeat: no-repeat;
     background-position: left 10px center;
   }

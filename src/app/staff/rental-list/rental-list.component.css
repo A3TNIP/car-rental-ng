@@ -96,3 +96,7 @@ button{
     .add-config-btn:hover{
         background-color: #3ea49a;
     }
+
+.rental-dropdown{
+    background-color: #4FD1C5;
+}

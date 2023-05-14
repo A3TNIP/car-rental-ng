@@ -53,13 +53,13 @@
       <button (click)="hideofferPopup()" class="popup-close">
         <img src="/assets/Images/icons/close.svg">
       </button>
-      <p class="popup-subhead">Add Cars</p>
+      <p class="popup-subhead">Add Offers</p>
       <form [formGroup]="offerForm" (submit)="doAction()">
-        <input class="input-field " type="text" formControlName="offerName" placeholder="Offer Name" required />
-        <p-calendar formControlName="startDate" placeholder="Start Date" styleClass="input-field"></p-calendar>
-        <p-calendar formControlName="endDate" placeholder="End Date" styleClass="input-field"></p-calendar>
-        <input class="input-field " type="text" formControlName="discount" placeholder="Discount" required />
-        <input class="input-field " type="text" formControlName="type" placeholder="Type" required />
+        <input class="offer-field " type="text" formControlName="offerName" placeholder="Offer Name" required />
+        <p-calendar formControlName="startDate" placeholder="Start Date" styleClass="offer-field"></p-calendar>
+        <p-calendar formControlName="endDate" placeholder="End Date" styleClass="offer-field"></p-calendar>
+        <input class="offer-field " type="text" formControlName="discount" placeholder="Discount" required />
+        <input class="offer-field " type="text" formControlName="type" placeholder="Type" required />
         <div class="upload-btn-cont">
           <button class="upload-btn" type="submit">Upload Image</button>
           <img src="/assets/Images/icons/white/upload.svg" />
