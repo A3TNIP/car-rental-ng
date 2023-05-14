@@ -19,6 +19,7 @@ import { OffersComponent } from './offers/offers.component';
 import {CalendarModule} from "primeng/calendar";
 import {MultiSelectModule} from "primeng/multiselect";
 import { DropdownModule } from 'primeng/dropdown';
+import { SalesHistoryComponent } from './sales-history/sales-history.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DropdownModule } from 'primeng/dropdown';
     DamagesComponent,
     StaffComponent,
     PaymentsComponent,
-    OffersComponent
+    OffersComponent,
+    SalesHistoryComponent
   ],
   imports: [
     CommonModule,

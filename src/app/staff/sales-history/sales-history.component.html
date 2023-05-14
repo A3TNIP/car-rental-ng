@@ -1,0 +1,49 @@
+<div class="pagetop-container">
+    <div class="content-title">
+        SALES HISTORY
+    </div>
+</div>
+
+<div class="filter-cont">
+    <p class="sub-title">Total Income: <p>
+    <div>
+        <form class="filter-data-cont">
+            <input class="offer-field " type="text" placeholder="Requested By" required />
+            <input class="offer-field " type="text" placeholder="Approved By" required />
+            <p-calendar placeholder="Start Date" appendTo="body"></p-calendar>
+            <p-calendar placeholder="End Date" appendTo="body"></p-calendar>
+        </form>
+    </div>
+</div>
+
+<div class="filter-btn-cont">
+    <button class="filter-btn">
+        Filter
+    </button>
+    <button class="reset-btn">
+        Reset
+    </button>
+</div>
+
+<div class="tables-container">
+    <div class="table-style">
+      <p-table [tableStyle]="{ 'min-width': '50rem' }" [rows]="10" [paginator]="true">
+        <ng-template pTemplate="header">
+            <tr class="table-data-format">
+                <th>Car Name:</th>
+                <th>Rate (Rs/day):</th>
+                <th>Count:</th>
+                <th>Total Sales (Rs):</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-config let-index="index">
+            <tr class="table-data-format">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>

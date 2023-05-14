@@ -2,6 +2,12 @@ body{
   margin: 0 !important;
 }
 
+button{
+  background-color: #ffffff00;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+}
+
 .pointer{
   cursor: pointer
 }
