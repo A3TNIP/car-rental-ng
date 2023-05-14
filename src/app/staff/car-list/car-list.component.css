@@ -171,9 +171,8 @@ button{
     margin: unset !important;
 }
 
-.add-config-btn{
-  background-color: #4FD1C5;
-  font-size: 18px;
+.add-config-btn, .act-delete-btn{
+  font-size: 16px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -184,6 +183,18 @@ button{
   transition: ease-in 0.1s;
 }
 
+.add-config-btn{
+  background-color: #4FD1C5;
+}
+
   .add-config-btn:hover{
       background-color: #3ea49a;
   }
+
+.act-delete-btn{
+  background-color: #d14f4f;
+}
+
+  .act-delete-btn:hover{
+      background-color: #9f3b3b;
+  }  

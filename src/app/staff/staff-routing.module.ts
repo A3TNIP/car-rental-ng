@@ -9,6 +9,7 @@ import {DamagesComponent} from "./damages/damages.component";
 import {RentalListComponent} from "./rental-list/rental-list.component";
 import {ClientListComponent} from "./client-list/client-list.component";
 import {OffersComponent} from "./offers/offers.component";
+import {SalesHistoryComponent } from './sales-history/sales-history.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path: "damages", component: DamagesComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
       {path: "rentals", component: RentalListComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
       {path: "offers", component: OffersComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}},
+      {path: "sales", component: SalesHistoryComponent, canActivate: [AuthGuard], data: {roles: ["Staff", "Admin"]}}
     ]
   }
 ];

@@ -41,7 +41,7 @@
                 </div>
               </button>
               <button (click)="deleteCar(car)">
-                <div class="add-config-btn pointer">
+                <div class="act-delete-btn pointer">
                   Delete
                 </div>
               </button>
@@ -63,11 +63,11 @@
       <form [formGroup]="carForm">
         <input class="input-field " type="text" id="brand" formControlName="brand" placeholder="Brand" required />
         <input class="input-field " type="text" id="model" formControlName="model" placeholder="Model" required />
-        <input class="input-field " type="text" id="make" formControlName="make" placeholder="Make" required />
+        <input class="input-field " type="text" id="setting" formControlName="make" placeholder="Make" required />
         <input class="input-field " type="text" id="color" formControlName="color" placeholder="Color" required />
         <input class="input-field " type="text" id="BuildYear" formControlName="buildYear" placeholder="Build Year" required />
         <input class="input-field " type="text" id="rate" formControlName="rate" placeholder="Rate" required />
-        <input class="input-field " type="text" id="licensePlate" formControlName="licensePlate" placeholder="License Plate" required />
+        <input class="input-field " type="text" id="license" formControlName="licensePlate" placeholder="License Plate" required />
         <button class="popup-button" type="submit" (click)="addCar(carForm.value)">{{isUpdate ? 'Update' : 'Add'}} Now</button>
       </form>
     </div>

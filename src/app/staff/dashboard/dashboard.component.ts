@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   adminForm!: FormGroup;
   public staffForm!: FormGroup;
   public carForm!: FormGroup;
+  public offerForm!: FormGroup;
   staffVisible: boolean = false;
   adminVisible: boolean = false;
   carVisible: boolean = false;
@@ -26,6 +27,8 @@ export class DashboardComponent implements OnInit {
   mostRentedCar!:any;
   leastRentedCar!:any;
   customerList!:any;
+  offerVisible: boolean = false;
+  isUpdate: boolean = false;
   constructor(private formBuilder: FormBuilder,private service:BaseService) {}
   public chartOptions!: any;
   public data!: any;
@@ -40,6 +43,10 @@ export class DashboardComponent implements OnInit {
 
   showcarPopup() {
     this.carVisible = true;
+  }
+
+  showofferPopup() {
+    this.offerVisible = true;
   }
 
   ngOnInit(): void {
@@ -251,6 +258,16 @@ export class DashboardComponent implements OnInit {
       licensePlate: ['', Validators.required],
       status: ['Available', Validators.required]
     })
+
+    this.offerForm = this.formBuilder.group({
+      id: [""],
+      offerName: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      discount: ['', Validators.required],
+      type: ['', Validators.required],
+      offerDescription: ['', Validators.required]
+    });
   }
 
   hideadminPopup() {
@@ -263,6 +280,10 @@ export class DashboardComponent implements OnInit {
 
   hidecarPopup() {
     this.carVisible = false;
+  }
+
+  hideofferPopup() {
+    this.offerVisible = false;
   }
 
   public registerAdmin(){
@@ -321,5 +342,13 @@ export class DashboardComponent implements OnInit {
         console.error('Failed to register staff', err);
       },
     });
+  }
+
+  doAction() {
+    if (this.isUpdate) {
+
+    } else {
+
+    }
   }
 }

@@ -24,9 +24,7 @@
             <td>{{ config.startDate }}</td>
             <td>{{ config.endDate }}</td>
             <td [formGroup]="rentalForm">
-                <div class="add-config-btn pointer">
-                  <p-multiSelect [options]="rentalStatus" [selectionLimit]="1" [(ngModel)]="selectedStatus[config.requestedBy]" display="chip"></p-multiSelect>
-                </div>
+                <p-dropdown [options]="rentalStatus" [(ngModel)]="selectedStatus[config.requestedBy]" placeholder="Select status" styleClass="dropdowns"></p-dropdown>
             </td>
             <td>
                 <button>
