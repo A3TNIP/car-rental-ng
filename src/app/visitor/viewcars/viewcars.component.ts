@@ -3,15 +3,17 @@ import {BaseService} from "../../common/service/base.service";
 import {ApiConstants} from "../../common/constants/ApiConstants";
 import {LoaderService} from "../../common/service/loader.service";
 import {NavigationExtras, Router} from "@angular/router";
+import {BaseComponent} from "../../base/base.component";
 
 @Component({
   selector: 'app-viewcars',
   templateUrl: './viewcars.component.html',
   styleUrls: ['./viewcars.component.css']
 })
-export class ViewcarsComponent implements OnInit{
+export class ViewcarsComponent extends BaseComponent implements OnInit{
   public availableCars!:any;
-  constructor(private service:BaseService, private router: Router) {
+  constructor(public override service:BaseService, private router: Router) {
+    super(service);
   }
 
   ngOnInit():void {
@@ -30,6 +32,10 @@ export class ViewcarsComponent implements OnInit{
   }
 
   viewCar(car: any) {
+    if (!this.is.loggedIn) {
+      this.router.navigateByUrl('/login').then();
+      return;
+    }
     localStorage.setItem('viewingCar', JSON.stringify(car));
     this.router.navigateByUrl('/car').then();
   }

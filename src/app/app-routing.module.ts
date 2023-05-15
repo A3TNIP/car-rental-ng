@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: '' , loadChildren: () => import('./visitor/visitor.module').then(m => m.VisitorModule) },
   { path: '' , loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   { path: "redirect", component: RedirectComponent },
-  { path: "not-found", component: NotFoundComponent },
-  { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
+  { path: '**', component: RedirectComponent }
 ];
 
 @NgModule({

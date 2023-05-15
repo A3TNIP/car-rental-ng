@@ -75,7 +75,7 @@ export class ReturnComponent implements OnInit {
 
   public getBillingInfo() {
     console.log(`${ApiConstants.BILL_CONTROLLER}${ApiConstants.RENT}/${this.rentalId}`);
-    this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}/Rent/${this.rentalId}`)
+    this.service.getRequest(`${ApiConstants.DAMAGE_CONTROLLER}/Rent/${this.rentalId}`,true)
       .subscribe({
         next: (resp) => {
           this.hasDamages = !resp.isSuccess;
