@@ -56,7 +56,6 @@ export class DamagesComponent implements OnInit{
     }
 
     console.log(this.damageModel)
-    return;
     this.service.putRequest(this.damageModel, `${ApiConstants.DAMAGE_CONTROLLER}/complete`)
       .subscribe({
         next: (res: any) => {

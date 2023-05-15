@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiConstants } from 'src/app/common/constants/ApiConstants';
 import { BaseService } from 'src/app/common/service/base.service';
 import { LoaderService } from 'src/app/common/service/loader.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-billing-list',
@@ -12,6 +13,8 @@ import { LoaderService } from 'src/app/common/service/loader.service';
 })
 export class BillingListComponent {
   offerVisible: boolean = false;
+  payments: any[] = [];
+  paidBills: any[] = [];
 
   configurationData: any;
   public offerForm!: FormGroup;
@@ -19,7 +22,7 @@ export class BillingListComponent {
   billList: any;
   isUpdate: boolean = false;
 
-  constructor(private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
+  constructor(private router: Router, private service:BaseService, private http: HttpClient,private fb: FormBuilder) { }
   ngOnInit():void{
     this.fetchBills();
     this.offerForm = this.fb.group({
@@ -33,12 +36,30 @@ export class BillingListComponent {
       rate: ['', Validators.required],
     });
   }
+
+  private getPayments() {
+    this.service.getRequest(`${ApiConstants.PAYMENT_CONTROLLER}`)
+      .subscribe({
+        next: (resp: any) => {
+          this.payments = resp.dataList;
+          this.paidBills = resp.dataList.map((payment: any) => payment.billId);
+          console.log(this.paidBills)
+          console.log(this.billList)
+          console.log(resp.dataList)
+        }
+      })
+  }
+
+  public checkIfExists(id: any) {
+    return this.paidBills.includes(id);
+  }
   private fetchBills() {
     LoaderService.show();
     this.service.getRequest(`${ApiConstants.BILL_CONTROLLER}`).subscribe({
       next: (res: any) => {
         this.billList = res.dataList;
         console.log(res);
+        this.getPayments();
         LoaderService.hide();
       },
       error: (err: any) => {
@@ -48,11 +69,18 @@ export class BillingListComponent {
   }
 
   public approveBill(bill: any) {
-    console.log('yo bill garna parne approve', bill)
+    console.log(bill)
+    console.log(this.paidBills);
+    console.log(this.checkIfExists(bill.id))
+    if (this.checkIfExists(bill.id)) {
+      this.service.showToast("Error", "error", "Bill already paid");
+      return;
+    }
     this.service.postRequest(bill,`${ApiConstants.PAYMENT_CONTROLLER}`)
       .subscribe({
         next: (res: any) => {
           this.fetchBills();
+          this.router.navigateByUrl('/redirect').then();
         }
       })
   }

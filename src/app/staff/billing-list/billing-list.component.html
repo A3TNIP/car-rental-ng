@@ -23,7 +23,7 @@
           <td>{{ bill.totalAmount }}</td>
           <td>{{ bill.billFor }}</td>
           <td>
-            <button>
+            <button [disabled]="checkIfExists(bill.billId)">
               <div class="add-config-btn pointer" style="cursor: pointer" (click)="approveBill(bill)">
                 Approve
               </div>

@@ -29,8 +29,7 @@ export class RentalListComponent implements OnInit {
           if (res && res.dataList) {
             this.configurationData = res.dataList.filter((rent: any) => rent.status != 'Cancelled'
               && rent.status != 'Completed'
-              && rent.status != 'Rejected'
-              && rent.status != 'Approved'); //filtering out the cancelled and completed rentals
+              && rent.status != 'Rejected'); //filtering out the cancelled and completed rentals
           }
         }
       });
